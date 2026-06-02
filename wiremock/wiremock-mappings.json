@@ -1,0 +1,5974 @@
+{
+  "mappings": [
+    {
+      "id": "1b39789c-8d92-4879-ba0b-2f37e62bfc60",
+      "name": "Get all virtual machines for the account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"my-vm\",\n      \"status\": \"running\",\n      \"region\": \"sjc0\",\n      \"vmPackage\": \"standard-2-4\",\n      \"cpu\": 4,\n      \"memoryMb\": 8192,\n      \"rootDiskGb\": 50,\n      \"tags\": [\n        \"production\",\n        \"web-tier\"\n      ],\n      \"subscriptionPeriod\": \"monthly\",\n      \"image\": \"ubuntu-22.04\",\n      \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n      \"ipAddress\": \"192.168.1.10\",\n      \"networkName\": \"production-network\",\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n      \"marketplaceApp\": {\n        \"label\": \"coolify\",\n        \"name\": \"Coolify\",\n        \"docsUrl\": \"https://coolify.io/docs\"\n      }\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1b39789c-8d92-4879-ba0b-2f37e62bfc60",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "2cf6343a-75b2-4faa-80ab-ce3230aa1f87",
+      "name": "Create a new virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"my-vm\",\n  \"status\": \"running\",\n  \"region\": \"sjc0\",\n  \"vmPackage\": \"standard-2-4\",\n  \"cpu\": 4,\n  \"memoryMb\": 8192,\n  \"rootDiskGb\": 50,\n  \"tags\": [\n    \"production\",\n    \"web-tier\"\n  ],\n  \"subscriptionPeriod\": \"monthly\",\n  \"image\": \"ubuntu-22.04\",\n  \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n  \"ipAddress\": \"192.168.1.10\",\n  \"networkName\": \"production-network\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n  \"marketplaceApp\": {\n    \"label\": \"coolify\",\n    \"name\": \"Coolify\",\n    \"docsUrl\": \"https://coolify.io/docs\"\n  },\n  \"passwordMessage\": \"The root password will be emailed to the account owner shortly.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2cf6343a-75b2-4faa-80ab-ce3230aa1f87",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "8ac1ec2c-2ecf-4334-9601-01c4cf9fb9b1",
+      "name": "Get usage history metrics for a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}/metrics",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "hours": {
+            "equalTo": "24"
+          },
+          "sample_period": {
+            "equalTo": "10"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n  {\n    \"timestamp\": \"2026-05-28T12:34:56Z\",\n    \"cpuUsagePct\": 12.34,\n    \"memoryUsagePct\": 56.78\n  }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8ac1ec2c-2ecf-4334-9601-01c4cf9fb9b1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "ed26bb9a-dc80-4d96-afb9-de2267493645",
+      "name": "Reset the password for a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}/password/reset",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"password\": \"GeneratedOrCustomPassword123\",\n  \"message\": \"Password reset. Save it now — it will not be displayed again.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ed26bb9a-dc80-4d96-afb9-de2267493645",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c4853d9d-69e3-4ac8-a5dd-c706bb812545",
+      "name": "Get a virtual machine by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"my-vm\",\n  \"status\": \"running\",\n  \"region\": \"sjc0\",\n  \"vmPackage\": \"standard-2-4\",\n  \"cpu\": 4,\n  \"memoryMb\": 8192,\n  \"rootDiskGb\": 50,\n  \"tags\": [\n    \"production\",\n    \"web-tier\"\n  ],\n  \"subscriptionPeriod\": \"monthly\",\n  \"image\": \"ubuntu-22.04\",\n  \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n  \"ipAddress\": \"192.168.1.10\",\n  \"networkName\": \"production-network\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n  \"marketplaceApp\": {\n    \"label\": \"coolify\",\n    \"name\": \"Coolify\",\n    \"docsUrl\": \"https://coolify.io/docs\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c4853d9d-69e3-4ac8-a5dd-c706bb812545",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b289c55b-1fe5-4026-a06a-3c5af3c278bd",
+      "name": "Delete a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b289c55b-1fe5-4026-a06a-3c5af3c278bd",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c516655b-f3a6-4aac-aed5-3e641feaa819",
+      "name": "Get a cost estimate for a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c516655b-f3a6-4aac-aed5-3e641feaa819",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "8914172d-ba27-4b1c-b247-3d48f61e6c53",
+      "name": "Control virtual machine power state - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}/power",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "action": {
+            "equalTo": "start"
+          },
+          "force": {
+            "equalTo": "false"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"status\": \"starting\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8914172d-ba27-4b1c-b247-3d48f61e6c53",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a6ff2ba6-2366-43ea-bb83-da619af07580",
+      "name": "Scale a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}/scale",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "cpu": {
+            "equalTo": "4"
+          },
+          "memoryMb": {
+            "equalTo": "4096"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a6ff2ba6-2366-43ea-bb83-da619af07580",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "64d9624a-c4ce-40f4-a77e-837d506551f5",
+      "name": "Resize the root disk of a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}/disk-resize",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"status\": \"Resizing\",\n  \"rebootInitiated\": true,\n  \"message\": \"Disk resize succeeded but VM reboot failed. Reboot manually to apply the new size.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "64d9624a-c4ce-40f4-a77e-837d506551f5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "7f39b967-838e-4aef-9579-259f28c8fb40",
+      "name": "Create a console endpoint for a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}/console",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"url\": \"https://console.example.com/vm/12345\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7f39b967-838e-4aef-9579-259f28c8fb40",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "38fde9ed-d58a-4597-88b0-2cb533764dd1",
+      "name": "Update the hostname of a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}/hostname",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "hostname": {
+            "equalTo": "my-web-server"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"hostname\": \"my-web-server\",\n  \"status\": \"updated\",\n  \"message\": \"VM must be stopped and started for hostname change to take effect\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "38fde9ed-d58a-4597-88b0-2cb533764dd1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9be4a925-ec21-4117-ad67-3e29f74482d4",
+      "name": "Reinstall a virtual machine - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/vms/{id}/reinstall",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "image": {
+            "equalTo": "ubuntu-22.04"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"status\": \"reinstalling\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9be4a925-ec21-4117-ad67-3e29f74482d4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "17fc6321-e109-4096-a8c4-5be6ca756ce3",
+      "name": "Get all available VM packages - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/packages",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"7a3c0b3b-8c4d-4fe2-a8a0-8e3d0f9d1b3c\",\n      \"label\": \"custom-standard\",\n      \"description\": \"Custom Standard\",\n      \"minCpu\": 1,\n      \"maxCpu\": 12,\n      \"minRootDiskGb\": 25,\n      \"maxRootDiskGb\": 10000,\n      \"minMemoryMb\": 512,\n      \"maxMemoryMb\": 131072,\n      \"tier\": \"standard\",\n      \"zones\": [\n        \"us-west-0\",\n        \"us-west-1\"\n      ],\n      \"cpu\": 2,\n      \"rootDiskGb\": 100,\n      \"memoryMb\": 4096\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "17fc6321-e109-4096-a8c4-5be6ca756ce3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "7f319065-5a9c-4fdc-9b91-6fcc5d653ad6",
+      "name": "Get a VM package by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/packages/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"7a3c0b3b-8c4d-4fe2-a8a0-8e3d0f9d1b3c\",\n  \"label\": \"custom-standard\",\n  \"description\": \"Custom Standard\",\n  \"minCpu\": 1,\n  \"maxCpu\": 12,\n  \"minRootDiskGb\": 25,\n  \"maxRootDiskGb\": 10000,\n  \"minMemoryMb\": 512,\n  \"maxMemoryMb\": 131072,\n  \"tier\": \"standard\",\n  \"zones\": [\n    \"us-west-0\",\n    \"us-west-1\"\n  ],\n  \"cpu\": 2,\n  \"rootDiskGb\": 100,\n  \"memoryMb\": 4096\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7f319065-5a9c-4fdc-9b91-6fcc5d653ad6",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "61d82cd1-ac74-4bdf-a26c-bc4a4a42b2f7",
+      "name": "Get a VM package by label - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/packages/label/{label}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "label": {
+            "equalTo": "standard-2-4"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"7a3c0b3b-8c4d-4fe2-a8a0-8e3d0f9d1b3c\",\n  \"label\": \"custom-standard\",\n  \"description\": \"Custom Standard\",\n  \"minCpu\": 1,\n  \"maxCpu\": 12,\n  \"minRootDiskGb\": 25,\n  \"maxRootDiskGb\": 10000,\n  \"minMemoryMb\": 512,\n  \"maxMemoryMb\": 131072,\n  \"tier\": \"standard\",\n  \"zones\": [\n    \"us-west-0\",\n    \"us-west-1\"\n  ],\n  \"cpu\": 2,\n  \"rootDiskGb\": 100,\n  \"memoryMb\": 4096\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "61d82cd1-ac74-4bdf-a26c-bc4a4a42b2f7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "33eff9e1-7632-4fd1-b5f7-f9d31cb2b04f",
+      "name": "Get all available regions - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/regions",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"2d1e0c3b-4a5f-6b7c-8d9e-0f1a2b3c4d5e\",\n      \"label\": \"us-west-0\",\n      \"displayName\": \"US West (Zone 0)\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "33eff9e1-7632-4fd1-b5f7-f9d31cb2b04f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "ceced569-f9ee-4e35-a24c-193ec1fc29d2",
+      "name": "Get a region by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/regions/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"2d1e0c3b-4a5f-6b7c-8d9e-0f1a2b3c4d5e\",\n  \"label\": \"us-west-0\",\n  \"displayName\": \"US West (Zone 0)\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ceced569-f9ee-4e35-a24c-193ec1fc29d2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c4e974d5-12e9-498f-b8ad-66331a7e4ee2",
+      "name": "Get a region by label - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/regions/label/{label}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "label": {
+            "equalTo": "sjc0"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"2d1e0c3b-4a5f-6b7c-8d9e-0f1a2b3c4d5e\",\n  \"label\": \"us-west-0\",\n  \"displayName\": \"US West (Zone 0)\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c4e974d5-12e9-498f-b8ad-66331a7e4ee2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "831ed74b-a554-49b6-9ecc-45ce06808062",
+      "name": "Get all available images - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/images",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"8a7b6c5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p\",\n      \"label\": \"ubuntu-22.04\",\n      \"description\": \"Ubuntu 22.04 LTS\",\n      \"os\": \"Ubuntu\",\n      \"version\": \"22.04\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "831ed74b-a554-49b6-9ecc-45ce06808062",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "2b6725b5-6c3e-49b4-9e25-f71585ba67e5",
+      "name": "Get an image by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/images/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"8a7b6c5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p\",\n  \"label\": \"ubuntu-22.04\",\n  \"description\": \"Ubuntu 22.04 LTS\",\n  \"os\": \"Ubuntu\",\n  \"version\": \"22.04\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2b6725b5-6c3e-49b4-9e25-f71585ba67e5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "bbd6471f-8232-4e4b-8f77-519306c4eb53",
+      "name": "Get an image by label - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/compute/images/label/{label}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "label": {
+            "equalTo": "ubuntu-22.04"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"8a7b6c5d-4e3f-2g1h-0i9j-8k7l6m5n4o3p\",\n  \"label\": \"ubuntu-22.04\",\n  \"description\": \"Ubuntu 22.04 LTS\",\n  \"os\": \"Ubuntu\",\n  \"version\": \"22.04\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "bbd6471f-8232-4e4b-8f77-519306c4eb53",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e9d04f5b-3be1-4d4a-889d-9bd2ffcafe5d",
+      "name": "Get all isolated networks for the account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/isolated",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"net-1a2b3c4d\",\n      \"name\": \"Production Network\",\n      \"description\": \"Production Network\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"status\": \"Active\",\n      \"region\": \"us-east-1\",\n      \"createdAt\": \"2023-05-15T10:30:00Z\",\n      \"type\": \"Isolated\",\n      \"vpcId\": \"vpc-1a2b3c4d\",\n      \"vpcName\": \"Production VPC\",\n      \"aclId\": \"acl-1a2b3c4d\",\n      \"aclName\": \"default_allow\",\n      \"aclType\": \"Account\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e9d04f5b-3be1-4d4a-889d-9bd2ffcafe5d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "e28fe81b-50b5-47d2-aa73-4f1211692088",
+      "name": "Create a new isolated network - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/isolated",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"vpcId\": \"vpc-1a2b3c4d\",\n  \"vpcName\": \"Production VPC\",\n  \"aclId\": \"acl-1a2b3c4d\",\n  \"aclName\": \"default_allow\",\n  \"aclType\": \"Account\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e28fe81b-50b5-47d2-aa73-4f1211692088",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "69f34c3c-a762-4c3d-ad75-8b546712b450",
+      "name": "Get an isolated network by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/isolated/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"vpcId\": \"vpc-1a2b3c4d\",\n  \"vpcName\": \"Production VPC\",\n  \"aclId\": \"acl-1a2b3c4d\",\n  \"aclName\": \"default_allow\",\n  \"aclType\": \"Account\",\n  \"ipAddresses\": [\n    \"10.1.1.5\",\n    \"10.1.1.6\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "69f34c3c-a762-4c3d-ad75-8b546712b450",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "d281ca2f-5ca8-47f2-97db-3a07155ad24b",
+      "name": "Update an isolated network - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/isolated/{id}",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"vpcId\": \"vpc-1a2b3c4d\",\n  \"vpcName\": \"Production VPC\",\n  \"aclId\": \"acl-1a2b3c4d\",\n  \"aclName\": \"default_allow\",\n  \"aclType\": \"Account\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "d281ca2f-5ca8-47f2-97db-3a07155ad24b",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "121a20fa-7601-4281-94bc-dd65fd2e1d2c",
+      "name": "Delete an isolated network - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/isolated/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "121a20fa-7601-4281-94bc-dd65fd2e1d2c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2375026f-de53-48b8-94e7-0ab4e2b858ea",
+      "name": "Restart an isolated network - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/isolated/{id}/restart",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2375026f-de53-48b8-94e7-0ab4e2b858ea",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b83eb56e-0818-4da3-9e0e-2792df04905f",
+      "name": "Get all VPCs for the account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"vpc-a1b2c3d4\",\n      \"name\": \"Production VPC\",\n      \"description\": \"Production VPC\",\n      \"cidr\": \"10.0.0.0/16\",\n      \"status\": \"Active\",\n      \"region\": \"us-east-1\",\n      \"createdAt\": \"2023-05-15T10:30:00Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b83eb56e-0818-4da3-9e0e-2792df04905f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "c35fa05e-0db2-494f-b97d-79b5fc34b3b8",
+      "name": "Create a new VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"vpc-a1b2c3d4\",\n  \"name\": \"Production VPC\",\n  \"description\": \"Production VPC\",\n  \"cidr\": \"10.0.0.0/16\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"tiers\": [\n    {\n      \"id\": \"tier-1a2b3c4d\",\n      \"name\": \"Web Tier\",\n      \"description\": \"Web Tier\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"netmask\": \"255.255.255.0\",\n      \"status\": \"Active\",\n      \"aclName\": \"default_allow\"\n    }\n  ],\n  \"publicIps\": [\n    \"203.0.113.1\",\n    \"203.0.113.2\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c35fa05e-0db2-494f-b97d-79b5fc34b3b8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "341e8ab4-bcc3-4826-ab03-653788472438",
+      "name": "Get a VPC by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"vpc-a1b2c3d4\",\n  \"name\": \"Production VPC\",\n  \"description\": \"Production VPC\",\n  \"cidr\": \"10.0.0.0/16\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"tiers\": [\n    {\n      \"id\": \"tier-1a2b3c4d\",\n      \"name\": \"Web Tier\",\n      \"description\": \"Web Tier\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"netmask\": \"255.255.255.0\",\n      \"status\": \"Active\",\n      \"aclName\": \"default_allow\"\n    }\n  ],\n  \"publicIps\": [\n    \"203.0.113.1\",\n    \"203.0.113.2\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "341e8ab4-bcc3-4826-ab03-653788472438",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c43fc92b-3f52-4a03-a90a-4875b7239f6f",
+      "name": "Update a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/{id}",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"vpc-a1b2c3d4\",\n  \"name\": \"Production VPC\",\n  \"description\": \"Production VPC\",\n  \"cidr\": \"10.0.0.0/16\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c43fc92b-3f52-4a03-a90a-4875b7239f6f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "4b016f2f-ad1b-4270-8951-d7c97900a519",
+      "name": "Delete a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4b016f2f-ad1b-4270-8951-d7c97900a519",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fdef8ea9-d33c-4849-9568-e90c2e9622ec",
+      "name": "Get a cost estimate for a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fdef8ea9-d33c-4849-9568-e90c2e9622ec",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "bc1c1bfc-da0b-4d24-8c33-c2480b404b28",
+      "name": "Create a new network tier in a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/tier",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"tier-1a2b3c4d\",\n  \"name\": \"Web Tier\",\n  \"description\": \"Web Tier\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"netmask\": \"255.255.255.0\",\n  \"status\": \"Active\",\n  \"aclName\": \"default_allow\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "bc1c1bfc-da0b-4d24-8c33-c2480b404b28",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fee761e2-fe49-41f3-bae7-9f220d515d83",
+      "name": "Restart a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/{id}/restart",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fee761e2-fe49-41f3-bae7-9f220d515d83",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c0a2c210-feb9-4152-ab0d-392f61711f9e",
+      "name": "Get all public IP addresses for the account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"ipAddress\": \"203.0.113.5\",\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vmId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vmName\": \"my-vm\",\n      \"status\": \"allocated\",\n      \"region\": \"sjc0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"isSourceNat\": false,\n      \"isStaticNat\": false,\n      \"hasFirewallRules\": false,\n      \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vpcName\": \"production-vpc\",\n      \"associatedNetworkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"associatedNetworkName\": \"web-tier\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c0a2c210-feb9-4152-ab0d-392f61711f9e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "8c6a0bae-726f-47f0-aaa4-8ac5ce812ba9",
+      "name": "Reserve a new public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"ipAddress\": \"203.0.113.5\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vmId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vmName\": \"my-vm\",\n  \"status\": \"allocated\",\n  \"region\": \"sjc0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"isSourceNat\": false,\n  \"isStaticNat\": false,\n  \"hasFirewallRules\": false,\n  \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vpcName\": \"production-vpc\",\n  \"associatedNetworkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"associatedNetworkName\": \"web-tier\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8c6a0bae-726f-47f0-aaa4-8ac5ce812ba9",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "823d6b56-24c8-4f79-8667-76e03dce5ee4",
+      "name": "Get all public IP addresses for a specific isolated network - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip/isolated/{isolatedNetworkId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "isolatedNetworkId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"ipAddress\": \"203.0.113.5\",\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vmId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vmName\": \"my-vm\",\n      \"status\": \"allocated\",\n      \"region\": \"sjc0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"isSourceNat\": false,\n      \"isStaticNat\": false,\n      \"hasFirewallRules\": false,\n      \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vpcName\": \"production-vpc\",\n      \"associatedNetworkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"associatedNetworkName\": \"web-tier\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "823d6b56-24c8-4f79-8667-76e03dce5ee4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c8d72afe-e262-4ee3-9d96-ca1ac2a39def",
+      "name": "Get all public IP addresses for a specific VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip/vpc/{vpcId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "vpcId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"ipAddress\": \"203.0.113.5\",\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vmId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vmName\": \"my-vm\",\n      \"status\": \"allocated\",\n      \"region\": \"sjc0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"isSourceNat\": false,\n      \"isStaticNat\": false,\n      \"hasFirewallRules\": false,\n      \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vpcName\": \"production-vpc\",\n      \"associatedNetworkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"associatedNetworkName\": \"web-tier\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c8d72afe-e262-4ee3-9d96-ca1ac2a39def",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e27edaec-88f3-4a6f-bc25-4f363808c36a",
+      "name": "Get a public IP address by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"ipAddress\": \"203.0.113.5\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vmId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vmName\": \"my-vm\",\n  \"status\": \"allocated\",\n  \"region\": \"sjc0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"isSourceNat\": false,\n  \"isStaticNat\": false,\n  \"hasFirewallRules\": false,\n  \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vpcName\": \"production-vpc\",\n  \"associatedNetworkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"associatedNetworkName\": \"web-tier\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e27edaec-88f3-4a6f-bc25-4f363808c36a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "d62b801f-e6b6-4453-96a4-b60a227f9ccb",
+      "name": "Release a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "d62b801f-e6b6-4453-96a4-b60a227f9ccb",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "24de7ec0-e7d8-466d-b7aa-0c88dec46853",
+      "name": "Get a cost estimate for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "24de7ec0-e7d8-466d-b7aa-0c88dec46853",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "d508a9e2-b4d7-47e3-8568-239977e02dba",
+      "name": "Change the source NAT IP for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip/{id}/change-source-nat-ip",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "d508a9e2-b4d7-47e3-8568-239977e02dba",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "1c12869d-c3fd-4578-bf57-446d840d64a8",
+      "name": "Enable static NAT for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip/{id}/enable-static-nat",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1c12869d-c3fd-4578-bf57-446d840d64a8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "735ec03a-82c5-48d8-a4b6-e9166f9f9049",
+      "name": "Disable static NAT for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/public-ip/{id}/disable-static-nat",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "735ec03a-82c5-48d8-a4b6-e9166f9f9049",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "634fa998-0ad8-43ad-948f-256dddfb8314",
+      "name": "Get all firewall rules for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/rules/ip/{ipId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ipId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"protocol\": \"TCP\",\n      \"startPort\": 80,\n      \"endPort\": 80,\n      \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"ipAddress\": \"203.0.113.5\",\n      \"state\": \"Active\",\n      \"sourceCidrList\": \"10.0.0.0/24\",\n      \"type\": \"Ingress\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "634fa998-0ad8-43ad-948f-256dddfb8314",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "319fdbee-a787-4dff-9840-0001cb445b19",
+      "name": "Create a firewall rule for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/rules/ip/{ipId}",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ipId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 80,\n  \"endPort\": 80,\n  \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"ipAddress\": \"203.0.113.5\",\n  \"state\": \"Active\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"type\": \"Ingress\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "319fdbee-a787-4dff-9840-0001cb445b19",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b9e95d03-76ac-4c60-8d52-c12c34162a12",
+      "name": "Delete a firewall rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/rules/{ruleId}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ruleId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b9e95d03-76ac-4c60-8d52-c12c34162a12",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a9530a33-a2b7-43f5-a3d1-368a04368cd1",
+      "name": "Get all port forwarding rules for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/port-forwarding/ip/{ipId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ipId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"privatePort\": 80,\n      \"publicPort\": 8080,\n      \"protocol\": \"TCP\",\n      \"vmId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"vmName\": \"my-vm\",\n      \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"ipAddress\": \"203.0.113.5\",\n      \"state\": \"Active\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a9530a33-a2b7-43f5-a3d1-368a04368cd1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "87a3442f-56a8-4bdc-a1e7-314f7558ca8a",
+      "name": "Create a port forwarding rule for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/port-forwarding/ip/{ipId}",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ipId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"privatePort\": 80,\n  \"publicPort\": 8080,\n  \"protocol\": \"TCP\",\n  \"vmId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vmName\": \"my-vm\",\n  \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"ipAddress\": \"203.0.113.5\",\n  \"state\": \"Active\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "87a3442f-56a8-4bdc-a1e7-314f7558ca8a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "971881a8-b1eb-4f96-9c7d-df69183aae2f",
+      "name": "Delete a port forwarding rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/port-forwarding/{ruleId}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ruleId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "971881a8-b1eb-4f96-9c7d-df69183aae2f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "8f44b862-1ec9-4978-95be-6436dd26b345",
+      "name": "Get all load balancer rules for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/ip/{ipId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ipId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"my-lb-rule\",\n      \"publicPort\": 80,\n      \"privatePort\": 8080,\n      \"algorithm\": \"roundrobin\",\n      \"protocol\": \"tcp\",\n      \"state\": \"Active\",\n      \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"ipAddress\": \"203.0.113.5\",\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"sourceCidrList\": \"0.0.0.0/0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8f44b862-1ec9-4978-95be-6436dd26b345",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a07700ee-9628-4341-852e-9c20172e8d13",
+      "name": "Create a load balancer rule for a public IP address - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/ip/{ipId}",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ipId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"my-lb-rule\",\n  \"publicPort\": 80,\n  \"privatePort\": 8080,\n  \"algorithm\": \"roundrobin\",\n  \"protocol\": \"tcp\",\n  \"state\": \"Active\",\n  \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"ipAddress\": \"203.0.113.5\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"sourceCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a07700ee-9628-4341-852e-9c20172e8d13",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c9b36e40-7cfd-43d8-8676-36089cf11103",
+      "name": "Update a load balancer rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ruleId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"my-lb-rule\",\n  \"publicPort\": 80,\n  \"privatePort\": 8080,\n  \"algorithm\": \"roundrobin\",\n  \"protocol\": \"tcp\",\n  \"state\": \"Active\",\n  \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"ipAddress\": \"203.0.113.5\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"sourceCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c9b36e40-7cfd-43d8-8676-36089cf11103",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f903fac9-6ea3-4369-8cc4-e47efcccd8c8",
+      "name": "Delete a load balancer rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ruleId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f903fac9-6ea3-4369-8cc4-e47efcccd8c8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "35603ccf-e253-4c36-970c-cab56e7217a5",
+      "name": "List virtual machines for a load balancer rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}/instances",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ruleId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"my-vm\",\n      \"state\": \"running\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "35603ccf-e253-4c36-970c-cab56e7217a5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "064d3bf1-ff59-4ebc-bb75-de16eb2797ca",
+      "name": "Assign virtual machines to a load balancer rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}/assign",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ruleId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "064d3bf1-ff59-4ebc-bb75-de16eb2797ca",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "4ddbac64-70d8-4cbd-b3e2-ce544494c1f3",
+      "name": "Remove virtual machines from a load balancer rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}/remove",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "ruleId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4ddbac64-70d8-4cbd-b3e2-ce544494c1f3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "8b98ef26-1961-475d-b361-16005cf46f13",
+      "name": "Get all egress rules for the account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/egress",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"protocol\": \"TCP\",\n      \"startPort\": 443,\n      \"endPort\": 443,\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"state\": \"Active\",\n      \"sourceCidrList\": \"10.0.0.0/24\",\n      \"destCidrList\": \"0.0.0.0/0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8b98ef26-1961-475d-b361-16005cf46f13",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "eb0a5fa1-ebe3-426a-9d83-a0c2c779f7af",
+      "name": "Create a new egress rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/egress",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "eb0a5fa1-ebe3-426a-9d83-a0c2c779f7af",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9cecf783-54b7-4ebe-84d1-5cc063f6f0da",
+      "name": "Get all egress rules for a network - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/egress/network/{networkId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "networkId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"protocol\": \"TCP\",\n      \"startPort\": 443,\n      \"endPort\": 443,\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"state\": \"Active\",\n      \"sourceCidrList\": \"10.0.0.0/24\",\n      \"destCidrList\": \"0.0.0.0/0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9cecf783-54b7-4ebe-84d1-5cc063f6f0da",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "90603e20-0f5e-457e-b9c6-b019f0ee58a9",
+      "name": "Get an egress rule by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/egress/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "90603e20-0f5e-457e-b9c6-b019f0ee58a9",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2feb9131-c781-4d6c-aa4d-921cf82f9daf",
+      "name": "Update an egress rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/egress/{id}",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2feb9131-c781-4d6c-aa4d-921cf82f9daf",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "014daed8-50be-4495-96b7-3a7990da2cb0",
+      "name": "Delete an egress rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/firewall/egress/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "014daed8-50be-4495-96b7-3a7990da2cb0",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a96686ec-f6f2-4e01-8b35-3ccbfa397e88",
+      "name": "Get all Network ACL Lists for the account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/lists",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"web-tier-acl\",\n      \"description\": \"Inbound rules for the public-facing web tier.\",\n      \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a96686ec-f6f2-4e01-8b35-3ccbfa397e88",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "8e85ab75-6168-4646-abe2-ae9127ca9c92",
+      "name": "Create a new Network ACL List - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/lists",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"web-tier-acl\",\n  \"description\": \"Inbound rules for the public-facing web tier.\",\n  \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8e85ab75-6168-4646-abe2-ae9127ca9c92",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a6aeeb66-fdf4-430c-a19c-310a6a6e4320",
+      "name": "Get all Network ACL Lists for a specific VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/vpc/{vpcId}/lists",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "vpcId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"web-tier-acl\",\n      \"description\": \"Inbound rules for the public-facing web tier.\",\n      \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a6aeeb66-fdf4-430c-a19c-310a6a6e4320",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9d1e67d2-f55e-4822-90a6-f08018a49b23",
+      "name": "Get a Network ACL List by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/lists/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"web-tier-acl\",\n  \"description\": \"Inbound rules for the public-facing web tier.\",\n  \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9d1e67d2-f55e-4822-90a6-f08018a49b23",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "4c7a7189-8c04-4068-92e9-d62183203112",
+      "name": "Delete a Network ACL List - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/lists/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4c7a7189-8c04-4068-92e9-d62183203112",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "6dc092fe-48b2-43d1-99bc-50a622e7aeb5",
+      "name": "Get all Network ACL Rules for an ACL List - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/lists/{listId}/rules",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "listId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"aclListId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"number\": 100,\n      \"protocol\": \"TCP\",\n      \"cidrList\": \"0.0.0.0/0\",\n      \"action\": \"Allow\",\n      \"trafficType\": \"Ingress\",\n      \"startPort\": 80,\n      \"endPort\": 80,\n      \"icmpType\": 8,\n      \"icmpCode\": 0,\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6dc092fe-48b2-43d1-99bc-50a622e7aeb5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "eeed7aba-a38d-4749-9218-38ba8fe1aa83",
+      "name": "Create a new Network ACL Rule for an ACL List - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/lists/{listId}/rules",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "listId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"aclListId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"number\": 100,\n  \"protocol\": \"TCP\",\n  \"cidrList\": \"0.0.0.0/0\",\n  \"action\": \"Allow\",\n  \"trafficType\": \"Ingress\",\n  \"startPort\": 80,\n  \"endPort\": 80,\n  \"icmpType\": 8,\n  \"icmpCode\": 0,\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "eeed7aba-a38d-4749-9218-38ba8fe1aa83",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "3e1dc285-ce24-4b79-b5ea-2e0538b83281",
+      "name": "Get a Network ACL Rule by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/rules/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"aclListId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"number\": 100,\n  \"protocol\": \"TCP\",\n  \"cidrList\": \"0.0.0.0/0\",\n  \"action\": \"Allow\",\n  \"trafficType\": \"Ingress\",\n  \"startPort\": 80,\n  \"endPort\": 80,\n  \"icmpType\": 8,\n  \"icmpCode\": 0,\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3e1dc285-ce24-4b79-b5ea-2e0538b83281",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a7ed0847-44fa-41ed-a192-a0f6757b1863",
+      "name": "Delete a Network ACL Rule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/rules/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a7ed0847-44fa-41ed-a192-a0f6757b1863",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2113a923-567a-46c7-8dc5-52697bc07928",
+      "name": "Replace the Network ACL List for a network - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/acl/lists/{id}/replace",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2113a923-567a-46c7-8dc5-52697bc07928",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "ea2c28ff-0d5b-4231-821e-3208f9b123ab",
+      "name": "List database clusters - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {}\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ea2c28ff-0d5b-4231-821e-3208f9b123ab",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "8019fd94-a5a2-4cbc-b705-3ed4d7057b94",
+      "name": "Create a new database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8019fd94-a5a2-4cbc-b705-3ed4d7057b94",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "14c213c9-b170-4d3a-b303-f1feac140e4f",
+      "name": "Get cost estimate for a database offering - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/cost/{offeringId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "offeringId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "14c213c9-b170-4d3a-b303-f1feac140e4f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f29777cc-037b-49a4-ba1f-0586a06e2616",
+      "name": "Get database cluster details - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f29777cc-037b-49a4-ba1f-0586a06e2616",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "34ab605d-9357-484b-bbf7-099d38e06bd2",
+      "name": "Delete a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "34ab605d-9357-484b-bbf7-099d38e06bd2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "84a36cc9-355b-4b5b-bd78-d2566fcceafa",
+      "name": "Get database cluster status - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/status",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "84a36cc9-355b-4b5b-bd78-d2566fcceafa",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "15f528f5-8231-4e8a-90ff-3a56c6aa89c1",
+      "name": "Get database connection information - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/connection",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "includePassword": {
+            "equalTo": "includePassword"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "15f528f5-8231-4e8a-90ff-3a56c6aa89c1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e5cb5561-9157-4c9b-b515-f73b2310bf37",
+      "name": "Get operation history for a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/operations",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e5cb5561-9157-4c9b-b515-f73b2310bf37",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e9be04af-3691-4e5e-b973-15d1d0c60253",
+      "name": "Start a stopped database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/start",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e9be04af-3691-4e5e-b973-15d1d0c60253",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "5025d171-0029-49b9-b4ce-2f759fa0782a",
+      "name": "Stop a running database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/stop",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "5025d171-0029-49b9-b4ce-2f759fa0782a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "719cb84a-a38e-4fd3-a3ca-a2b7154db171",
+      "name": "Resize a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/resize",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "719cb84a-a38e-4fd3-a3ca-a2b7154db171",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "96ca8ba6-6bf4-4eba-9cc8-17bc8c18ae54",
+      "name": "Enable or configure a load balancer endpoint - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/load-balancers/{type}",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "type": {
+            "equalTo": "public"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "96ca8ba6-6bf4-4eba-9cc8-17bc8c18ae54",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2a485d6f-589c-4eef-a99a-abe8f72e80f9",
+      "name": "Disable a load balancer endpoint - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/load-balancers/{type}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "type": {
+            "equalTo": "public"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2a485d6f-589c-4eef-a99a-abe8f72e80f9",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "39023bb7-461f-49aa-9fa0-f0f5441fcef1",
+      "name": "Set the active backup repository for a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/repositories/active",
+        "method": "PATCH",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "39023bb7-461f-49aa-9fa0-f0f5441fcef1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "685c5972-e953-4b76-9d88-b4c1303a4713",
+      "name": "List backups for a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "685c5972-e953-4b76-9d88-b4c1303a4713",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f7a31d89-8d30-4259-bd2d-1587c463e140",
+      "name": "Trigger an on-demand backup - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f7a31d89-8d30-4259-bd2d-1587c463e140",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "6a5534f0-b3c4-4c5c-a2a6-26835a6d0bf0",
+      "name": "Get backup configuration for a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/config",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6a5534f0-b3c4-4c5c-a2a6-26835a6d0bf0",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c1c1971f-838a-4378-845d-e5b7e1c4700d",
+      "name": "Get backup schedules for a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/schedule",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c1c1971f-838a-4378-845d-e5b7e1c4700d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f7647bff-bdc2-4207-b356-e439ccf69c8f",
+      "name": "Create a backup schedule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/schedule",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f7647bff-bdc2-4207-b356-e439ccf69c8f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b12b69bd-fef0-48e2-8501-ea081ae865e8",
+      "name": "Update a backup schedule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/schedule",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b12b69bd-fef0-48e2-8501-ea081ae865e8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "4b476804-8917-45aa-9a63-2a2d677ad283",
+      "name": "Delete a backup schedule - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/schedule",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "schedule_name": {
+            "equalTo": "schedule_name"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4b476804-8917-45aa-9a63-2a2d677ad283",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e08da532-fcc5-476d-bcf5-a8fa698f6166",
+      "name": "Get backup policies for a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/policy",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e08da532-fcc5-476d-bcf5-a8fa698f6166",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "550992ce-d94d-4b56-a6be-f00a6ba41b75",
+      "name": "Get backup details - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/{backupName}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "backupName": {
+            "equalTo": "nightly-2026-05-28"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "550992ce-d94d-4b56-a6be-f00a6ba41b75",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fb5a9354-dbe8-40e5-bae1-25cec5a26fe6",
+      "name": "Delete a backup - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/{backupName}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "backupName": {
+            "equalTo": "nightly-2026-05-28"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fb5a9354-dbe8-40e5-bae1-25cec5a26fe6",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2682a62a-ef49-4be4-8d4c-a3abefb789b8",
+      "name": "List available database offerings - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/offerings",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {}\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2682a62a-ef49-4be4-8d4c-a3abefb789b8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "4b023879-3b9e-420d-a2b4-edf33502f371",
+      "name": "Get a database offering by ID - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/offerings/{offeringId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "offeringId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4b023879-3b9e-420d-a2b4-edf33502f371",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "150e4d1a-6703-4679-9b0b-074555d0b4a6",
+      "name": "List regions available for database deployment - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/regions",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "150e4d1a-6703-4679-9b0b-074555d0b4a6",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "6d36a62e-55ce-42f6-831e-69222762615c",
+      "name": "List infrastructure clusters - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/infrastructure",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"key\": \"value\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6d36a62e-55ce-42f6-831e-69222762615c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "1960e10e-57c5-48bf-a9ed-82b795eb7e2a",
+      "name": "Get infrastructure cluster details - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "userClusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1960e10e-57c5-48bf-a9ed-82b795eb7e2a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e0b0b603-fd0c-4acc-9268-694222697840",
+      "name": "List backup repositories - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "userClusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e0b0b603-fd0c-4acc-9268-694222697840",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9e0ba0e2-b44b-480e-8063-f4b5e39ae29a",
+      "name": "Create a backup repository - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "userClusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9e0ba0e2-b44b-480e-8063-f4b5e39ae29a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "673b6a61-06aa-4e44-a2a4-2838057d75f4",
+      "name": "Update a backup repository - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "userClusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "673b6a61-06aa-4e44-a2a4-2838057d75f4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "bb0e8c0e-2bb7-4dc9-ac57-d0d5217fc4a9",
+      "name": "Get backup repository details - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories/{repoName}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "userClusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "repoName": {
+            "equalTo": "primary-backup-repo"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "bb0e8c0e-2bb7-4dc9-ac57-d0d5217fc4a9",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a612929a-728d-4f6a-8702-18d618462bb6",
+      "name": "Retire or destroy a backup repository - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories/{repoName}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "userClusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "repoName": {
+            "equalTo": "primary-backup-repo"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a612929a-728d-4f6a-8702-18d618462bb6",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "0600b1a1-2cc2-4b5c-b1d9-aae488ac9bb8",
+      "name": "Get operation status - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/operations/{correlationId}/status",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "correlationId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "0600b1a1-2cc2-4b5c-b1d9-aae488ac9bb8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9292d61c-f0d9-4258-985b-72032e3949aa",
+      "name": "List DNS zones for the authenticated account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/dns/zones",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"a1b2c3d4-e5f6-...\",\n      \"name\": \"example.com\",\n      \"createdAt\": \"2026-03-20T12:00:00Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9292d61c-f0d9-4258-985b-72032e3949aa",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "f9187f11-9ab0-4fd0-b9cd-d1481224c12d",
+      "name": "Create a new DNS zone - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/dns/zones",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"a1b2c3d4-e5f6-...\",\n  \"name\": \"example.com\",\n  \"createdAt\": \"2026-03-20T12:00:00Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f9187f11-9ab0-4fd0-b9cd-d1481224c12d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "5f5ccace-b4bc-47b9-a9d3-6f8dcf7e6dc4",
+      "name": "Delete a DNS zone - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/dns/zones/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "5f5ccace-b4bc-47b9-a9d3-6f8dcf7e6dc4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "4f7bb084-f0df-456a-a080-9a4599d974e0",
+      "name": "List all records for a DNS zone - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/dns/zones/{zoneId}/records",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "zoneId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"name\": \"www\",\n      \"type\": \"A\",\n      \"ttl\": 14400,\n      \"content\": \"93.184.216.34\",\n      \"priority\": 10,\n      \"weight\": 10,\n      \"port\": 443\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4f7bb084-f0df-456a-a080-9a4599d974e0",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "109fd5c3-b291-4826-b0fa-35654374f72c",
+      "name": "Create a DNS record - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/dns/zones/{zoneId}/records",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "zoneId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"name\": \"www\",\n  \"type\": \"A\",\n  \"ttl\": 14400,\n  \"content\": \"93.184.216.34\",\n  \"priority\": 10,\n  \"weight\": 10,\n  \"port\": 443\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "109fd5c3-b291-4826-b0fa-35654374f72c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "252b1131-9765-4b79-bddd-877a5daf370e",
+      "name": "Update a DNS record - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/dns/zones/{zoneId}/records/{currentName}/{currentType}",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "zoneId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "currentName": {
+            "equalTo": "www"
+          },
+          "currentType": {
+            "equalTo": "A"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"name\": \"www\",\n  \"type\": \"A\",\n  \"ttl\": 14400,\n  \"content\": \"93.184.216.34\",\n  \"priority\": 10,\n  \"weight\": 10,\n  \"port\": 443\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "252b1131-9765-4b79-bddd-877a5daf370e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "14a75026-f522-41ba-81ce-265d2bd5b3b2",
+      "name": "Delete a DNS record - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/dns/zones/{zoneId}/records/{name}/{type}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "zoneId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "name": {
+            "equalTo": "www"
+          },
+          "type": {
+            "equalTo": "A"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "14a75026-f522-41ba-81ce-265d2bd5b3b2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "42e7c52a-e69e-47f3-90d8-5c39c7dee244",
+      "name": "List available Kubernetes versions - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/versions",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "current_version": {
+            "equalTo": "1.28.4"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    \"data\"\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "42e7c52a-e69e-47f3-90d8-5c39c7dee244",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "de470916-e22d-4bdd-873a-60ddb2c9bfdb",
+      "name": "List all available Kubernetes packages - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/packages",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"label\": \"standard-2-4\",\n      \"description\": \"Standard tier — 2 vCPU, 4 GB memory per node.\",\n      \"tier\": \"standard\",\n      \"regions\": [\n        \"sjc0\",\n        \"iad0\"\n      ]\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "de470916-e22d-4bdd-873a-60ddb2c9bfdb",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "23729953-3cb6-4aac-a702-5aeee083af92",
+      "name": "List all Kubernetes clusters - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/clusters",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"production-cluster\",\n      \"region\": \"sjc0\",\n      \"status\": \"running\",\n      \"kubernetesVersion\": \"1.29.4\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"package\": \"standard-2-4\",\n      \"description\": \"Primary production Kubernetes cluster.\",\n      \"ipAddress\": \"203.0.113.5\",\n      \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"nodePool\": {\n        \"controlNodes\": 1,\n        \"workerNodes\": 3,\n        \"autoscalingEnabled\": false,\n        \"minWorkers\": 2,\n        \"maxWorkers\": 10,\n        \"cpuCores\": 2,\n        \"memoryMb\": 4096\n      },\n      \"deletedAt\": \"2026-05-29T12:34:56Z\",\n      \"nodes\": [\n        {\n          \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n          \"name\": \"k8s-worker-01\",\n          \"role\": \"control\",\n          \"state\": \"running\",\n          \"ipAddress\": \"192.168.1.10\",\n          \"cpuCores\": 2,\n          \"memoryMb\": 4096,\n          \"rootVolume\": {\n            \"name\": \"k8s-node-root\",\n            \"sizeGb\": 50\n          },\n          \"createdAt\": \"2026-05-29T12:34:56Z\"\n        }\n      ]\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "23729953-3cb6-4aac-a702-5aeee083af92",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "ac8adb1a-0ad0-4c7a-b822-fa994486d7e0",
+      "name": "Get details of a specific Kubernetes cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "details": {
+            "equalTo": "false"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"production-cluster\",\n  \"region\": \"sjc0\",\n  \"status\": \"running\",\n  \"kubernetesVersion\": \"1.29.4\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"package\": \"standard-2-4\",\n  \"description\": \"Primary production Kubernetes cluster.\",\n  \"ipAddress\": \"203.0.113.5\",\n  \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"nodePool\": {\n    \"controlNodes\": 1,\n    \"workerNodes\": 3,\n    \"autoscalingEnabled\": false,\n    \"minWorkers\": 2,\n    \"maxWorkers\": 10,\n    \"cpuCores\": 2,\n    \"memoryMb\": 4096\n  },\n  \"deletedAt\": \"2026-05-29T12:34:56Z\",\n  \"nodes\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"k8s-worker-01\",\n      \"role\": \"control\",\n      \"state\": \"running\",\n      \"ipAddress\": \"192.168.1.10\",\n      \"cpuCores\": 2,\n      \"memoryMb\": 4096,\n      \"rootVolume\": {\n        \"name\": \"k8s-node-root\",\n        \"sizeGb\": 50\n      },\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ac8adb1a-0ad0-4c7a-b822-fa994486d7e0",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "d8299061-4a3c-48e9-97ab-a179dfeccd0a",
+      "name": "Delete a Kubernetes cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "d8299061-4a3c-48e9-97ab-a179dfeccd0a",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "dc054492-66c7-4810-a6a3-963cae00461c",
+      "name": "Create a new Kubernetes cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"production-cluster\",\n  \"region\": \"sjc0\",\n  \"status\": \"running\",\n  \"kubernetesVersion\": \"1.29.4\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"package\": \"standard-2-4\",\n  \"description\": \"Primary production Kubernetes cluster.\",\n  \"ipAddress\": \"203.0.113.5\",\n  \"ipAddressId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"nodePool\": {\n    \"controlNodes\": 1,\n    \"workerNodes\": 3,\n    \"autoscalingEnabled\": false,\n    \"minWorkers\": 2,\n    \"maxWorkers\": 10,\n    \"cpuCores\": 2,\n    \"memoryMb\": 4096\n  },\n  \"deletedAt\": \"2026-05-29T12:34:56Z\",\n  \"nodes\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"k8s-worker-01\",\n      \"role\": \"control\",\n      \"state\": \"running\",\n      \"ipAddress\": \"192.168.1.10\",\n      \"cpuCores\": 2,\n      \"memoryMb\": 4096,\n      \"rootVolume\": {\n        \"name\": \"k8s-node-root\",\n        \"sizeGb\": 50\n      },\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "dc054492-66c7-4810-a6a3-963cae00461c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "b15b16a2-4876-48ac-9dc5-fa5c37333499",
+      "name": "Get a cost estimate for a Kubernetes cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "b15b16a2-4876-48ac-9dc5-fa5c37333499",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a93d063e-20a2-4093-b2f8-d426dd08312e",
+      "name": "Control Kubernetes cluster power state - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}/power",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        },
+        "queryParameters": {
+          "action": {
+            "equalTo": "start"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a93d063e-20a2-4093-b2f8-d426dd08312e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "77be91d3-05a4-4c5e-a68a-ec82eea459a4",
+      "name": "Get Kubernetes cluster configuration - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}/config",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"configdata\": \"apiVersion: v1\\nkind: Config\\nclusters:\\n- cluster:\\n    server: https://k8s.example.com\\n  name: my-cluster\\n\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "77be91d3-05a4-4c5e-a68a-ec82eea459a4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "1defb688-1ca7-4f02-960c-d769405b9e3b",
+      "name": "Scale a Kubernetes cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}/scale",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1defb688-1ca7-4f02-960c-d769405b9e3b",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "a48297c1-c6b5-4c0f-9957-498a571a6004",
+      "name": "Upgrade the Kubernetes version of a cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}/upgrade",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "a48297c1-c6b5-4c0f-9957-498a571a6004",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "471d030b-e6e3-4688-bd06-292b1ea63195",
+      "name": "Get all active storage units for the account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "queryParameters": {
+          "usage": {
+            "equalTo": "false"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"storageUnitId\": \"storage-unit-prod-01\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"maxBuckets\": 100,\n      \"sizeKb\": 512000,\n      \"limitKb\": 10485760\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "471d030b-e6e3-4688-bd06-292b1ea63195",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "3987cad6-04a4-4cc7-a749-30e7fccbb78f",
+      "name": "Create a new storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3987cad6-04a4-4cc7-a749-30e7fccbb78f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "240abb9e-225f-493c-9038-5dea57c04950",
+      "name": "Get buckets for a specific storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/buckets",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"name\": \"my-storage-bucket\",\n      \"tenant\": \"tenant-prod-01\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"numObjects\": 1234,\n      \"sizeKb\": 512000,\n      \"s3Path\": \"s3://my-storage-bucket\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "240abb9e-225f-493c-9038-5dea57c04950",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "dbf7c52d-650e-4398-9be2-af2fb969a6b3",
+      "name": "Create a new bucket - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/buckets",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "dbf7c52d-650e-4398-9be2-af2fb969a6b3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "11448f1c-2a34-4049-bcff-ae211cb8aeb5",
+      "name": "Get access keys for a specific storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/keys",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"accessKey\": \"AKIAIOSFODNN7EXAMPLE\",\n  \"secretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "11448f1c-2a34-4049-bcff-ae211cb8aeb5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2227d660-f06a-4a5a-a73c-e0864490b680",
+      "name": "Get a cost estimate for an object storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2227d660-f06a-4a5a-a73c-e0864490b680",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "bb39d729-0e92-4fb4-b40a-a8ef3a25e3f4",
+      "name": "Set user quota for a storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/quota",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "bb39d729-0e92-4fb4-b40a-a8ef3a25e3f4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "11818508-b899-4a71-b6b9-cd7cdcc30d01",
+      "name": "Delete a storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "11818508-b899-4a71-b6b9-cd7cdcc30d01",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "efdf193c-5d8d-4f6a-bb62-8ea2b2956a79",
+      "name": "Delete a bucket - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/buckets/{bucketName}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          },
+          "bucketName": {
+            "equalTo": "my-bucket"
+          }
+        },
+        "queryParameters": {
+          "purgeObjects": {
+            "equalTo": "true"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "efdf193c-5d8d-4f6a-bb62-8ea2b2956a79",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "3f0352a8-854b-4ba1-8a4c-b36ce05fc2c4",
+      "name": "Get all SSH key pairs for the account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/ssh-keys",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"name\": \"my-ssh-key\",\n      \"fingerprint\": \"SHA256:AbCdEf123456...\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3f0352a8-854b-4ba1-8a4c-b36ce05fc2c4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "8d4e0900-d565-4a81-ba49-1b6621b2d79e",
+      "name": "Create or register an SSH key pair - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/ssh-keys",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"name\": \"my-ssh-key\",\n  \"fingerprint\": \"SHA256:AbCdEf123456...\",\n  \"privateKey\": \"-----BEGIN RSA PRIVATE KEY-----\\n...\\n-----END RSA PRIVATE KEY-----\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8d4e0900-d565-4a81-ba49-1b6621b2d79e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "cafe00a3-9898-4cc5-8a9f-1f20070d7d3c",
+      "name": "Delete an SSH key pair - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/ssh-keys/{name}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "name": {
+            "equalTo": "my-ssh-key"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "cafe00a3-9898-4cc5-8a9f-1f20070d7d3c",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "73e89dcd-283c-4a4e-a628-661a2b32ca84",
+      "name": "List block storage volumes - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"vol-123456\",\n      \"name\": \"my-data-volume\",\n      \"sizeGb\": 100,\n      \"status\": \"Available\",\n      \"vmId\": \"vm-123456\",\n      \"region\": \"us-west-0\",\n      \"createdAt\": \"2024-03-14T12:00:00Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "73e89dcd-283c-4a4e-a628-661a2b32ca84",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "34338927-bff9-4a4d-b8b2-71cfb3c69ed8",
+      "name": "Create volume - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"vol-123456\",\n  \"name\": \"my-data-volume\",\n  \"sizeGb\": 100,\n  \"status\": \"Available\",\n  \"vmId\": \"vm-123456\",\n  \"region\": \"us-west-0\",\n  \"createdAt\": \"2024-03-14T12:00:00Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "34338927-bff9-4a4d-b8b2-71cfb3c69ed8",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "3bcaade8-a990-41f5-9ad1-facc15068cfb",
+      "name": "Get volume details - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"vol-123456\",\n  \"name\": \"my-data-volume\",\n  \"sizeGb\": 100,\n  \"status\": \"Available\",\n  \"vmId\": \"vm-123456\",\n  \"region\": \"us-west-0\",\n  \"createdAt\": \"2024-03-14T12:00:00Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3bcaade8-a990-41f5-9ad1-facc15068cfb",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "f9293b6a-17bd-42ce-a5c9-1b4f5fe78c83",
+      "name": "Delete volume - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"vol-123456\",\n  \"status\": \"Attaching\",\n  \"success\": true\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "f9293b6a-17bd-42ce-a5c9-1b4f5fe78c83",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c01002e2-762e-4796-9bfc-b01bf52ed126",
+      "name": "Get a cost estimate for a block storage volume - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c01002e2-762e-4796-9bfc-b01bf52ed126",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e8653040-6627-4396-b86a-e226168b9b46",
+      "name": "Attach volume - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage/{id}/attach",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"vol-123456\",\n  \"status\": \"Attaching\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e8653040-6627-4396-b86a-e226168b9b46",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "92f0f779-cc18-45ad-a31e-369cda4ab18e",
+      "name": "Detach volume - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage/{id}/detach",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"vol-123456\",\n  \"status\": \"Attaching\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "92f0f779-cc18-45ad-a31e-369cda4ab18e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "5354c9db-4f96-4e3e-9a59-10558f42cb1e",
+      "name": "Resize volume - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage/{id}/resize",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"vol-123456\",\n  \"status\": \"Attaching\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "5354c9db-4f96-4e3e-9a59-10558f42cb1e",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "c7e3f382-42e3-4347-a2f1-0f97c7922600",
+      "name": "List snapshots for a volume - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/block-storage/{id}/snapshots",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"snap-123456\",\n      \"name\": \"my-data-snapshot\",\n      \"sizeGb\": 100,\n      \"status\": \"Available\",\n      \"type\": \"DataDisk\",\n      \"volumeId\": \"vol-123456\",\n      \"region\": \"us-west-0\",\n      \"createdAt\": \"2024-03-14T12:00:00Z\",\n      \"vmId\": \"vm-123456\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c7e3f382-42e3-4347-a2f1-0f97c7922600",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "bba8c322-8ce6-49d9-ba92-9ecdc1ce99f1",
+      "name": "List snapshots - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/snapshots",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"snap-123456\",\n      \"name\": \"my-data-snapshot\",\n      \"sizeGb\": 100,\n      \"status\": \"Available\",\n      \"type\": \"DataDisk\",\n      \"volumeId\": \"vol-123456\",\n      \"region\": \"us-west-0\",\n      \"createdAt\": \"2024-03-14T12:00:00Z\",\n      \"vmId\": \"vm-123456\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "bba8c322-8ce6-49d9-ba92-9ecdc1ce99f1",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "e1398cc7-1bdc-4721-b2c2-ea2dbee41eb2",
+      "name": "Create snapshot - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/snapshots",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"id\": \"snap-123456\",\n  \"name\": \"my-data-snapshot\",\n  \"sizeGb\": 100,\n  \"status\": \"Available\",\n  \"type\": \"DataDisk\",\n  \"volumeId\": \"vol-123456\",\n  \"region\": \"us-west-0\",\n  \"createdAt\": \"2024-03-14T12:00:00Z\",\n  \"vmId\": \"vm-123456\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e1398cc7-1bdc-4721-b2c2-ea2dbee41eb2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "2ca6c2b3-0f4d-42c4-9523-a3ff771dd5d2",
+      "name": "Get snapshot details - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/snapshots/{id}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"snap-123456\",\n  \"name\": \"my-data-snapshot\",\n  \"sizeGb\": 100,\n  \"status\": \"Available\",\n  \"type\": \"DataDisk\",\n  \"volumeId\": \"vol-123456\",\n  \"region\": \"us-west-0\",\n  \"createdAt\": \"2024-03-14T12:00:00Z\",\n  \"vmId\": \"vm-123456\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "2ca6c2b3-0f4d-42c4-9523-a3ff771dd5d2",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9bba2368-8830-48a7-844f-755a8c78d128",
+      "name": "Delete snapshot - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/snapshots/{id}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"status\": \"success\",\n  \"message\": \"Snapshot deletion initiated successfully\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9bba2368-8830-48a7-844f-755a8c78d128",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "ad8a9a0b-4bdc-454e-a192-fb2fed2d6117",
+      "name": "Get a cost estimate for a snapshot - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/snapshots/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ad8a9a0b-4bdc-454e-a192-fb2fed2d6117",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "4440a956-3ecc-4a90-921c-a4b74a95b6cb",
+      "name": "Revert snapshot - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/storage/snapshots/{id}/revert",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"status\": \"success\",\n  \"message\": \"Snapshot deletion initiated successfully\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4440a956-3ecc-4a90-921c-a4b74a95b6cb",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "9bb08c61-21d7-4766-85fa-68c23ade5801",
+      "name": "Get WordPress instance for the authenticated account - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"username\": \"mywpsite\",\n  \"name\": \"My WordPress Site\",\n  \"packageLabel\": \"wordpress-10\",\n  \"packageDisplayName\": \"WordPress Starter\",\n  \"rateMonthly\": \"10.00\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"deletedAt\": \"2026-05-29T12:34:56Z\",\n  \"ready\": true\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "9bb08c61-21d7-4766-85fa-68c23ade5801",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "1ef12b3f-fbb4-4791-ae4f-238f0c6bd4ea",
+      "name": "Create a new WordPress instance - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "1ef12b3f-fbb4-4791-ae4f-238f0c6bd4ea",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "87107948-b1e3-44c8-b728-578cb6d6fea9",
+      "name": "Cancel WordPress instance - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "87107948-b1e3-44c8-b728-578cb6d6fea9",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "66f14194-a420-4421-b325-9d3069b20f17",
+      "name": "Get a cost estimate for a WordPress instance - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "66f14194-a420-4421-b325-9d3069b20f17",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "96fe96ce-fc71-4b8a-bbe6-453bb8fd41cb",
+      "name": "Update WordPress hosting password - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/password",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "96fe96ce-fc71-4b8a-bbe6-453bb8fd41cb",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "3d478713-3f49-4ec6-aaa5-a82d3401a3d4",
+      "name": "Create a management session - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/session",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"url\": \"https://console.example.com/wp-admin/session/abc123\",\n  \"message\": \"Service temporarily unavailable.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "3d478713-3f49-4ec6-aaa5-a82d3401a3d4",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "ef0d633f-a135-4809-a805-189fbd94fb94",
+      "name": "Get quota information - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/quota",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"data\": {\n    \"diskUsedMb\": 1024,\n    \"diskLimitMb\": 51200\n  },\n  \"message\": \"Service temporarily unavailable.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ef0d633f-a135-4809-a805-189fbd94fb94",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "ee99cece-1e3f-474a-a137-86c0b4933175",
+      "name": "Get maximum WordPress instances allowed - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/max-instances",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"maxInstances\": 5,\n  \"message\": \"Service temporarily unavailable.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "ee99cece-1e3f-474a-a137-86c0b4933175",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "4f1270bd-9969-4bbb-86ea-5544f82e65bb",
+      "name": "List WordPress websites - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/websites",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"data\": [\n    {\n      \"domain\": \"example.com\",\n      \"siteUrl\": \"https://example.com\",\n      \"siteName\": \"My WordPress Site\",\n      \"description\": \"Just another WordPress site.\",\n      \"theme\": \"twentytwentyfour\",\n      \"status\": \"active\",\n      \"isTemporaryDomain\": false,\n      \"isMainDomain\": true,\n      \"isStaging\": false,\n      \"databaseSizeBytes\": 104857600,\n      \"filesSizeBytes\": 524288000,\n      \"pluginUpdatesAvailable\": 2,\n      \"themeUpdatesAvailable\": 0,\n      \"wordpressVersion\": \"6.5.2\"\n    }\n  ],\n  \"message\": \"Service temporarily unavailable.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "4f1270bd-9969-4bbb-86ea-5544f82e65bb",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "484591ea-b747-4be8-a5ad-2ce9677ee727",
+      "name": "Get bandwidth usage - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/bandwidth",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"data\": {\n    \"usedBytes\": 5368709120,\n    \"limitBytes\": 107374182400,\n    \"usedPercentage\": 5,\n    \"month\": 5,\n    \"year\": 2026\n  },\n  \"message\": \"Service temporarily unavailable.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "484591ea-b747-4be8-a5ad-2ce9677ee727",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "e4f3cded-2be6-462c-aad6-acbc25c53b91",
+      "name": "Get nameservers - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/nameservers",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"nameservers\": [\n    \"ns1.example.com\",\n    \"ns2.example.com\"\n  ],\n  \"message\": \"Service temporarily unavailable.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e4f3cded-2be6-462c-aad6-acbc25c53b91",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "8d157984-5adf-4441-8876-34d8e36bd7b5",
+      "name": "Change WordPress package - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/package",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "8d157984-5adf-4441-8876-34d8e36bd7b5",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "e44e5c8e-298c-4a1c-b598-8a4439c401b7",
+      "name": "List all available WordPress packages - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/packages",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"labelName\": \"wordpress-10\",\n      \"displayName\": \"WordPress Starter\",\n      \"rateMonthly\": \"10.00\",\n      \"metadata\": {\n        \"diskGb\": 50,\n        \"numSites\": 3,\n        \"bandwidthGb\": 100,\n        \"visitsMonthly\": 50000,\n        \"marketingSubtitle\": \"Perfect for small business sites.\",\n        \"promoBadge\": \"Most popular\"\n      }\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e44e5c8e-298c-4a1c-b598-8a4439c401b7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "c66ffaec-1a11-41d7-bef7-5a2ff84ae0d0",
+      "name": "Get current package - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/packages/current",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"labelName\": \"wordpress-10\",\n  \"displayName\": \"WordPress Starter\",\n  \"rateMonthly\": \"10.00\",\n  \"metadata\": {\n    \"diskGb\": 50,\n    \"numSites\": 3,\n    \"bandwidthGb\": 100,\n    \"visitsMonthly\": 50000,\n    \"marketingSubtitle\": \"Perfect for small business sites.\",\n    \"promoBadge\": \"Most popular\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "c66ffaec-1a11-41d7-bef7-5a2ff84ae0d0",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
+      "id": "66a1f3c6-835b-44cc-b52a-2cd130e58d9f",
+      "name": "List available upgrade packages - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/packages/upgrades",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"labelName\": \"wordpress-10\",\n      \"displayName\": \"WordPress Starter\",\n      \"rateMonthly\": \"10.00\",\n      \"metadata\": {\n        \"diskGb\": 50,\n        \"numSites\": 3,\n        \"bandwidthGb\": 100,\n        \"visitsMonthly\": 50000,\n        \"marketingSubtitle\": \"Perfect for small business sites.\",\n        \"promoBadge\": \"Most popular\"\n      }\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "66a1f3c6-835b-44cc-b52a-2cd130e58d9f",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    }
+  ],
+  "meta": {
+    "total": 170
+  }
+}

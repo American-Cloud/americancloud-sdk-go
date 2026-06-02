@@ -1,0 +1,53 @@
+name: release
+
+# Go modules have no registry to push to — publishing IS the git tag. This
+# workflow runs on a vX.Y.Z tag to (1) gate quality, (2) cut a GitHub Release
+# from the CHANGELOG, and (3) warm the public Go module proxy so pkg.go.dev
+# indexes the new version promptly.
+#
+# Cut a release from the monorepo with: pnpm sdk:release go <version>
+# then push the tag:  git -C americancloud-sdk-go push origin HEAD --follow-tags
+#
+# Security note: actions below are pinned to major-version tags for
+# readability. For hardening, repin each to a full commit SHA.
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: stable
+
+      - name: Verify
+        run: |
+          go build ./...
+          go vet ./...
+
+      - name: Create GitHub Release
+        # Pre-release tags (hyphen, e.g. v1.2.2-rc.1) are marked as GitHub
+        # pre-releases. Note: until a stable tag exists, Go's @latest resolves
+        # to the highest pre-release — fine pre-launch.
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          args=(--title "${GITHUB_REF_NAME}" --verify-tag --generate-notes)
+          [[ "${GITHUB_REF_NAME}" == *-* ]] && args+=(--prerelease)
+          gh release create "${GITHUB_REF_NAME}" "${args[@]}"
+
+      - name: Warm Go module proxy
+        # Uppercase letters in the module path are escaped as !<lower> on the proxy.
+        run: |
+          curl -fsS "https://proxy.golang.org/github.com/%21american-%21cloud/americancloud-sdk-go/@v/${GITHUB_REF_NAME}.info" || true
