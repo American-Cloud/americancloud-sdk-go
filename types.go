@@ -1088,8 +1088,8 @@ type SnapshotResponseDto struct {
 	SizeGb int `json:"sizeGb" url:"sizeGb"`
 	// Current status of the snapshot
 	Status string `json:"status" url:"status"`
-	// Type of the snapshot. Null when the source volume has no recorded type (rare; typically legacy snapshots).
-	Type *SnapshotResponseDtoType `json:"type,omitempty" url:"type,omitempty"`
+	// Type of the snapshot, indicating whether it was taken of a root or data disk.
+	Type SnapshotResponseDtoType `json:"type" url:"type"`
 	// ID of the volume the snapshot was created from, if any
 	VolumeID string `json:"volumeId" url:"volumeId"`
 	// Label of the region where the snapshot is located
@@ -1134,9 +1134,9 @@ func (s *SnapshotResponseDto) GetStatus() string {
 	return s.Status
 }
 
-func (s *SnapshotResponseDto) GetType() *SnapshotResponseDtoType {
+func (s *SnapshotResponseDto) GetType() SnapshotResponseDtoType {
 	if s == nil {
-		return nil
+		return ""
 	}
 	return s.Type
 }
@@ -1213,7 +1213,7 @@ func (s *SnapshotResponseDto) SetStatus(status string) {
 
 // SetType sets the Type field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (s *SnapshotResponseDto) SetType(type_ *SnapshotResponseDtoType) {
+func (s *SnapshotResponseDto) SetType(type_ SnapshotResponseDtoType) {
 	s.Type = type_
 	s.require(snapshotResponseDtoFieldType)
 }
@@ -1296,7 +1296,7 @@ func (s *SnapshotResponseDto) String() string {
 	return fmt.Sprintf("%#v", s)
 }
 
-// Type of the snapshot. Null when the source volume has no recorded type (rare; typically legacy snapshots).
+// Type of the snapshot, indicating whether it was taken of a root or data disk.
 type SnapshotResponseDtoType string
 
 const (

@@ -85,7 +85,7 @@ func (r *RawClient) CreateUnitObjectStorage(
 	ctx context.Context,
 	request *americancloudsdkgo.CreateStorageUnitRequestDto,
 	opts ...option.RequestOption,
-) (*core.Response[*americancloudsdkgo.ObjectStorageSuccessResponseDto], error) {
+) (*core.Response[*americancloudsdkgo.ObjectStorageUnitDto], error) {
 	options := core.NewRequestOptions(opts...)
 	baseURL := internal.ResolveBaseURL(
 		options.BaseURL,
@@ -98,7 +98,7 @@ func (r *RawClient) CreateUnitObjectStorage(
 		options.ToHeader(),
 	)
 	headers.Add("Content-Type", "application/json")
-	var response *americancloudsdkgo.ObjectStorageSuccessResponseDto
+	var response *americancloudsdkgo.ObjectStorageUnitDto
 	raw, err := r.caller.Call(
 		ctx,
 		&internal.CallParams{
@@ -118,7 +118,7 @@ func (r *RawClient) CreateUnitObjectStorage(
 	if err != nil {
 		return nil, err
 	}
-	return &core.Response[*americancloudsdkgo.ObjectStorageSuccessResponseDto]{
+	return &core.Response[*americancloudsdkgo.ObjectStorageUnitDto]{
 		StatusCode: raw.StatusCode,
 		Header:     raw.Header,
 		Body:       response,

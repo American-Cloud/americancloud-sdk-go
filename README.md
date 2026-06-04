@@ -13,7 +13,7 @@ go get github.com/American-Cloud/americancloud-sdk-go@latest
 To pin a specific release:
 
 ```sh
-go get github.com/American-Cloud/americancloud-sdk-go@v1.2.2
+go get github.com/American-Cloud/americancloud-sdk-go@v1.3.0
 ```
 
 ## Authentication

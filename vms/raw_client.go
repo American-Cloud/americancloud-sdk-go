@@ -408,7 +408,7 @@ func (r *RawClient) PowerVms(
 
 func (r *RawClient) ScaleVms(
 	ctx context.Context,
-	request *americancloudsdkgo.ScaleVmsRequest,
+	request *americancloudsdkgo.ScaleVMDto,
 	opts ...option.RequestOption,
 ) (*core.Response[any], error) {
 	options := core.NewRequestOptions(opts...)
@@ -421,17 +421,11 @@ func (r *RawClient) ScaleVms(
 		baseURL+"/api/v1/compute/vms/%v/scale",
 		request.ID,
 	)
-	queryParams, err := internal.QueryValues(request)
-	if err != nil {
-		return nil, err
-	}
-	if len(queryParams) > 0 {
-		endpointURL += "?" + queryParams.Encode()
-	}
 	headers := internal.MergeHeaders(
 		r.options.ToHeader(),
 		options.ToHeader(),
 	)
+	headers.Add("Content-Type", "application/json")
 	raw, err := r.caller.Call(
 		ctx,
 		&internal.CallParams{
@@ -443,6 +437,7 @@ func (r *RawClient) ScaleVms(
 			BodyProperties:  options.BodyProperties,
 			QueryParameters: options.QueryParameters,
 			Client:          options.HTTPClient,
+			Request:         request,
 			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
 		},
 	)

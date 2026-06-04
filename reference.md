@@ -90,7 +90,6 @@ request := &americancloudsdkgo.CreateVMDto{
             RootDiskGb: 50,
         },
         Image: "ubuntu-22.04",
-        Network: "network-uuid",
         SubscriptionPeriod: americancloudsdkgo.CreateVMDtoSubscriptionPeriodHourly,
     }
 client.Vms.CreateVms(
@@ -391,7 +390,6 @@ request := &americancloudsdkgo.CreateVMDto{
             RootDiskGb: 50,
         },
         Image: "ubuntu-22.04",
-        Network: "network-uuid",
         SubscriptionPeriod: americancloudsdkgo.CreateVMDtoSubscriptionPeriodHourly,
     }
 client.Vms.GetCostEstimateVms(
@@ -506,7 +504,7 @@ client.Vms.PowerVms(
 </dl>
 </details>
 
-<details><summary><code>client.Vms.ScaleVms(ID) -> error</code></summary>
+<details><summary><code>client.Vms.ScaleVms(ID, request) -> error</code></summary>
 <dl>
 <dd>
 
@@ -533,14 +531,8 @@ Scale a virtual machine to new CPU and/or memory specifications. When the VM is 
 <dd>
 
 ```go
-request := &americancloudsdkgo.ScaleVmsRequest{
+request := &americancloudsdkgo.ScaleVMDto{
         ID: "123e4567-e89b-12d3-a456-426614174000",
-        CPU: americancloudsdkgo.Float64(
-            4,
-        ),
-        MemoryMb: americancloudsdkgo.Float64(
-            4096,
-        ),
     }
 client.Vms.ScaleVms(
         context.TODO(),
@@ -569,7 +561,7 @@ client.Vms.ScaleVms(
 <dl>
 <dd>
 
-**cpu:** `*float64` — Number of virtual CPUs (optional, but at least one of CPU or memory must be provided)
+**cpu:** `*int` — Number of virtual CPUs. Optional, but at least one of CPU or memory must be provided.
     
 </dd>
 </dl>
@@ -577,7 +569,7 @@ client.Vms.ScaleVms(
 <dl>
 <dd>
 
-**memoryMb:** `*float64` — Memory in MB (optional, but at least one of CPU or memory must be provided)
+**memoryMb:** `*int` — Memory in MB. Optional, but at least one of CPU or memory must be provided.
     
 </dd>
 </dl>
@@ -2095,6 +2087,302 @@ client.VpcNetworks.CreateTierVpcNetworks(
 </dl>
 </details>
 
+<details><summary><code>client.VpcNetworks.GetTierVpcNetworks(ID, TierID) -> *americancloudsdkgo.VpcTierDetailResponseDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns a single network tier of a VPC.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.GetTierVpcNetworksRequest{
+        ID: "123e4567-e89b-12d3-a456-426614174000",
+        TierID: "123e4567-e89b-12d3-a456-426614174000",
+    }
+client.VpcNetworks.GetTierVpcNetworks(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the VPC that contains the tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tierID:** `string` — ID of the network tier
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.VpcNetworks.UpdateTierVpcNetworks(ID, TierID, request) -> *americancloudsdkgo.VpcTierDetailResponseDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates the name and/or description of a network tier.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.UpdateVpcTierDto{
+        ID: "123e4567-e89b-12d3-a456-426614174000",
+        TierID: "123e4567-e89b-12d3-a456-426614174000",
+    }
+client.VpcNetworks.UpdateTierVpcNetworks(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the VPC that contains the tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tierID:** `string` — ID of the network tier to update
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**name:** `*string` — New name for the tier.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**description:** `*string` — New description for the tier.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.VpcNetworks.DeleteTierVpcNetworks(ID, TierID) -> error</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes a single network tier from a VPC, leaving the rest of the VPC intact.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.DeleteTierVpcNetworksRequest{
+        ID: "123e4567-e89b-12d3-a456-426614174000",
+        TierID: "123e4567-e89b-12d3-a456-426614174000",
+    }
+client.VpcNetworks.DeleteTierVpcNetworks(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the VPC that contains the tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tierID:** `string` — ID of the network tier to delete
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.VpcNetworks.RestartTierVpcNetworks(ID, TierID) -> error</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Restarts a single network tier of a VPC.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.RestartTierVpcNetworksRequest{
+        ID: "123e4567-e89b-12d3-a456-426614174000",
+        TierID: "123e4567-e89b-12d3-a456-426614174000",
+    }
+client.VpcNetworks.RestartTierVpcNetworks(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the VPC that contains the tier
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tierID:** `string` — ID of the network tier to restart
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.VpcNetworks.RestartVpcNetworks(ID) -> error</code></summary>
 <dl>
 <dd>
@@ -2853,7 +3141,7 @@ client.FirewallRules.CreateFirewallRules(
 <dl>
 <dd>
 
-**startPort:** `*string` — Start of the port range (1-65535). Required for TCP and UDP.
+**startPort:** `*int` — Start of the port range (1-65535). Required for TCP and UDP.
     
 </dd>
 </dl>
@@ -2861,7 +3149,7 @@ client.FirewallRules.CreateFirewallRules(
 <dl>
 <dd>
 
-**endPort:** `*string` — End of the port range (1-65535). Must be greater than or equal to `startPort`.
+**endPort:** `*int` — End of the port range (1-65535). Must be greater than or equal to `startPort`.
     
 </dd>
 </dl>
@@ -3745,7 +4033,7 @@ client.EgressRules.CreateEgressRules(
 <dl>
 <dd>
 
-**startPort:** `*string` — Start of the port range the rule applies to.
+**startPort:** `*int` — Start of the port range the rule applies to.
     
 </dd>
 </dl>
@@ -3753,7 +4041,7 @@ client.EgressRules.CreateEgressRules(
 <dl>
 <dd>
 
-**endPort:** `*string` — End of the port range the rule applies to.
+**endPort:** `*int` — End of the port range the rule applies to.
     
 </dd>
 </dl>
@@ -3958,7 +4246,7 @@ client.EgressRules.UpdateEgressRules(
 <dl>
 <dd>
 
-**startPort:** `*string` — Start of the port range the rule applies to.
+**startPort:** `*int` — Start of the port range the rule applies to.
     
 </dd>
 </dl>
@@ -3966,7 +4254,7 @@ client.EgressRules.UpdateEgressRules(
 <dl>
 <dd>
 
-**endPort:** `*string` — End of the port range the rule applies to.
+**endPort:** `*int` — End of the port range the rule applies to.
     
 </dd>
 </dl>
@@ -4450,7 +4738,7 @@ client.NetworkACLs.CreateRuleNetworkACLs(
 <dl>
 <dd>
 
-**startPort:** `*string` — Start of the port range. Used for `TCP` and `UDP` protocols.
+**startPort:** `*int` — Start of the port range. Used for `TCP` and `UDP` protocols.
     
 </dd>
 </dl>
@@ -4458,7 +4746,7 @@ client.NetworkACLs.CreateRuleNetworkACLs(
 <dl>
 <dd>
 
-**endPort:** `*string` — End of the port range. Used for `TCP` and `UDP` protocols.
+**endPort:** `*int` — End of the port range. Used for `TCP` and `UDP` protocols.
     
 </dd>
 </dl>
@@ -8250,7 +8538,7 @@ client.ObjectStorage.ListUnitsObjectStorage(
 </dl>
 </details>
 
-<details><summary><code>client.ObjectStorage.CreateUnitObjectStorage(request) -> *americancloudsdkgo.ObjectStorageSuccessResponseDto</code></summary>
+<details><summary><code>client.ObjectStorage.CreateUnitObjectStorage(request) -> *americancloudsdkgo.ObjectStorageUnitDto</code></summary>
 <dl>
 <dd>
 
@@ -8262,7 +8550,7 @@ client.ObjectStorage.ListUnitsObjectStorage(
 <dl>
 <dd>
 
-Creates a new object storage unit (RGW user) for the authenticated account. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
+Creates a new object storage unit for the authenticated account and returns it. The returned storageUnitId identifies the unit in all other object storage requests. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
 </dd>
 </dl>
 </dd>
@@ -8650,7 +8938,7 @@ client.ObjectStorage.SetUserQuotaObjectStorage(
 <dl>
 <dd>
 
-Deletes an object storage unit (RGW user)
+Deletes an object storage unit
 </dd>
 </dl>
 </dd>

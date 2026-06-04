@@ -25,9 +25,9 @@ type CreateFirewallRuleDto struct {
 	// Protocol the rule applies to.
 	Protocol CreateFirewallRuleDtoProtocol `json:"protocol" url:"-"`
 	// Start of the port range (1-65535). Required for TCP and UDP.
-	StartPort *string `json:"startPort,omitempty" url:"-"`
+	StartPort *int `json:"startPort,omitempty" url:"-"`
 	// End of the port range (1-65535). Must be greater than or equal to `startPort`.
-	EndPort *string `json:"endPort,omitempty" url:"-"`
+	EndPort *int `json:"endPort,omitempty" url:"-"`
 	// Source CIDR allowed to reach the rule target.
 	SourceCidrList string `json:"sourceCidrList" url:"-"`
 	// Direction of traffic this rule applies to.
@@ -60,14 +60,14 @@ func (c *CreateFirewallRuleDto) SetProtocol(protocol CreateFirewallRuleDtoProtoc
 
 // SetStartPort sets the StartPort field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateFirewallRuleDto) SetStartPort(startPort *string) {
+func (c *CreateFirewallRuleDto) SetStartPort(startPort *int) {
 	c.StartPort = startPort
 	c.require(createFirewallRuleDtoFieldStartPort)
 }
 
 // SetEndPort sets the EndPort field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateFirewallRuleDto) SetEndPort(endPort *string) {
+func (c *CreateFirewallRuleDto) SetEndPort(endPort *int) {
 	c.EndPort = endPort
 	c.require(createFirewallRuleDtoFieldEndPort)
 }

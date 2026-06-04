@@ -108,6 +108,42 @@ func (c *CreateVpcTierDto) MarshalJSON() ([]byte, error) {
 }
 
 var (
+	deleteTierVpcNetworksRequestFieldID     = big.NewInt(1 << 0)
+	deleteTierVpcNetworksRequestFieldTierID = big.NewInt(1 << 1)
+)
+
+type DeleteTierVpcNetworksRequest struct {
+	// ID of the VPC that contains the tier
+	ID string `json:"-" url:"-"`
+	// ID of the network tier to delete
+	TierID string `json:"-" url:"-"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+}
+
+func (d *DeleteTierVpcNetworksRequest) require(field *big.Int) {
+	if d.explicitFields == nil {
+		d.explicitFields = big.NewInt(0)
+	}
+	d.explicitFields.Or(d.explicitFields, field)
+}
+
+// SetID sets the ID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (d *DeleteTierVpcNetworksRequest) SetID(id string) {
+	d.ID = id
+	d.require(deleteTierVpcNetworksRequestFieldID)
+}
+
+// SetTierID sets the TierID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (d *DeleteTierVpcNetworksRequest) SetTierID(tierID string) {
+	d.TierID = tierID
+	d.require(deleteTierVpcNetworksRequestFieldTierID)
+}
+
+var (
 	deleteVpcNetworksRequestFieldID = big.NewInt(1 << 0)
 )
 
@@ -131,6 +167,42 @@ func (d *DeleteVpcNetworksRequest) require(field *big.Int) {
 func (d *DeleteVpcNetworksRequest) SetID(id string) {
 	d.ID = id
 	d.require(deleteVpcNetworksRequestFieldID)
+}
+
+var (
+	getTierVpcNetworksRequestFieldID     = big.NewInt(1 << 0)
+	getTierVpcNetworksRequestFieldTierID = big.NewInt(1 << 1)
+)
+
+type GetTierVpcNetworksRequest struct {
+	// ID of the VPC that contains the tier
+	ID string `json:"-" url:"-"`
+	// ID of the network tier
+	TierID string `json:"-" url:"-"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+}
+
+func (g *GetTierVpcNetworksRequest) require(field *big.Int) {
+	if g.explicitFields == nil {
+		g.explicitFields = big.NewInt(0)
+	}
+	g.explicitFields.Or(g.explicitFields, field)
+}
+
+// SetID sets the ID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (g *GetTierVpcNetworksRequest) SetID(id string) {
+	g.ID = id
+	g.require(getTierVpcNetworksRequestFieldID)
+}
+
+// SetTierID sets the TierID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (g *GetTierVpcNetworksRequest) SetTierID(tierID string) {
+	g.TierID = tierID
+	g.require(getTierVpcNetworksRequestFieldTierID)
 }
 
 var (
@@ -193,6 +265,42 @@ func (l *ListVpcNetworksRequest) SetPage(page *int) {
 func (l *ListVpcNetworksRequest) SetPageSize(pageSize *int) {
 	l.PageSize = pageSize
 	l.require(listVpcNetworksRequestFieldPageSize)
+}
+
+var (
+	restartTierVpcNetworksRequestFieldID     = big.NewInt(1 << 0)
+	restartTierVpcNetworksRequestFieldTierID = big.NewInt(1 << 1)
+)
+
+type RestartTierVpcNetworksRequest struct {
+	// ID of the VPC that contains the tier
+	ID string `json:"-" url:"-"`
+	// ID of the network tier to restart
+	TierID string `json:"-" url:"-"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+}
+
+func (r *RestartTierVpcNetworksRequest) require(field *big.Int) {
+	if r.explicitFields == nil {
+		r.explicitFields = big.NewInt(0)
+	}
+	r.explicitFields.Or(r.explicitFields, field)
+}
+
+// SetID sets the ID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (r *RestartTierVpcNetworksRequest) SetID(id string) {
+	r.ID = id
+	r.require(restartTierVpcNetworksRequestFieldID)
+}
+
+// SetTierID sets the TierID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (r *RestartTierVpcNetworksRequest) SetTierID(tierID string) {
+	r.TierID = tierID
+	r.require(restartTierVpcNetworksRequestFieldTierID)
 }
 
 var (
@@ -834,6 +942,332 @@ func (v VpcNetworkResponseDtoStatus) Ptr() *VpcNetworkResponseDtoStatus {
 }
 
 var (
+	vpcTierDetailResponseDtoFieldID          = big.NewInt(1 << 0)
+	vpcTierDetailResponseDtoFieldName        = big.NewInt(1 << 1)
+	vpcTierDetailResponseDtoFieldDescription = big.NewInt(1 << 2)
+	vpcTierDetailResponseDtoFieldCidr        = big.NewInt(1 << 3)
+	vpcTierDetailResponseDtoFieldGateway     = big.NewInt(1 << 4)
+	vpcTierDetailResponseDtoFieldNetmask     = big.NewInt(1 << 5)
+	vpcTierDetailResponseDtoFieldStatus      = big.NewInt(1 << 6)
+	vpcTierDetailResponseDtoFieldAclId       = big.NewInt(1 << 7)
+	vpcTierDetailResponseDtoFieldACLName     = big.NewInt(1 << 8)
+	vpcTierDetailResponseDtoFieldRegion      = big.NewInt(1 << 9)
+	vpcTierDetailResponseDtoFieldCreatedAt   = big.NewInt(1 << 10)
+	vpcTierDetailResponseDtoFieldVpcID       = big.NewInt(1 << 11)
+	vpcTierDetailResponseDtoFieldVpcName     = big.NewInt(1 << 12)
+)
+
+type VpcTierDetailResponseDto struct {
+	// Unique identifier for the tier
+	ID string `json:"id" url:"id"`
+	// Name of the tier
+	Name string `json:"name" url:"name"`
+	// Description of the tier
+	Description string `json:"description" url:"description"`
+	// CIDR of the tier
+	Cidr string `json:"cidr" url:"cidr"`
+	// Gateway IP address
+	Gateway string `json:"gateway" url:"gateway"`
+	// Netmask of the tier
+	Netmask string `json:"netmask" url:"netmask"`
+	// Network status
+	Status VpcTierDetailResponseDtoStatus `json:"status" url:"status"`
+	// Identifier of the ACL applied to this tier. Absent when no custom ACL is attached.
+	AclId *string `json:"aclId,omitempty" url:"aclId,omitempty"`
+	// Name of the ACL applied to this tier. Absent when no custom ACL is attached.
+	ACLName *string `json:"aclName,omitempty" url:"aclName,omitempty"`
+	// Region where the tier is located
+	Region string `json:"region" url:"region"`
+	// Tier creation date
+	CreatedAt *time.Time `json:"createdAt,omitempty" url:"createdAt,omitempty"`
+	// Identifier of the VPC that contains this tier
+	VpcID string `json:"vpcId" url:"vpcId"`
+	// Name of the VPC that contains this tier
+	VpcName *string `json:"vpcName,omitempty" url:"vpcName,omitempty"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (v *VpcTierDetailResponseDto) GetID() string {
+	if v == nil {
+		return ""
+	}
+	return v.ID
+}
+
+func (v *VpcTierDetailResponseDto) GetName() string {
+	if v == nil {
+		return ""
+	}
+	return v.Name
+}
+
+func (v *VpcTierDetailResponseDto) GetDescription() string {
+	if v == nil {
+		return ""
+	}
+	return v.Description
+}
+
+func (v *VpcTierDetailResponseDto) GetCidr() string {
+	if v == nil {
+		return ""
+	}
+	return v.Cidr
+}
+
+func (v *VpcTierDetailResponseDto) GetGateway() string {
+	if v == nil {
+		return ""
+	}
+	return v.Gateway
+}
+
+func (v *VpcTierDetailResponseDto) GetNetmask() string {
+	if v == nil {
+		return ""
+	}
+	return v.Netmask
+}
+
+func (v *VpcTierDetailResponseDto) GetStatus() VpcTierDetailResponseDtoStatus {
+	if v == nil {
+		return ""
+	}
+	return v.Status
+}
+
+func (v *VpcTierDetailResponseDto) GetAclId() *string {
+	if v == nil {
+		return nil
+	}
+	return v.AclId
+}
+
+func (v *VpcTierDetailResponseDto) GetACLName() *string {
+	if v == nil {
+		return nil
+	}
+	return v.ACLName
+}
+
+func (v *VpcTierDetailResponseDto) GetRegion() string {
+	if v == nil {
+		return ""
+	}
+	return v.Region
+}
+
+func (v *VpcTierDetailResponseDto) GetCreatedAt() *time.Time {
+	if v == nil {
+		return nil
+	}
+	return v.CreatedAt
+}
+
+func (v *VpcTierDetailResponseDto) GetVpcID() string {
+	if v == nil {
+		return ""
+	}
+	return v.VpcID
+}
+
+func (v *VpcTierDetailResponseDto) GetVpcName() *string {
+	if v == nil {
+		return nil
+	}
+	return v.VpcName
+}
+
+func (v *VpcTierDetailResponseDto) GetExtraProperties() map[string]interface{} {
+	if v == nil {
+		return nil
+	}
+	return v.extraProperties
+}
+
+func (v *VpcTierDetailResponseDto) require(field *big.Int) {
+	if v.explicitFields == nil {
+		v.explicitFields = big.NewInt(0)
+	}
+	v.explicitFields.Or(v.explicitFields, field)
+}
+
+// SetID sets the ID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetID(id string) {
+	v.ID = id
+	v.require(vpcTierDetailResponseDtoFieldID)
+}
+
+// SetName sets the Name field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetName(name string) {
+	v.Name = name
+	v.require(vpcTierDetailResponseDtoFieldName)
+}
+
+// SetDescription sets the Description field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetDescription(description string) {
+	v.Description = description
+	v.require(vpcTierDetailResponseDtoFieldDescription)
+}
+
+// SetCidr sets the Cidr field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetCidr(cidr string) {
+	v.Cidr = cidr
+	v.require(vpcTierDetailResponseDtoFieldCidr)
+}
+
+// SetGateway sets the Gateway field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetGateway(gateway string) {
+	v.Gateway = gateway
+	v.require(vpcTierDetailResponseDtoFieldGateway)
+}
+
+// SetNetmask sets the Netmask field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetNetmask(netmask string) {
+	v.Netmask = netmask
+	v.require(vpcTierDetailResponseDtoFieldNetmask)
+}
+
+// SetStatus sets the Status field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetStatus(status VpcTierDetailResponseDtoStatus) {
+	v.Status = status
+	v.require(vpcTierDetailResponseDtoFieldStatus)
+}
+
+// SetAclId sets the AclId field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetAclId(aclId *string) {
+	v.AclId = aclId
+	v.require(vpcTierDetailResponseDtoFieldAclId)
+}
+
+// SetACLName sets the ACLName field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetACLName(aclName *string) {
+	v.ACLName = aclName
+	v.require(vpcTierDetailResponseDtoFieldACLName)
+}
+
+// SetRegion sets the Region field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetRegion(region string) {
+	v.Region = region
+	v.require(vpcTierDetailResponseDtoFieldRegion)
+}
+
+// SetCreatedAt sets the CreatedAt field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetCreatedAt(createdAt *time.Time) {
+	v.CreatedAt = createdAt
+	v.require(vpcTierDetailResponseDtoFieldCreatedAt)
+}
+
+// SetVpcID sets the VpcID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetVpcID(vpcID string) {
+	v.VpcID = vpcID
+	v.require(vpcTierDetailResponseDtoFieldVpcID)
+}
+
+// SetVpcName sets the VpcName field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierDetailResponseDto) SetVpcName(vpcName *string) {
+	v.VpcName = vpcName
+	v.require(vpcTierDetailResponseDtoFieldVpcName)
+}
+
+func (v *VpcTierDetailResponseDto) UnmarshalJSON(data []byte) error {
+	type embed VpcTierDetailResponseDto
+	var unmarshaler = struct {
+		embed
+		CreatedAt *internal.DateTime `json:"createdAt,omitempty"`
+	}{
+		embed: embed(*v),
+	}
+	if err := json.Unmarshal(data, &unmarshaler); err != nil {
+		return err
+	}
+	*v = VpcTierDetailResponseDto(unmarshaler.embed)
+	v.CreatedAt = unmarshaler.CreatedAt.TimePtr()
+	extraProperties, err := internal.ExtractExtraProperties(data, *v)
+	if err != nil {
+		return err
+	}
+	v.extraProperties = extraProperties
+	v.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (v *VpcTierDetailResponseDto) MarshalJSON() ([]byte, error) {
+	type embed VpcTierDetailResponseDto
+	var marshaler = struct {
+		embed
+		CreatedAt *internal.DateTime `json:"createdAt,omitempty"`
+	}{
+		embed:     embed(*v),
+		CreatedAt: internal.NewOptionalDateTime(v.CreatedAt),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, v.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (v *VpcTierDetailResponseDto) String() string {
+	if v == nil {
+		return "<nil>"
+	}
+	if len(v.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(v.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(v); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", v)
+}
+
+// Network status
+type VpcTierDetailResponseDtoStatus string
+
+const (
+	VpcTierDetailResponseDtoStatusActive    VpcTierDetailResponseDtoStatus = "Active"
+	VpcTierDetailResponseDtoStatusAllocated VpcTierDetailResponseDtoStatus = "Allocated"
+	VpcTierDetailResponseDtoStatusSetup     VpcTierDetailResponseDtoStatus = "Setup"
+	VpcTierDetailResponseDtoStatusInactive  VpcTierDetailResponseDtoStatus = "Inactive"
+)
+
+func NewVpcTierDetailResponseDtoStatusFromString(s string) (VpcTierDetailResponseDtoStatus, error) {
+	switch s {
+	case "Active":
+		return VpcTierDetailResponseDtoStatusActive, nil
+	case "Allocated":
+		return VpcTierDetailResponseDtoStatusAllocated, nil
+	case "Setup":
+		return VpcTierDetailResponseDtoStatusSetup, nil
+	case "Inactive":
+		return VpcTierDetailResponseDtoStatusInactive, nil
+	}
+	var t VpcTierDetailResponseDtoStatus
+	return "", fmt.Errorf("%s is not a valid %T", s, t)
+}
+
+func (v VpcTierDetailResponseDtoStatus) Ptr() *VpcTierDetailResponseDtoStatus {
+	return &v
+}
+
+var (
 	vpcTierResponseDtoFieldID          = big.NewInt(1 << 0)
 	vpcTierResponseDtoFieldName        = big.NewInt(1 << 1)
 	vpcTierResponseDtoFieldDescription = big.NewInt(1 << 2)
@@ -841,7 +1275,8 @@ var (
 	vpcTierResponseDtoFieldGateway     = big.NewInt(1 << 4)
 	vpcTierResponseDtoFieldNetmask     = big.NewInt(1 << 5)
 	vpcTierResponseDtoFieldStatus      = big.NewInt(1 << 6)
-	vpcTierResponseDtoFieldACLName     = big.NewInt(1 << 7)
+	vpcTierResponseDtoFieldAclId       = big.NewInt(1 << 7)
+	vpcTierResponseDtoFieldACLName     = big.NewInt(1 << 8)
 )
 
 type VpcTierResponseDto struct {
@@ -859,6 +1294,8 @@ type VpcTierResponseDto struct {
 	Netmask string `json:"netmask" url:"netmask"`
 	// Network status
 	Status VpcTierResponseDtoStatus `json:"status" url:"status"`
+	// Identifier of the ACL applied to this tier. Absent when no custom ACL is attached.
+	AclId *string `json:"aclId,omitempty" url:"aclId,omitempty"`
 	// Name of the ACL applied to this tier. Absent when no custom ACL is attached.
 	ACLName *string `json:"aclName,omitempty" url:"aclName,omitempty"`
 
@@ -916,6 +1353,13 @@ func (v *VpcTierResponseDto) GetStatus() VpcTierResponseDtoStatus {
 		return ""
 	}
 	return v.Status
+}
+
+func (v *VpcTierResponseDto) GetAclId() *string {
+	if v == nil {
+		return nil
+	}
+	return v.AclId
 }
 
 func (v *VpcTierResponseDto) GetACLName() *string {
@@ -986,6 +1430,13 @@ func (v *VpcTierResponseDto) SetNetmask(netmask string) {
 func (v *VpcTierResponseDto) SetStatus(status VpcTierResponseDtoStatus) {
 	v.Status = status
 	v.require(vpcTierResponseDtoFieldStatus)
+}
+
+// SetAclId sets the AclId field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (v *VpcTierResponseDto) SetAclId(aclId *string) {
+	v.AclId = aclId
+	v.require(vpcTierResponseDtoFieldAclId)
 }
 
 // SetACLName sets the ACLName field and marks it as non-optional;
@@ -1165,6 +1616,83 @@ func (l *ListVpcNetworksResponse) String() string {
 		return value
 	}
 	return fmt.Sprintf("%#v", l)
+}
+
+var (
+	updateVpcTierDtoFieldID          = big.NewInt(1 << 0)
+	updateVpcTierDtoFieldTierID      = big.NewInt(1 << 1)
+	updateVpcTierDtoFieldName        = big.NewInt(1 << 2)
+	updateVpcTierDtoFieldDescription = big.NewInt(1 << 3)
+)
+
+type UpdateVpcTierDto struct {
+	// ID of the VPC that contains the tier
+	ID string `json:"-" url:"-"`
+	// ID of the network tier to update
+	TierID string `json:"-" url:"-"`
+	// New name for the tier.
+	Name *string `json:"name,omitempty" url:"-"`
+	// New description for the tier.
+	Description *string `json:"description,omitempty" url:"-"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+}
+
+func (u *UpdateVpcTierDto) require(field *big.Int) {
+	if u.explicitFields == nil {
+		u.explicitFields = big.NewInt(0)
+	}
+	u.explicitFields.Or(u.explicitFields, field)
+}
+
+// SetID sets the ID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (u *UpdateVpcTierDto) SetID(id string) {
+	u.ID = id
+	u.require(updateVpcTierDtoFieldID)
+}
+
+// SetTierID sets the TierID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (u *UpdateVpcTierDto) SetTierID(tierID string) {
+	u.TierID = tierID
+	u.require(updateVpcTierDtoFieldTierID)
+}
+
+// SetName sets the Name field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (u *UpdateVpcTierDto) SetName(name *string) {
+	u.Name = name
+	u.require(updateVpcTierDtoFieldName)
+}
+
+// SetDescription sets the Description field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (u *UpdateVpcTierDto) SetDescription(description *string) {
+	u.Description = description
+	u.require(updateVpcTierDtoFieldDescription)
+}
+
+func (u *UpdateVpcTierDto) UnmarshalJSON(data []byte) error {
+	type unmarshaler UpdateVpcTierDto
+	var body unmarshaler
+	if err := json.Unmarshal(data, &body); err != nil {
+		return err
+	}
+	*u = UpdateVpcTierDto(body)
+	return nil
+}
+
+func (u *UpdateVpcTierDto) MarshalJSON() ([]byte, error) {
+	type embed UpdateVpcTierDto
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*u),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, u.explicitFields)
+	return json.Marshal(explicitMarshaler)
 }
 
 var (

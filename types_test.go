@@ -1445,7 +1445,7 @@ func TestSettersSnapshotResponseDto(t *testing.T) {
 
 	t.Run("SetType", func(t *testing.T) {
 		obj := &SnapshotResponseDto{}
-		var fernTestValueType *SnapshotResponseDtoType
+		var fernTestValueType SnapshotResponseDtoType
 		obj.SetType(fernTestValueType)
 		assert.Equal(t, fernTestValueType, obj.Type)
 		assert.NotNil(t, obj.explicitFields)
@@ -1582,21 +1582,11 @@ func TestGettersSnapshotResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &SnapshotResponseDto{}
-		var expected *SnapshotResponseDtoType
+		var expected SnapshotResponseDtoType
 		obj.Type = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetType(), "getter should return the property value")
-	})
-
-	t.Run("GetType_NilValue", func(t *testing.T) {
-		t.Parallel()
-		// Arrange
-		obj := &SnapshotResponseDto{}
-		obj.Type = nil
-
-		// Act & Assert
-		assert.Nil(t, obj.GetType(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetType_NilReceiver", func(t *testing.T) {
@@ -1844,7 +1834,7 @@ func TestSettersMarkExplicitSnapshotResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &SnapshotResponseDto{}
-		var fernTestValueType *SnapshotResponseDtoType
+		var fernTestValueType SnapshotResponseDtoType
 
 		// Act
 		obj.SetType(fernTestValueType)

@@ -14,7 +14,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"my-vm\",\n      \"status\": \"running\",\n      \"region\": \"sjc0\",\n      \"vmPackage\": \"standard-2-4\",\n      \"cpu\": 4,\n      \"memoryMb\": 8192,\n      \"rootDiskGb\": 50,\n      \"tags\": [\n        \"production\",\n        \"web-tier\"\n      ],\n      \"subscriptionPeriod\": \"monthly\",\n      \"image\": \"ubuntu-22.04\",\n      \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n      \"ipAddress\": \"192.168.1.10\",\n      \"networkName\": \"production-network\",\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n      \"marketplaceApp\": {\n        \"label\": \"coolify\",\n        \"name\": \"Coolify\",\n        \"docsUrl\": \"https://coolify.io/docs\"\n      }\n    }\n  ]\n}",
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"name\": \"my-vm\",\n      \"status\": \"STARTED\",\n      \"region\": \"sjc0\",\n      \"vmPackage\": \"standard-2-4\",\n      \"cpu\": 4,\n      \"memoryMb\": 8192,\n      \"rootDiskGb\": 50,\n      \"tags\": [\n        \"production\",\n        \"web-tier\"\n      ],\n      \"subscriptionPeriod\": \"monthly\",\n      \"image\": \"ubuntu-22.04\",\n      \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n      \"ipAddress\": \"192.168.1.10\",\n      \"networkName\": \"production-network\",\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\",\n      \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n      \"marketplaceApp\": {\n        \"label\": \"coolify\",\n        \"name\": \"Coolify\",\n        \"docsUrl\": \"https://coolify.io/docs\"\n      }\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -46,7 +46,7 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"my-vm\",\n  \"status\": \"running\",\n  \"region\": \"sjc0\",\n  \"vmPackage\": \"standard-2-4\",\n  \"cpu\": 4,\n  \"memoryMb\": 8192,\n  \"rootDiskGb\": 50,\n  \"tags\": [\n    \"production\",\n    \"web-tier\"\n  ],\n  \"subscriptionPeriod\": \"monthly\",\n  \"image\": \"ubuntu-22.04\",\n  \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n  \"ipAddress\": \"192.168.1.10\",\n  \"networkName\": \"production-network\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n  \"marketplaceApp\": {\n    \"label\": \"coolify\",\n    \"name\": \"Coolify\",\n    \"docsUrl\": \"https://coolify.io/docs\"\n  },\n  \"passwordMessage\": \"The root password will be emailed to the account owner shortly.\"\n}",
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"my-vm\",\n  \"status\": \"STARTED\",\n  \"region\": \"sjc0\",\n  \"vmPackage\": \"standard-2-4\",\n  \"cpu\": 4,\n  \"memoryMb\": 8192,\n  \"rootDiskGb\": 50,\n  \"tags\": [\n    \"production\",\n    \"web-tier\"\n  ],\n  \"subscriptionPeriod\": \"monthly\",\n  \"image\": \"ubuntu-22.04\",\n  \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n  \"ipAddress\": \"192.168.1.10\",\n  \"networkName\": \"production-network\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n  \"marketplaceApp\": {\n    \"label\": \"coolify\",\n    \"name\": \"Coolify\",\n    \"docsUrl\": \"https://coolify.io/docs\"\n  },\n  \"passwordMessage\": \"The root password will be emailed to the account owner shortly.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -162,7 +162,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"my-vm\",\n  \"status\": \"running\",\n  \"region\": \"sjc0\",\n  \"vmPackage\": \"standard-2-4\",\n  \"cpu\": 4,\n  \"memoryMb\": 8192,\n  \"rootDiskGb\": 50,\n  \"tags\": [\n    \"production\",\n    \"web-tier\"\n  ],\n  \"subscriptionPeriod\": \"monthly\",\n  \"image\": \"ubuntu-22.04\",\n  \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n  \"ipAddress\": \"192.168.1.10\",\n  \"networkName\": \"production-network\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n  \"marketplaceApp\": {\n    \"label\": \"coolify\",\n    \"name\": \"Coolify\",\n    \"docsUrl\": \"https://coolify.io/docs\"\n  }\n}",
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"name\": \"my-vm\",\n  \"status\": \"STARTED\",\n  \"region\": \"sjc0\",\n  \"vmPackage\": \"standard-2-4\",\n  \"cpu\": 4,\n  \"memoryMb\": 8192,\n  \"rootDiskGb\": 50,\n  \"tags\": [\n    \"production\",\n    \"web-tier\"\n  ],\n  \"subscriptionPeriod\": \"monthly\",\n  \"image\": \"ubuntu-22.04\",\n  \"imageDisplayName\": \"Ubuntu 22.04 LTS\",\n  \"ipAddress\": \"192.168.1.10\",\n  \"networkName\": \"production-network\",\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"rootVolumeId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"versionStartedAt\": \"2026-05-29T12:34:56Z\",\n  \"marketplaceApp\": {\n    \"label\": \"coolify\",\n    \"name\": \"Coolify\",\n    \"docsUrl\": \"https://coolify.io/docs\"\n  }\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -304,14 +304,6 @@
         "pathParameters": {
           "id": {
             "equalTo": "123e4567-e89b-12d3-a456-426614174000"
-          }
-        },
-        "queryParameters": {
-          "cpu": {
-            "equalTo": "4"
-          },
-          "memoryMb": {
-            "equalTo": "4096"
           }
         }
       },
@@ -814,7 +806,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"net-1a2b3c4d\",\n      \"name\": \"Production Network\",\n      \"description\": \"Production Network\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"status\": \"Active\",\n      \"region\": \"us-east-1\",\n      \"createdAt\": \"2023-05-15T10:30:00Z\",\n      \"type\": \"Isolated\",\n      \"vpcId\": \"vpc-1a2b3c4d\",\n      \"vpcName\": \"Production VPC\",\n      \"aclId\": \"acl-1a2b3c4d\",\n      \"aclName\": \"default_allow\",\n      \"aclType\": \"Account\"\n    }\n  ]\n}",
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"net-1a2b3c4d\",\n      \"name\": \"Production Network\",\n      \"description\": \"Production Network\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"status\": \"Active\",\n      \"region\": \"us-east-1\",\n      \"createdAt\": \"2023-05-15T10:30:00Z\",\n      \"type\": \"Isolated\",\n      \"aclType\": \"Account\"\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -846,7 +838,7 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"vpcId\": \"vpc-1a2b3c4d\",\n  \"vpcName\": \"Production VPC\",\n  \"aclId\": \"acl-1a2b3c4d\",\n  \"aclName\": \"default_allow\",\n  \"aclType\": \"Account\"\n}",
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -882,7 +874,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"vpcId\": \"vpc-1a2b3c4d\",\n  \"vpcName\": \"Production VPC\",\n  \"aclId\": \"acl-1a2b3c4d\",\n  \"aclName\": \"default_allow\",\n  \"aclType\": \"Account\",\n  \"ipAddresses\": [\n    \"10.1.1.5\",\n    \"10.1.1.6\"\n  ]\n}",
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\",\n  \"ipAddresses\": [\n    \"10.1.1.5\",\n    \"10.1.1.6\"\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -918,7 +910,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"vpcId\": \"vpc-1a2b3c4d\",\n  \"vpcName\": \"Production VPC\",\n  \"aclId\": \"acl-1a2b3c4d\",\n  \"aclName\": \"default_allow\",\n  \"aclType\": \"Account\"\n}",
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -1053,7 +1045,7 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"id\": \"vpc-a1b2c3d4\",\n  \"name\": \"Production VPC\",\n  \"description\": \"Production VPC\",\n  \"cidr\": \"10.0.0.0/16\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"tiers\": [\n    {\n      \"id\": \"tier-1a2b3c4d\",\n      \"name\": \"Web Tier\",\n      \"description\": \"Web Tier\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"netmask\": \"255.255.255.0\",\n      \"status\": \"Active\",\n      \"aclName\": \"default_allow\"\n    }\n  ],\n  \"publicIps\": [\n    \"203.0.113.1\",\n    \"203.0.113.2\"\n  ]\n}",
+        "body": "{\n  \"id\": \"vpc-a1b2c3d4\",\n  \"name\": \"Production VPC\",\n  \"description\": \"Production VPC\",\n  \"cidr\": \"10.0.0.0/16\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"tiers\": [\n    {\n      \"id\": \"tier-1a2b3c4d\",\n      \"name\": \"Web Tier\",\n      \"description\": \"Web Tier\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"netmask\": \"255.255.255.0\",\n      \"status\": \"Active\",\n      \"aclId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"aclName\": \"default_allow\"\n    }\n  ],\n  \"publicIps\": [\n    \"203.0.113.1\",\n    \"203.0.113.2\"\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -1089,7 +1081,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"vpc-a1b2c3d4\",\n  \"name\": \"Production VPC\",\n  \"description\": \"Production VPC\",\n  \"cidr\": \"10.0.0.0/16\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"tiers\": [\n    {\n      \"id\": \"tier-1a2b3c4d\",\n      \"name\": \"Web Tier\",\n      \"description\": \"Web Tier\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"netmask\": \"255.255.255.0\",\n      \"status\": \"Active\",\n      \"aclName\": \"default_allow\"\n    }\n  ],\n  \"publicIps\": [\n    \"203.0.113.1\",\n    \"203.0.113.2\"\n  ]\n}",
+        "body": "{\n  \"id\": \"vpc-a1b2c3d4\",\n  \"name\": \"Production VPC\",\n  \"description\": \"Production VPC\",\n  \"cidr\": \"10.0.0.0/16\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"tiers\": [\n    {\n      \"id\": \"tier-1a2b3c4d\",\n      \"name\": \"Web Tier\",\n      \"description\": \"Web Tier\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"netmask\": \"255.255.255.0\",\n      \"status\": \"Active\",\n      \"aclId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"aclName\": \"default_allow\"\n    }\n  ],\n  \"publicIps\": [\n    \"203.0.113.1\",\n    \"203.0.113.2\"\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -1223,12 +1215,168 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"id\": \"tier-1a2b3c4d\",\n  \"name\": \"Web Tier\",\n  \"description\": \"Web Tier\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"netmask\": \"255.255.255.0\",\n  \"status\": \"Active\",\n  \"aclName\": \"default_allow\"\n}",
+        "body": "{\n  \"id\": \"tier-1a2b3c4d\",\n  \"name\": \"Web Tier\",\n  \"description\": \"Web Tier\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"netmask\": \"255.255.255.0\",\n  \"status\": \"Active\",\n  \"aclId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"aclName\": \"default_allow\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
       },
       "uuid": "bc1c1bfc-da0b-4d24-8c33-c2480b404b28",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "d201c4c1-795c-43f5-8730-6202c2a14672",
+      "name": "Get a network tier of a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/{id}/tiers/{tierId}",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "tierId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"tier-1a2b3c4d\",\n  \"name\": \"Web Tier\",\n  \"description\": \"Web Tier\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"netmask\": \"255.255.255.0\",\n  \"status\": \"Active\",\n  \"aclId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"aclName\": \"default_allow\",\n  \"region\": \"us-west-0\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vpcName\": \"Production VPC\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "d201c4c1-795c-43f5-8730-6202c2a14672",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "85f0d2f9-3709-43f1-a000-7dbaa24ebf58",
+      "name": "Update a network tier of a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/{id}/tiers/{tierId}",
+        "method": "PUT",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "tierId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"id\": \"tier-1a2b3c4d\",\n  \"name\": \"Web Tier\",\n  \"description\": \"Web Tier\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"netmask\": \"255.255.255.0\",\n  \"status\": \"Active\",\n  \"aclId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"aclName\": \"default_allow\",\n  \"region\": \"us-west-0\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"vpcId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"vpcName\": \"Production VPC\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "85f0d2f9-3709-43f1-a000-7dbaa24ebf58",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "fa4c886c-5ea0-465c-9a5f-377c4b5f0ce3",
+      "name": "Delete a network tier from a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/{id}/tiers/{tierId}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "tierId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "fa4c886c-5ea0-465c-9a5f-377c4b5f0ce3",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "09ea84eb-811e-4c8c-be67-3214905b92f2",
+      "name": "Restart a network tier of a VPC - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/networks/vpc/{id}/tiers/{tierId}/restart",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "id": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          },
+          "tierId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "09ea84eb-811e-4c8c-be67-3214905b92f2",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4610,7 +4758,7 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "body": "{\n  \"storageUnitId\": \"storage-unit-prod-01\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"maxBuckets\": 100,\n  \"sizeKb\": 512000,\n  \"limitKb\": 10485760\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5969,6 +6117,6 @@
     }
   ],
   "meta": {
-    "total": 170
+    "total": 174
   }
 }

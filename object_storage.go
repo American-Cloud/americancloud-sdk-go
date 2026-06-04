@@ -766,11 +766,11 @@ type ObjectStorageUnitDto struct {
 	StorageUnitID string `json:"storageUnitId" url:"storageUnitId"`
 	// When the storage unit was created.
 	CreatedAt time.Time `json:"createdAt" url:"createdAt"`
-	// Maximum number of buckets the storage unit may hold, or "unlimited".
+	// Maximum number of buckets the storage unit may hold. Null means no limit (unlimited).
 	MaxBuckets *float64 `json:"maxBuckets,omitempty" url:"maxBuckets,omitempty"`
 	// Current usage of the storage unit, in kilobytes.
 	SizeKb *float64 `json:"sizeKb,omitempty" url:"sizeKb,omitempty"`
-	// Total storage allowed on the storage unit, in kilobytes, or "unlimited".
+	// Total storage allowed on the storage unit, in kilobytes. Null means no limit (unlimited).
 	LimitKb *float64 `json:"limitKb,omitempty" url:"limitKb,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted

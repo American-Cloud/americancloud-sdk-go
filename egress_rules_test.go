@@ -21,7 +21,7 @@ func TestSettersCreateEgressRuleDto(t *testing.T) {
 
 	t.Run("SetStartPort", func(t *testing.T) {
 		obj := &CreateEgressRuleDto{}
-		var fernTestValueStartPort *string
+		var fernTestValueStartPort *int
 		obj.SetStartPort(fernTestValueStartPort)
 		assert.Equal(t, fernTestValueStartPort, obj.StartPort)
 		assert.NotNil(t, obj.explicitFields)
@@ -29,7 +29,7 @@ func TestSettersCreateEgressRuleDto(t *testing.T) {
 
 	t.Run("SetEndPort", func(t *testing.T) {
 		obj := &CreateEgressRuleDto{}
-		var fernTestValueEndPort *string
+		var fernTestValueEndPort *int
 		obj.SetEndPort(fernTestValueEndPort)
 		assert.Equal(t, fernTestValueEndPort, obj.EndPort)
 		assert.NotNil(t, obj.explicitFields)
@@ -97,7 +97,7 @@ func TestSettersMarkExplicitCreateEgressRuleDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateEgressRuleDto{}
-		var fernTestValueStartPort *string
+		var fernTestValueStartPort *int
 
 		// Act
 		obj.SetStartPort(fernTestValueStartPort)
@@ -128,7 +128,7 @@ func TestSettersMarkExplicitCreateEgressRuleDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateEgressRuleDto{}
-		var fernTestValueEndPort *string
+		var fernTestValueEndPort *int
 
 		// Act
 		obj.SetEndPort(fernTestValueEndPort)
@@ -1467,7 +1467,7 @@ func TestSettersUpdateEgressRuleDto(t *testing.T) {
 
 	t.Run("SetStartPort", func(t *testing.T) {
 		obj := &UpdateEgressRuleDto{}
-		var fernTestValueStartPort *string
+		var fernTestValueStartPort *int
 		obj.SetStartPort(fernTestValueStartPort)
 		assert.Equal(t, fernTestValueStartPort, obj.StartPort)
 		assert.NotNil(t, obj.explicitFields)
@@ -1475,7 +1475,7 @@ func TestSettersUpdateEgressRuleDto(t *testing.T) {
 
 	t.Run("SetEndPort", func(t *testing.T) {
 		obj := &UpdateEgressRuleDto{}
-		var fernTestValueEndPort *string
+		var fernTestValueEndPort *int
 		obj.SetEndPort(fernTestValueEndPort)
 		assert.Equal(t, fernTestValueEndPort, obj.EndPort)
 		assert.NotNil(t, obj.explicitFields)
@@ -1581,7 +1581,7 @@ func TestSettersMarkExplicitUpdateEgressRuleDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &UpdateEgressRuleDto{}
-		var fernTestValueStartPort *string
+		var fernTestValueStartPort *int
 
 		// Act
 		obj.SetStartPort(fernTestValueStartPort)
@@ -1612,7 +1612,7 @@ func TestSettersMarkExplicitUpdateEgressRuleDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &UpdateEgressRuleDto{}
-		var fernTestValueEndPort *string
+		var fernTestValueEndPort *int
 
 		// Act
 		obj.SetEndPort(fernTestValueEndPort)

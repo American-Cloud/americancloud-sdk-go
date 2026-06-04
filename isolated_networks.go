@@ -221,12 +221,8 @@ var (
 	detailedIsolatedNetworkResponseDtoFieldRegion      = big.NewInt(1 << 6)
 	detailedIsolatedNetworkResponseDtoFieldCreatedAt   = big.NewInt(1 << 7)
 	detailedIsolatedNetworkResponseDtoFieldType        = big.NewInt(1 << 8)
-	detailedIsolatedNetworkResponseDtoFieldVpcID       = big.NewInt(1 << 9)
-	detailedIsolatedNetworkResponseDtoFieldVpcName     = big.NewInt(1 << 10)
-	detailedIsolatedNetworkResponseDtoFieldAclId       = big.NewInt(1 << 11)
-	detailedIsolatedNetworkResponseDtoFieldACLName     = big.NewInt(1 << 12)
-	detailedIsolatedNetworkResponseDtoFieldACLType     = big.NewInt(1 << 13)
-	detailedIsolatedNetworkResponseDtoFieldIPAddresses = big.NewInt(1 << 14)
+	detailedIsolatedNetworkResponseDtoFieldACLType     = big.NewInt(1 << 9)
+	detailedIsolatedNetworkResponseDtoFieldIPAddresses = big.NewInt(1 << 10)
 )
 
 type DetailedIsolatedNetworkResponseDto struct {
@@ -248,14 +244,6 @@ type DetailedIsolatedNetworkResponseDto struct {
 	CreatedAt *time.Time `json:"createdAt,omitempty" url:"createdAt,omitempty"`
 	// Network type
 	Type string `json:"type" url:"type"`
-	// VPC ID
-	VpcID *string `json:"vpcId,omitempty" url:"vpcId,omitempty"`
-	// VPC name
-	VpcName *string `json:"vpcName,omitempty" url:"vpcName,omitempty"`
-	// ID of the ACL list applied to this network
-	AclId *string `json:"aclId,omitempty" url:"aclId,omitempty"`
-	// Name of the ACL list applied to this network
-	ACLName *string `json:"aclName,omitempty" url:"aclName,omitempty"`
 	// Type of the ACL list
 	ACLType *string `json:"aclType,omitempty" url:"aclType,omitempty"`
 	// IP addresses associated with this network
@@ -329,34 +317,6 @@ func (d *DetailedIsolatedNetworkResponseDto) GetType() string {
 		return ""
 	}
 	return d.Type
-}
-
-func (d *DetailedIsolatedNetworkResponseDto) GetVpcID() *string {
-	if d == nil {
-		return nil
-	}
-	return d.VpcID
-}
-
-func (d *DetailedIsolatedNetworkResponseDto) GetVpcName() *string {
-	if d == nil {
-		return nil
-	}
-	return d.VpcName
-}
-
-func (d *DetailedIsolatedNetworkResponseDto) GetAclId() *string {
-	if d == nil {
-		return nil
-	}
-	return d.AclId
-}
-
-func (d *DetailedIsolatedNetworkResponseDto) GetACLName() *string {
-	if d == nil {
-		return nil
-	}
-	return d.ACLName
 }
 
 func (d *DetailedIsolatedNetworkResponseDto) GetACLType() *string {
@@ -448,34 +408,6 @@ func (d *DetailedIsolatedNetworkResponseDto) SetCreatedAt(createdAt *time.Time) 
 func (d *DetailedIsolatedNetworkResponseDto) SetType(type_ string) {
 	d.Type = type_
 	d.require(detailedIsolatedNetworkResponseDtoFieldType)
-}
-
-// SetVpcID sets the VpcID field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (d *DetailedIsolatedNetworkResponseDto) SetVpcID(vpcID *string) {
-	d.VpcID = vpcID
-	d.require(detailedIsolatedNetworkResponseDtoFieldVpcID)
-}
-
-// SetVpcName sets the VpcName field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (d *DetailedIsolatedNetworkResponseDto) SetVpcName(vpcName *string) {
-	d.VpcName = vpcName
-	d.require(detailedIsolatedNetworkResponseDtoFieldVpcName)
-}
-
-// SetAclId sets the AclId field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (d *DetailedIsolatedNetworkResponseDto) SetAclId(aclId *string) {
-	d.AclId = aclId
-	d.require(detailedIsolatedNetworkResponseDtoFieldAclId)
-}
-
-// SetACLName sets the ACLName field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (d *DetailedIsolatedNetworkResponseDto) SetACLName(aclName *string) {
-	d.ACLName = aclName
-	d.require(detailedIsolatedNetworkResponseDtoFieldACLName)
 }
 
 // SetACLType sets the ACLType field and marks it as non-optional;
@@ -581,11 +513,7 @@ var (
 	isolatedNetworkResponseDtoFieldRegion      = big.NewInt(1 << 6)
 	isolatedNetworkResponseDtoFieldCreatedAt   = big.NewInt(1 << 7)
 	isolatedNetworkResponseDtoFieldType        = big.NewInt(1 << 8)
-	isolatedNetworkResponseDtoFieldVpcID       = big.NewInt(1 << 9)
-	isolatedNetworkResponseDtoFieldVpcName     = big.NewInt(1 << 10)
-	isolatedNetworkResponseDtoFieldAclId       = big.NewInt(1 << 11)
-	isolatedNetworkResponseDtoFieldACLName     = big.NewInt(1 << 12)
-	isolatedNetworkResponseDtoFieldACLType     = big.NewInt(1 << 13)
+	isolatedNetworkResponseDtoFieldACLType     = big.NewInt(1 << 9)
 )
 
 type IsolatedNetworkResponseDto struct {
@@ -607,14 +535,6 @@ type IsolatedNetworkResponseDto struct {
 	CreatedAt *time.Time `json:"createdAt,omitempty" url:"createdAt,omitempty"`
 	// Network type
 	Type string `json:"type" url:"type"`
-	// VPC ID
-	VpcID *string `json:"vpcId,omitempty" url:"vpcId,omitempty"`
-	// VPC name
-	VpcName *string `json:"vpcName,omitempty" url:"vpcName,omitempty"`
-	// ID of the ACL list applied to this network
-	AclId *string `json:"aclId,omitempty" url:"aclId,omitempty"`
-	// Name of the ACL list applied to this network
-	ACLName *string `json:"aclName,omitempty" url:"aclName,omitempty"`
 	// Type of the ACL list
 	ACLType *string `json:"aclType,omitempty" url:"aclType,omitempty"`
 
@@ -686,34 +606,6 @@ func (i *IsolatedNetworkResponseDto) GetType() string {
 		return ""
 	}
 	return i.Type
-}
-
-func (i *IsolatedNetworkResponseDto) GetVpcID() *string {
-	if i == nil {
-		return nil
-	}
-	return i.VpcID
-}
-
-func (i *IsolatedNetworkResponseDto) GetVpcName() *string {
-	if i == nil {
-		return nil
-	}
-	return i.VpcName
-}
-
-func (i *IsolatedNetworkResponseDto) GetAclId() *string {
-	if i == nil {
-		return nil
-	}
-	return i.AclId
-}
-
-func (i *IsolatedNetworkResponseDto) GetACLName() *string {
-	if i == nil {
-		return nil
-	}
-	return i.ACLName
 }
 
 func (i *IsolatedNetworkResponseDto) GetACLType() *string {
@@ -798,34 +690,6 @@ func (i *IsolatedNetworkResponseDto) SetCreatedAt(createdAt *time.Time) {
 func (i *IsolatedNetworkResponseDto) SetType(type_ string) {
 	i.Type = type_
 	i.require(isolatedNetworkResponseDtoFieldType)
-}
-
-// SetVpcID sets the VpcID field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (i *IsolatedNetworkResponseDto) SetVpcID(vpcID *string) {
-	i.VpcID = vpcID
-	i.require(isolatedNetworkResponseDtoFieldVpcID)
-}
-
-// SetVpcName sets the VpcName field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (i *IsolatedNetworkResponseDto) SetVpcName(vpcName *string) {
-	i.VpcName = vpcName
-	i.require(isolatedNetworkResponseDtoFieldVpcName)
-}
-
-// SetAclId sets the AclId field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (i *IsolatedNetworkResponseDto) SetAclId(aclId *string) {
-	i.AclId = aclId
-	i.require(isolatedNetworkResponseDtoFieldAclId)
-}
-
-// SetACLName sets the ACLName field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (i *IsolatedNetworkResponseDto) SetACLName(aclName *string) {
-	i.ACLName = aclName
-	i.require(isolatedNetworkResponseDtoFieldACLName)
 }
 
 // SetACLType sets the ACLType field and marks it as non-optional;

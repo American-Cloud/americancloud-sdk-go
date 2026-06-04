@@ -346,6 +346,188 @@ func (r *RawClient) CreateTierVpcNetworks(
 	}, nil
 }
 
+func (r *RawClient) GetTierVpcNetworks(
+	ctx context.Context,
+	request *americancloudsdkgo.GetTierVpcNetworksRequest,
+	opts ...option.RequestOption,
+) (*core.Response[*americancloudsdkgo.VpcTierDetailResponseDto], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := internal.EncodeURL(
+		baseURL+"/api/v1/networks/vpc/%v/tiers/%v",
+		request.ID,
+		request.TierID,
+	)
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	var response *americancloudsdkgo.VpcTierDetailResponseDto
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodGet,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			Response:        &response,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[*americancloudsdkgo.VpcTierDetailResponseDto]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       response,
+	}, nil
+}
+
+func (r *RawClient) UpdateTierVpcNetworks(
+	ctx context.Context,
+	request *americancloudsdkgo.UpdateVpcTierDto,
+	opts ...option.RequestOption,
+) (*core.Response[*americancloudsdkgo.VpcTierDetailResponseDto], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := internal.EncodeURL(
+		baseURL+"/api/v1/networks/vpc/%v/tiers/%v",
+		request.ID,
+		request.TierID,
+	)
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	headers.Add("Content-Type", "application/json")
+	var response *americancloudsdkgo.VpcTierDetailResponseDto
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodPut,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			Request:         request,
+			Response:        &response,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[*americancloudsdkgo.VpcTierDetailResponseDto]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       response,
+	}, nil
+}
+
+func (r *RawClient) DeleteTierVpcNetworks(
+	ctx context.Context,
+	request *americancloudsdkgo.DeleteTierVpcNetworksRequest,
+	opts ...option.RequestOption,
+) (*core.Response[any], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := internal.EncodeURL(
+		baseURL+"/api/v1/networks/vpc/%v/tiers/%v",
+		request.ID,
+		request.TierID,
+	)
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodDelete,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[any]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       nil,
+	}, nil
+}
+
+func (r *RawClient) RestartTierVpcNetworks(
+	ctx context.Context,
+	request *americancloudsdkgo.RestartTierVpcNetworksRequest,
+	opts ...option.RequestOption,
+) (*core.Response[any], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := internal.EncodeURL(
+		baseURL+"/api/v1/networks/vpc/%v/tiers/%v/restart",
+		request.ID,
+		request.TierID,
+	)
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodPost,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[any]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       nil,
+	}, nil
+}
+
 func (r *RawClient) RestartVpcNetworks(
 	ctx context.Context,
 	request *americancloudsdkgo.RestartVpcNetworksRequest,

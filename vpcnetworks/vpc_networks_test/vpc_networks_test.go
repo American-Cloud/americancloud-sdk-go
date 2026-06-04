@@ -264,6 +264,114 @@ func TestVpcNetworksCreateTierVpcNetworksWithWireMock(
 	VerifyRequestCount(t, "TestVpcNetworksCreateTierVpcNetworksWithWireMock", "POST", "/api/v1/networks/vpc/tier", nil, 1)
 }
 
+func TestVpcNetworksGetTierVpcNetworksWithWireMock(
+	t *testing.T,
+) {
+	WireMockBaseURL := os.Getenv("WIREMOCK_URL")
+	if WireMockBaseURL == "" {
+		WireMockBaseURL = "http://localhost:8080"
+	}
+	client := client.NewClient(
+		option.WithBaseURL(WireMockBaseURL),
+		option.WithAPIKey("test-value"),
+	)
+	request := &americancloudsdkgo.GetTierVpcNetworksRequest{
+		ID:     "123e4567-e89b-12d3-a456-426614174000",
+		TierID: "123e4567-e89b-12d3-a456-426614174000",
+	}
+	_, invocationErr := client.VpcNetworks.GetTierVpcNetworks(
+		context.TODO(),
+		request,
+		option.WithHTTPHeader(
+			http.Header{"X-Test-Id": []string{"TestVpcNetworksGetTierVpcNetworksWithWireMock"}},
+		),
+	)
+
+	require.NoError(t, invocationErr, "Client method call should succeed")
+	VerifyRequestCount(t, "TestVpcNetworksGetTierVpcNetworksWithWireMock", "GET", "/api/v1/networks/vpc/123e4567-e89b-12d3-a456-426614174000/tiers/123e4567-e89b-12d3-a456-426614174000", nil, 1)
+}
+
+func TestVpcNetworksUpdateTierVpcNetworksWithWireMock(
+	t *testing.T,
+) {
+	WireMockBaseURL := os.Getenv("WIREMOCK_URL")
+	if WireMockBaseURL == "" {
+		WireMockBaseURL = "http://localhost:8080"
+	}
+	client := client.NewClient(
+		option.WithBaseURL(WireMockBaseURL),
+		option.WithAPIKey("test-value"),
+	)
+	request := &americancloudsdkgo.UpdateVpcTierDto{
+		ID:     "123e4567-e89b-12d3-a456-426614174000",
+		TierID: "123e4567-e89b-12d3-a456-426614174000",
+	}
+	_, invocationErr := client.VpcNetworks.UpdateTierVpcNetworks(
+		context.TODO(),
+		request,
+		option.WithHTTPHeader(
+			http.Header{"X-Test-Id": []string{"TestVpcNetworksUpdateTierVpcNetworksWithWireMock"}},
+		),
+	)
+
+	require.NoError(t, invocationErr, "Client method call should succeed")
+	VerifyRequestCount(t, "TestVpcNetworksUpdateTierVpcNetworksWithWireMock", "PUT", "/api/v1/networks/vpc/123e4567-e89b-12d3-a456-426614174000/tiers/123e4567-e89b-12d3-a456-426614174000", nil, 1)
+}
+
+func TestVpcNetworksDeleteTierVpcNetworksWithWireMock(
+	t *testing.T,
+) {
+	WireMockBaseURL := os.Getenv("WIREMOCK_URL")
+	if WireMockBaseURL == "" {
+		WireMockBaseURL = "http://localhost:8080"
+	}
+	client := client.NewClient(
+		option.WithBaseURL(WireMockBaseURL),
+		option.WithAPIKey("test-value"),
+	)
+	request := &americancloudsdkgo.DeleteTierVpcNetworksRequest{
+		ID:     "123e4567-e89b-12d3-a456-426614174000",
+		TierID: "123e4567-e89b-12d3-a456-426614174000",
+	}
+	invocationErr := client.VpcNetworks.DeleteTierVpcNetworks(
+		context.TODO(),
+		request,
+		option.WithHTTPHeader(
+			http.Header{"X-Test-Id": []string{"TestVpcNetworksDeleteTierVpcNetworksWithWireMock"}},
+		),
+	)
+
+	require.NoError(t, invocationErr, "Client method call should succeed")
+	VerifyRequestCount(t, "TestVpcNetworksDeleteTierVpcNetworksWithWireMock", "DELETE", "/api/v1/networks/vpc/123e4567-e89b-12d3-a456-426614174000/tiers/123e4567-e89b-12d3-a456-426614174000", nil, 1)
+}
+
+func TestVpcNetworksRestartTierVpcNetworksWithWireMock(
+	t *testing.T,
+) {
+	WireMockBaseURL := os.Getenv("WIREMOCK_URL")
+	if WireMockBaseURL == "" {
+		WireMockBaseURL = "http://localhost:8080"
+	}
+	client := client.NewClient(
+		option.WithBaseURL(WireMockBaseURL),
+		option.WithAPIKey("test-value"),
+	)
+	request := &americancloudsdkgo.RestartTierVpcNetworksRequest{
+		ID:     "123e4567-e89b-12d3-a456-426614174000",
+		TierID: "123e4567-e89b-12d3-a456-426614174000",
+	}
+	invocationErr := client.VpcNetworks.RestartTierVpcNetworks(
+		context.TODO(),
+		request,
+		option.WithHTTPHeader(
+			http.Header{"X-Test-Id": []string{"TestVpcNetworksRestartTierVpcNetworksWithWireMock"}},
+		),
+	)
+
+	require.NoError(t, invocationErr, "Client method call should succeed")
+	VerifyRequestCount(t, "TestVpcNetworksRestartTierVpcNetworksWithWireMock", "POST", "/api/v1/networks/vpc/123e4567-e89b-12d3-a456-426614174000/tiers/123e4567-e89b-12d3-a456-426614174000/restart", nil, 1)
+}
+
 func TestVpcNetworksRestartVpcNetworksWithWireMock(
 	t *testing.T,
 ) {

@@ -169,7 +169,7 @@ func (c *Client) PowerVms(
 // Scale a virtual machine to new CPU and/or memory specifications. When the VM is stopped, both scale-up and scale-down are allowed. When running, only scale-up is permitted.
 func (c *Client) ScaleVms(
 	ctx context.Context,
-	request *americancloudsdkgo.ScaleVmsRequest,
+	request *americancloudsdkgo.ScaleVMDto,
 	opts ...option.RequestOption,
 ) error {
 	_, err := c.WithRawResponse.ScaleVms(

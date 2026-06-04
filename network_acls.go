@@ -104,9 +104,9 @@ type CreateNetworkACLRuleDto struct {
 	// Rule number (1-1000). Unique within the ACL list and determines evaluation order.
 	Number *string `json:"number,omitempty" url:"-"`
 	// Start of the port range. Used for `TCP` and `UDP` protocols.
-	StartPort *string `json:"startPort,omitempty" url:"-"`
+	StartPort *int `json:"startPort,omitempty" url:"-"`
 	// End of the port range. Used for `TCP` and `UDP` protocols.
-	EndPort *string `json:"endPort,omitempty" url:"-"`
+	EndPort *int `json:"endPort,omitempty" url:"-"`
 	// ICMP message type. Used for the `ICMP` protocol.
 	IcmpType *string `json:"icmpType,omitempty" url:"-"`
 	// ICMP message code. Used for the `ICMP` protocol.
@@ -167,14 +167,14 @@ func (c *CreateNetworkACLRuleDto) SetNumber(number *string) {
 
 // SetStartPort sets the StartPort field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateNetworkACLRuleDto) SetStartPort(startPort *string) {
+func (c *CreateNetworkACLRuleDto) SetStartPort(startPort *int) {
 	c.StartPort = startPort
 	c.require(createNetworkACLRuleDtoFieldStartPort)
 }
 
 // SetEndPort sets the EndPort field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateNetworkACLRuleDto) SetEndPort(endPort *string) {
+func (c *CreateNetworkACLRuleDto) SetEndPort(endPort *int) {
 	c.EndPort = endPort
 	c.require(createNetworkACLRuleDtoFieldEndPort)
 }

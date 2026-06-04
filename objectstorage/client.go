@@ -51,12 +51,12 @@ func (c *Client) ListUnitsObjectStorage(
 	return response.Body, nil
 }
 
-// Creates a new object storage unit (RGW user) for the authenticated account. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
+// Creates a new object storage unit for the authenticated account and returns it. The returned storageUnitId identifies the unit in all other object storage requests. To preview pricing without creating anything, use POST /object-storage/units/cost-estimate.
 func (c *Client) CreateUnitObjectStorage(
 	ctx context.Context,
 	request *americancloudsdkgo.CreateStorageUnitRequestDto,
 	opts ...option.RequestOption,
-) (*americancloudsdkgo.ObjectStorageSuccessResponseDto, error) {
+) (*americancloudsdkgo.ObjectStorageUnitDto, error) {
 	response, err := c.WithRawResponse.CreateUnitObjectStorage(
 		ctx,
 		request,
@@ -151,7 +151,7 @@ func (c *Client) SetUserQuotaObjectStorage(
 	return response.Body, nil
 }
 
-// Deletes an object storage unit (RGW user)
+// Deletes an object storage unit
 func (c *Client) DeleteUnitObjectStorage(
 	ctx context.Context,
 	request *americancloudsdkgo.DeleteUnitObjectStorageRequest,

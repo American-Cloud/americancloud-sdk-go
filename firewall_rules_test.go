@@ -29,7 +29,7 @@ func TestSettersCreateFirewallRuleDto(t *testing.T) {
 
 	t.Run("SetStartPort", func(t *testing.T) {
 		obj := &CreateFirewallRuleDto{}
-		var fernTestValueStartPort *string
+		var fernTestValueStartPort *int
 		obj.SetStartPort(fernTestValueStartPort)
 		assert.Equal(t, fernTestValueStartPort, obj.StartPort)
 		assert.NotNil(t, obj.explicitFields)
@@ -37,7 +37,7 @@ func TestSettersCreateFirewallRuleDto(t *testing.T) {
 
 	t.Run("SetEndPort", func(t *testing.T) {
 		obj := &CreateFirewallRuleDto{}
-		var fernTestValueEndPort *string
+		var fernTestValueEndPort *int
 		obj.SetEndPort(fernTestValueEndPort)
 		assert.Equal(t, fernTestValueEndPort, obj.EndPort)
 		assert.NotNil(t, obj.explicitFields)
@@ -128,7 +128,7 @@ func TestSettersMarkExplicitCreateFirewallRuleDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateFirewallRuleDto{}
-		var fernTestValueStartPort *string
+		var fernTestValueStartPort *int
 
 		// Act
 		obj.SetStartPort(fernTestValueStartPort)
@@ -159,7 +159,7 @@ func TestSettersMarkExplicitCreateFirewallRuleDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateFirewallRuleDto{}
-		var fernTestValueEndPort *string
+		var fernTestValueEndPort *int
 
 		// Act
 		obj.SetEndPort(fernTestValueEndPort)

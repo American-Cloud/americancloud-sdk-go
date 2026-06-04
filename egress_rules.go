@@ -23,9 +23,9 @@ type CreateEgressRuleDto struct {
 	// Protocol the rule applies to. One of `TCP`, `UDP`, `ICMP`, or `ALL`.
 	Protocol string `json:"protocol" url:"-"`
 	// Start of the port range the rule applies to.
-	StartPort *string `json:"startPort,omitempty" url:"-"`
+	StartPort *int `json:"startPort,omitempty" url:"-"`
 	// End of the port range the rule applies to.
-	EndPort *string `json:"endPort,omitempty" url:"-"`
+	EndPort *int `json:"endPort,omitempty" url:"-"`
 	// Source CIDR within the guest network CIDR. Omit to allow the entire network.
 	SourceCidrList *string `json:"sourceCidrList,omitempty" url:"-"`
 	// Destination CIDR the traffic is allowed to reach. Defaults to `0.0.0.0/0`.
@@ -53,14 +53,14 @@ func (c *CreateEgressRuleDto) SetProtocol(protocol string) {
 
 // SetStartPort sets the StartPort field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateEgressRuleDto) SetStartPort(startPort *string) {
+func (c *CreateEgressRuleDto) SetStartPort(startPort *int) {
 	c.StartPort = startPort
 	c.require(createEgressRuleDtoFieldStartPort)
 }
 
 // SetEndPort sets the EndPort field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateEgressRuleDto) SetEndPort(endPort *string) {
+func (c *CreateEgressRuleDto) SetEndPort(endPort *int) {
 	c.EndPort = endPort
 	c.require(createEgressRuleDtoFieldEndPort)
 }
@@ -688,9 +688,9 @@ type UpdateEgressRuleDto struct {
 	// Destination CIDR the traffic is allowed to reach.
 	DestCidrList *string `json:"destCidrList,omitempty" url:"-"`
 	// Start of the port range the rule applies to.
-	StartPort *string `json:"startPort,omitempty" url:"-"`
+	StartPort *int `json:"startPort,omitempty" url:"-"`
 	// End of the port range the rule applies to.
-	EndPort *string `json:"endPort,omitempty" url:"-"`
+	EndPort *int `json:"endPort,omitempty" url:"-"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -726,14 +726,14 @@ func (u *UpdateEgressRuleDto) SetDestCidrList(destCidrList *string) {
 
 // SetStartPort sets the StartPort field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (u *UpdateEgressRuleDto) SetStartPort(startPort *string) {
+func (u *UpdateEgressRuleDto) SetStartPort(startPort *int) {
 	u.StartPort = startPort
 	u.require(updateEgressRuleDtoFieldStartPort)
 }
 
 // SetEndPort sets the EndPort field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (u *UpdateEgressRuleDto) SetEndPort(endPort *string) {
+func (u *UpdateEgressRuleDto) SetEndPort(endPort *int) {
 	u.EndPort = endPort
 	u.require(updateEgressRuleDtoFieldEndPort)
 }

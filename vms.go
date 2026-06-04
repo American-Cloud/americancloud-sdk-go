@@ -377,24 +377,24 @@ func (r *ResizeVMDiskDto) MarshalJSON() ([]byte, error) {
 }
 
 var (
-	scaleVmsRequestFieldID       = big.NewInt(1 << 0)
-	scaleVmsRequestFieldCPU      = big.NewInt(1 << 1)
-	scaleVmsRequestFieldMemoryMb = big.NewInt(1 << 2)
+	scaleVMDtoFieldID       = big.NewInt(1 << 0)
+	scaleVMDtoFieldCPU      = big.NewInt(1 << 1)
+	scaleVMDtoFieldMemoryMb = big.NewInt(1 << 2)
 )
 
-type ScaleVmsRequest struct {
+type ScaleVMDto struct {
 	// ID of the virtual machine
 	ID string `json:"-" url:"-"`
-	// Number of virtual CPUs (optional, but at least one of CPU or memory must be provided)
-	CPU *float64 `json:"-" url:"cpu,omitempty"`
-	// Memory in MB (optional, but at least one of CPU or memory must be provided)
-	MemoryMb *float64 `json:"-" url:"memoryMb,omitempty"`
+	// Number of virtual CPUs. Optional, but at least one of CPU or memory must be provided.
+	CPU *int `json:"cpu,omitempty" url:"-"`
+	// Memory in MB. Optional, but at least one of CPU or memory must be provided.
+	MemoryMb *int `json:"memoryMb,omitempty" url:"-"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
 }
 
-func (s *ScaleVmsRequest) require(field *big.Int) {
+func (s *ScaleVMDto) require(field *big.Int) {
 	if s.explicitFields == nil {
 		s.explicitFields = big.NewInt(0)
 	}
@@ -403,23 +403,44 @@ func (s *ScaleVmsRequest) require(field *big.Int) {
 
 // SetID sets the ID field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (s *ScaleVmsRequest) SetID(id string) {
+func (s *ScaleVMDto) SetID(id string) {
 	s.ID = id
-	s.require(scaleVmsRequestFieldID)
+	s.require(scaleVMDtoFieldID)
 }
 
 // SetCPU sets the CPU field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (s *ScaleVmsRequest) SetCPU(cpu *float64) {
+func (s *ScaleVMDto) SetCPU(cpu *int) {
 	s.CPU = cpu
-	s.require(scaleVmsRequestFieldCPU)
+	s.require(scaleVMDtoFieldCPU)
 }
 
 // SetMemoryMb sets the MemoryMb field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (s *ScaleVmsRequest) SetMemoryMb(memoryMb *float64) {
+func (s *ScaleVMDto) SetMemoryMb(memoryMb *int) {
 	s.MemoryMb = memoryMb
-	s.require(scaleVmsRequestFieldMemoryMb)
+	s.require(scaleVMDtoFieldMemoryMb)
+}
+
+func (s *ScaleVMDto) UnmarshalJSON(data []byte) error {
+	type unmarshaler ScaleVMDto
+	var body unmarshaler
+	if err := json.Unmarshal(data, &body); err != nil {
+		return err
+	}
+	*s = ScaleVMDto(body)
+	return nil
+}
+
+func (s *ScaleVMDto) MarshalJSON() ([]byte, error) {
+	type embed ScaleVMDto
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*s),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, s.explicitFields)
+	return json.Marshal(explicitMarshaler)
 }
 
 var (
@@ -447,8 +468,8 @@ type CreateVMDto struct {
 	VMSpecs *VMSpecsDto `json:"vmSpecs" url:"vmSpecs"`
 	// Image label to use for the VM
 	Image string `json:"image" url:"image"`
-	// UUID of pre-existing customer network
-	Network string `json:"network" url:"network"`
+	// UUID of a pre-existing network to attach the VM to. Omit to have an isolated network auto-created for the VM (post-create access is then configured via `networkAccess`).
+	Network *string `json:"network,omitempty" url:"network,omitempty"`
 	// Subscription period
 	SubscriptionPeriod CreateVMDtoSubscriptionPeriod `json:"subscriptionPeriod" url:"subscriptionPeriod"`
 	// List of tags to add to the VM
@@ -502,9 +523,9 @@ func (c *CreateVMDto) GetImage() string {
 	return c.Image
 }
 
-func (c *CreateVMDto) GetNetwork() string {
+func (c *CreateVMDto) GetNetwork() *string {
 	if c == nil {
-		return ""
+		return nil
 	}
 	return c.Network
 }
@@ -595,7 +616,7 @@ func (c *CreateVMDto) SetImage(image string) {
 
 // SetNetwork sets the Network field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateVMDto) SetNetwork(network string) {
+func (c *CreateVMDto) SetNetwork(network *string) {
 	c.Network = network
 	c.require(createVMDtoFieldNetwork)
 }
@@ -728,7 +749,7 @@ type CreateVMResponseDto struct {
 	ID string `json:"id" url:"id"`
 	// Human-readable name for the VM. Shown in dashboards and CLI output.
 	Name string `json:"name" url:"name"`
-	// Current lifecycle state of the VM.
+	// Current lifecycle state of the VM. Observed values include CREATING, STARTING, CREATED, STARTED, STOPPING, STOPPED, and DESTROYED. Treat this as an open set — new states may be introduced over time.
 	Status string `json:"status" url:"status"`
 	// Region the VM is provisioned in. References a region label from /v1/compute/regions.
 	Region string `json:"region" url:"region"`
@@ -750,12 +771,12 @@ type CreateVMResponseDto struct {
 	ImageDisplayName *string `json:"imageDisplayName,omitempty" url:"imageDisplayName,omitempty"`
 	// Primary IP address assigned to the VM on its network.
 	IPAddress string `json:"ipAddress" url:"ipAddress"`
-	// Name of the network or VPC tier this VM is attached to.
-	NetworkName string `json:"networkName" url:"networkName"`
-	// Identifier of the network or VPC tier this VM is attached to.
-	NetworkID string `json:"networkId" url:"networkId"`
-	// Identifier of the VM root volume.
-	RootVolumeID string `json:"rootVolumeId" url:"rootVolumeId"`
+	// Name of the network or VPC tier this VM is attached to. Null while the VM is still provisioning.
+	NetworkName *string `json:"networkName,omitempty" url:"networkName,omitempty"`
+	// Identifier of the network or VPC tier this VM is attached to. Null while the VM is still provisioning.
+	NetworkID *string `json:"networkId,omitempty" url:"networkId,omitempty"`
+	// Identifier of the VM root volume. Null while the VM is still provisioning.
+	RootVolumeID *string `json:"rootVolumeId,omitempty" url:"rootVolumeId,omitempty"`
 	// When the VM was first provisioned.
 	CreatedAt time.Time `json:"createdAt" url:"createdAt"`
 	// When the current billing version started (set when the VM is scaled or its disk is resized). Only present if the VM has been modified since creation.
@@ -863,23 +884,23 @@ func (c *CreateVMResponseDto) GetIPAddress() string {
 	return c.IPAddress
 }
 
-func (c *CreateVMResponseDto) GetNetworkName() string {
+func (c *CreateVMResponseDto) GetNetworkName() *string {
 	if c == nil {
-		return ""
+		return nil
 	}
 	return c.NetworkName
 }
 
-func (c *CreateVMResponseDto) GetNetworkID() string {
+func (c *CreateVMResponseDto) GetNetworkID() *string {
 	if c == nil {
-		return ""
+		return nil
 	}
 	return c.NetworkID
 }
 
-func (c *CreateVMResponseDto) GetRootVolumeID() string {
+func (c *CreateVMResponseDto) GetRootVolumeID() *string {
 	if c == nil {
-		return ""
+		return nil
 	}
 	return c.RootVolumeID
 }
@@ -1019,21 +1040,21 @@ func (c *CreateVMResponseDto) SetIPAddress(ipAddress string) {
 
 // SetNetworkName sets the NetworkName field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateVMResponseDto) SetNetworkName(networkName string) {
+func (c *CreateVMResponseDto) SetNetworkName(networkName *string) {
 	c.NetworkName = networkName
 	c.require(createVMResponseDtoFieldNetworkName)
 }
 
 // SetNetworkID sets the NetworkID field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateVMResponseDto) SetNetworkID(networkID string) {
+func (c *CreateVMResponseDto) SetNetworkID(networkID *string) {
 	c.NetworkID = networkID
 	c.require(createVMResponseDtoFieldNetworkID)
 }
 
 // SetRootVolumeID sets the RootVolumeID field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateVMResponseDto) SetRootVolumeID(rootVolumeID string) {
+func (c *CreateVMResponseDto) SetRootVolumeID(rootVolumeID *string) {
 	c.RootVolumeID = rootVolumeID
 	c.require(createVMResponseDtoFieldRootVolumeID)
 }
@@ -2324,7 +2345,7 @@ type VMResponseDto struct {
 	ID string `json:"id" url:"id"`
 	// Human-readable name for the VM. Shown in dashboards and CLI output.
 	Name string `json:"name" url:"name"`
-	// Current lifecycle state of the VM.
+	// Current lifecycle state of the VM. Observed values include CREATING, STARTING, CREATED, STARTED, STOPPING, STOPPED, and DESTROYED. Treat this as an open set — new states may be introduced over time.
 	Status string `json:"status" url:"status"`
 	// Region the VM is provisioned in. References a region label from /v1/compute/regions.
 	Region string `json:"region" url:"region"`
@@ -2346,12 +2367,12 @@ type VMResponseDto struct {
 	ImageDisplayName *string `json:"imageDisplayName,omitempty" url:"imageDisplayName,omitempty"`
 	// Primary IP address assigned to the VM on its network.
 	IPAddress string `json:"ipAddress" url:"ipAddress"`
-	// Name of the network or VPC tier this VM is attached to.
-	NetworkName string `json:"networkName" url:"networkName"`
-	// Identifier of the network or VPC tier this VM is attached to.
-	NetworkID string `json:"networkId" url:"networkId"`
-	// Identifier of the VM root volume.
-	RootVolumeID string `json:"rootVolumeId" url:"rootVolumeId"`
+	// Name of the network or VPC tier this VM is attached to. Null while the VM is still provisioning.
+	NetworkName *string `json:"networkName,omitempty" url:"networkName,omitempty"`
+	// Identifier of the network or VPC tier this VM is attached to. Null while the VM is still provisioning.
+	NetworkID *string `json:"networkId,omitempty" url:"networkId,omitempty"`
+	// Identifier of the VM root volume. Null while the VM is still provisioning.
+	RootVolumeID *string `json:"rootVolumeId,omitempty" url:"rootVolumeId,omitempty"`
 	// When the VM was first provisioned.
 	CreatedAt time.Time `json:"createdAt" url:"createdAt"`
 	// When the current billing version started (set when the VM is scaled or its disk is resized). Only present if the VM has been modified since creation.
@@ -2457,23 +2478,23 @@ func (v *VMResponseDto) GetIPAddress() string {
 	return v.IPAddress
 }
 
-func (v *VMResponseDto) GetNetworkName() string {
+func (v *VMResponseDto) GetNetworkName() *string {
 	if v == nil {
-		return ""
+		return nil
 	}
 	return v.NetworkName
 }
 
-func (v *VMResponseDto) GetNetworkID() string {
+func (v *VMResponseDto) GetNetworkID() *string {
 	if v == nil {
-		return ""
+		return nil
 	}
 	return v.NetworkID
 }
 
-func (v *VMResponseDto) GetRootVolumeID() string {
+func (v *VMResponseDto) GetRootVolumeID() *string {
 	if v == nil {
-		return ""
+		return nil
 	}
 	return v.RootVolumeID
 }
@@ -2606,21 +2627,21 @@ func (v *VMResponseDto) SetIPAddress(ipAddress string) {
 
 // SetNetworkName sets the NetworkName field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (v *VMResponseDto) SetNetworkName(networkName string) {
+func (v *VMResponseDto) SetNetworkName(networkName *string) {
 	v.NetworkName = networkName
 	v.require(vMResponseDtoFieldNetworkName)
 }
 
 // SetNetworkID sets the NetworkID field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (v *VMResponseDto) SetNetworkID(networkID string) {
+func (v *VMResponseDto) SetNetworkID(networkID *string) {
 	v.NetworkID = networkID
 	v.require(vMResponseDtoFieldNetworkID)
 }
 
 // SetRootVolumeID sets the RootVolumeID field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (v *VMResponseDto) SetRootVolumeID(rootVolumeID string) {
+func (v *VMResponseDto) SetRootVolumeID(rootVolumeID *string) {
 	v.RootVolumeID = rootVolumeID
 	v.require(vMResponseDtoFieldRootVolumeID)
 }

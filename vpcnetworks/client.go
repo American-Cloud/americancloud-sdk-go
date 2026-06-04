@@ -148,6 +148,74 @@ func (c *Client) CreateTierVpcNetworks(
 	return response.Body, nil
 }
 
+// Returns a single network tier of a VPC.
+func (c *Client) GetTierVpcNetworks(
+	ctx context.Context,
+	request *americancloudsdkgo.GetTierVpcNetworksRequest,
+	opts ...option.RequestOption,
+) (*americancloudsdkgo.VpcTierDetailResponseDto, error) {
+	response, err := c.WithRawResponse.GetTierVpcNetworks(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return response.Body, nil
+}
+
+// Updates the name and/or description of a network tier.
+func (c *Client) UpdateTierVpcNetworks(
+	ctx context.Context,
+	request *americancloudsdkgo.UpdateVpcTierDto,
+	opts ...option.RequestOption,
+) (*americancloudsdkgo.VpcTierDetailResponseDto, error) {
+	response, err := c.WithRawResponse.UpdateTierVpcNetworks(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return response.Body, nil
+}
+
+// Deletes a single network tier from a VPC, leaving the rest of the VPC intact.
+func (c *Client) DeleteTierVpcNetworks(
+	ctx context.Context,
+	request *americancloudsdkgo.DeleteTierVpcNetworksRequest,
+	opts ...option.RequestOption,
+) error {
+	_, err := c.WithRawResponse.DeleteTierVpcNetworks(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// Restarts a single network tier of a VPC.
+func (c *Client) RestartTierVpcNetworks(
+	ctx context.Context,
+	request *americancloudsdkgo.RestartTierVpcNetworksRequest,
+	opts ...option.RequestOption,
+) error {
+	_, err := c.WithRawResponse.RestartTierVpcNetworks(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 func (c *Client) RestartVpcNetworks(
 	ctx context.Context,
 	request *americancloudsdkgo.RestartVpcNetworksRequest,

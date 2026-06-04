@@ -1,5 +1,5 @@
 {
-  "cliVersion": "5.41.2",
+  "cliVersion": "5.44.9",
   "generatorName": "fernapi/fern-go-sdk",
   "generatorVersion": "1.43.0",
   "generatorConfig": {
@@ -7,7 +7,7 @@
       "path": "github.com/American-Cloud/americancloud-sdk-go"
     }
   },
-  "originGitCommit": "583f1333d5be1fca696a6e3dcfe8c1c9d4c36d74",
+  "originGitCommit": "5bf7971142d52ad7123714ede3891a84cce3beb0",
   "originGitCommitIsDirty": true,
   "invokedBy": "manual"
 }

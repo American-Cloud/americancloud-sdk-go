@@ -766,9 +766,9 @@ func TestSettersMarkExplicitResizeVMDiskDto(t *testing.T) {
 
 }
 
-func TestSettersScaleVmsRequest(t *testing.T) {
+func TestSettersScaleVMDto(t *testing.T) {
 	t.Run("SetID", func(t *testing.T) {
-		obj := &ScaleVmsRequest{}
+		obj := &ScaleVMDto{}
 		var fernTestValueID string
 		obj.SetID(fernTestValueID)
 		assert.Equal(t, fernTestValueID, obj.ID)
@@ -776,16 +776,16 @@ func TestSettersScaleVmsRequest(t *testing.T) {
 	})
 
 	t.Run("SetCPU", func(t *testing.T) {
-		obj := &ScaleVmsRequest{}
-		var fernTestValueCPU *float64
+		obj := &ScaleVMDto{}
+		var fernTestValueCPU *int
 		obj.SetCPU(fernTestValueCPU)
 		assert.Equal(t, fernTestValueCPU, obj.CPU)
 		assert.NotNil(t, obj.explicitFields)
 	})
 
 	t.Run("SetMemoryMb", func(t *testing.T) {
-		obj := &ScaleVmsRequest{}
-		var fernTestValueMemoryMb *float64
+		obj := &ScaleVMDto{}
+		var fernTestValueMemoryMb *int
 		obj.SetMemoryMb(fernTestValueMemoryMb)
 		assert.Equal(t, fernTestValueMemoryMb, obj.MemoryMb)
 		assert.NotNil(t, obj.explicitFields)
@@ -793,11 +793,11 @@ func TestSettersScaleVmsRequest(t *testing.T) {
 
 }
 
-func TestSettersMarkExplicitScaleVmsRequest(t *testing.T) {
+func TestSettersMarkExplicitScaleVMDto(t *testing.T) {
 	t.Run("SetID_MarksExplicit", func(t *testing.T) {
 		t.Parallel()
 		// Arrange
-		obj := &ScaleVmsRequest{}
+		obj := &ScaleVMDto{}
 		var fernTestValueID string
 
 		// Act
@@ -828,8 +828,8 @@ func TestSettersMarkExplicitScaleVmsRequest(t *testing.T) {
 	t.Run("SetCPU_MarksExplicit", func(t *testing.T) {
 		t.Parallel()
 		// Arrange
-		obj := &ScaleVmsRequest{}
-		var fernTestValueCPU *float64
+		obj := &ScaleVMDto{}
+		var fernTestValueCPU *int
 
 		// Act
 		obj.SetCPU(fernTestValueCPU)
@@ -859,8 +859,8 @@ func TestSettersMarkExplicitScaleVmsRequest(t *testing.T) {
 	t.Run("SetMemoryMb_MarksExplicit", func(t *testing.T) {
 		t.Parallel()
 		// Arrange
-		obj := &ScaleVmsRequest{}
-		var fernTestValueMemoryMb *float64
+		obj := &ScaleVMDto{}
+		var fernTestValueMemoryMb *int
 
 		// Act
 		obj.SetMemoryMb(fernTestValueMemoryMb)
@@ -932,7 +932,7 @@ func TestSettersCreateVMDto(t *testing.T) {
 
 	t.Run("SetNetwork", func(t *testing.T) {
 		obj := &CreateVMDto{}
-		var fernTestValueNetwork string
+		var fernTestValueNetwork *string
 		obj.SetNetwork(fernTestValueNetwork)
 		assert.Equal(t, fernTestValueNetwork, obj.Network)
 		assert.NotNil(t, obj.explicitFields)
@@ -1110,11 +1110,21 @@ func TestGettersCreateVMDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateVMDto{}
-		var expected string
+		var expected *string
 		obj.Network = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetNetwork(), "getter should return the property value")
+	})
+
+	t.Run("GetNetwork_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateVMDto{}
+		obj.Network = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetNetwork(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetNetwork_NilReceiver", func(t *testing.T) {
@@ -1446,7 +1456,7 @@ func TestSettersMarkExplicitCreateVMDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateVMDto{}
-		var fernTestValueNetwork string
+		var fernTestValueNetwork *string
 
 		// Act
 		obj.SetNetwork(fernTestValueNetwork)
@@ -1737,7 +1747,7 @@ func TestSettersCreateVMResponseDto(t *testing.T) {
 
 	t.Run("SetNetworkName", func(t *testing.T) {
 		obj := &CreateVMResponseDto{}
-		var fernTestValueNetworkName string
+		var fernTestValueNetworkName *string
 		obj.SetNetworkName(fernTestValueNetworkName)
 		assert.Equal(t, fernTestValueNetworkName, obj.NetworkName)
 		assert.NotNil(t, obj.explicitFields)
@@ -1745,7 +1755,7 @@ func TestSettersCreateVMResponseDto(t *testing.T) {
 
 	t.Run("SetNetworkID", func(t *testing.T) {
 		obj := &CreateVMResponseDto{}
-		var fernTestValueNetworkID string
+		var fernTestValueNetworkID *string
 		obj.SetNetworkID(fernTestValueNetworkID)
 		assert.Equal(t, fernTestValueNetworkID, obj.NetworkID)
 		assert.NotNil(t, obj.explicitFields)
@@ -1753,7 +1763,7 @@ func TestSettersCreateVMResponseDto(t *testing.T) {
 
 	t.Run("SetRootVolumeID", func(t *testing.T) {
 		obj := &CreateVMResponseDto{}
-		var fernTestValueRootVolumeID string
+		var fernTestValueRootVolumeID *string
 		obj.SetRootVolumeID(fernTestValueRootVolumeID)
 		assert.Equal(t, fernTestValueRootVolumeID, obj.RootVolumeID)
 		assert.NotNil(t, obj.explicitFields)
@@ -2127,11 +2137,21 @@ func TestGettersCreateVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateVMResponseDto{}
-		var expected string
+		var expected *string
 		obj.NetworkName = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetNetworkName(), "getter should return the property value")
+	})
+
+	t.Run("GetNetworkName_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateVMResponseDto{}
+		obj.NetworkName = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetNetworkName(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetNetworkName_NilReceiver", func(t *testing.T) {
@@ -2150,11 +2170,21 @@ func TestGettersCreateVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateVMResponseDto{}
-		var expected string
+		var expected *string
 		obj.NetworkID = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetNetworkID(), "getter should return the property value")
+	})
+
+	t.Run("GetNetworkID_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateVMResponseDto{}
+		obj.NetworkID = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetNetworkID(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetNetworkID_NilReceiver", func(t *testing.T) {
@@ -2173,11 +2203,21 @@ func TestGettersCreateVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateVMResponseDto{}
-		var expected string
+		var expected *string
 		obj.RootVolumeID = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetRootVolumeID(), "getter should return the property value")
+	})
+
+	t.Run("GetRootVolumeID_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateVMResponseDto{}
+		obj.RootVolumeID = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetRootVolumeID(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetRootVolumeID_NilReceiver", func(t *testing.T) {
@@ -2714,7 +2754,7 @@ func TestSettersMarkExplicitCreateVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateVMResponseDto{}
-		var fernTestValueNetworkName string
+		var fernTestValueNetworkName *string
 
 		// Act
 		obj.SetNetworkName(fernTestValueNetworkName)
@@ -2745,7 +2785,7 @@ func TestSettersMarkExplicitCreateVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateVMResponseDto{}
-		var fernTestValueNetworkID string
+		var fernTestValueNetworkID *string
 
 		// Act
 		obj.SetNetworkID(fernTestValueNetworkID)
@@ -2776,7 +2816,7 @@ func TestSettersMarkExplicitCreateVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateVMResponseDto{}
-		var fernTestValueRootVolumeID string
+		var fernTestValueRootVolumeID *string
 
 		// Act
 		obj.SetRootVolumeID(fernTestValueRootVolumeID)
@@ -4798,7 +4838,7 @@ func TestSettersVMResponseDto(t *testing.T) {
 
 	t.Run("SetNetworkName", func(t *testing.T) {
 		obj := &VMResponseDto{}
-		var fernTestValueNetworkName string
+		var fernTestValueNetworkName *string
 		obj.SetNetworkName(fernTestValueNetworkName)
 		assert.Equal(t, fernTestValueNetworkName, obj.NetworkName)
 		assert.NotNil(t, obj.explicitFields)
@@ -4806,7 +4846,7 @@ func TestSettersVMResponseDto(t *testing.T) {
 
 	t.Run("SetNetworkID", func(t *testing.T) {
 		obj := &VMResponseDto{}
-		var fernTestValueNetworkID string
+		var fernTestValueNetworkID *string
 		obj.SetNetworkID(fernTestValueNetworkID)
 		assert.Equal(t, fernTestValueNetworkID, obj.NetworkID)
 		assert.NotNil(t, obj.explicitFields)
@@ -4814,7 +4854,7 @@ func TestSettersVMResponseDto(t *testing.T) {
 
 	t.Run("SetRootVolumeID", func(t *testing.T) {
 		obj := &VMResponseDto{}
-		var fernTestValueRootVolumeID string
+		var fernTestValueRootVolumeID *string
 		obj.SetRootVolumeID(fernTestValueRootVolumeID)
 		assert.Equal(t, fernTestValueRootVolumeID, obj.RootVolumeID)
 		assert.NotNil(t, obj.explicitFields)
@@ -5180,11 +5220,21 @@ func TestGettersVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &VMResponseDto{}
-		var expected string
+		var expected *string
 		obj.NetworkName = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetNetworkName(), "getter should return the property value")
+	})
+
+	t.Run("GetNetworkName_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &VMResponseDto{}
+		obj.NetworkName = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetNetworkName(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetNetworkName_NilReceiver", func(t *testing.T) {
@@ -5203,11 +5253,21 @@ func TestGettersVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &VMResponseDto{}
-		var expected string
+		var expected *string
 		obj.NetworkID = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetNetworkID(), "getter should return the property value")
+	})
+
+	t.Run("GetNetworkID_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &VMResponseDto{}
+		obj.NetworkID = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetNetworkID(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetNetworkID_NilReceiver", func(t *testing.T) {
@@ -5226,11 +5286,21 @@ func TestGettersVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &VMResponseDto{}
-		var expected string
+		var expected *string
 		obj.RootVolumeID = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetRootVolumeID(), "getter should return the property value")
+	})
+
+	t.Run("GetRootVolumeID_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &VMResponseDto{}
+		obj.RootVolumeID = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetRootVolumeID(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetRootVolumeID_NilReceiver", func(t *testing.T) {
@@ -5744,7 +5814,7 @@ func TestSettersMarkExplicitVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &VMResponseDto{}
-		var fernTestValueNetworkName string
+		var fernTestValueNetworkName *string
 
 		// Act
 		obj.SetNetworkName(fernTestValueNetworkName)
@@ -5775,7 +5845,7 @@ func TestSettersMarkExplicitVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &VMResponseDto{}
-		var fernTestValueNetworkID string
+		var fernTestValueNetworkID *string
 
 		// Act
 		obj.SetNetworkID(fernTestValueNetworkID)
@@ -5806,7 +5876,7 @@ func TestSettersMarkExplicitVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &VMResponseDto{}
-		var fernTestValueRootVolumeID string
+		var fernTestValueRootVolumeID *string
 
 		// Act
 		obj.SetRootVolumeID(fernTestValueRootVolumeID)

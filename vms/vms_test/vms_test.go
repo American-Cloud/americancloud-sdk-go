@@ -122,7 +122,6 @@ func TestVmsCreateVmsWithWireMock(
 			RootDiskGb: 50,
 		},
 		Image:              "ubuntu-22.04",
-		Network:            "network-uuid",
 		SubscriptionPeriod: americancloudsdkgo.CreateVMDtoSubscriptionPeriodHourly,
 	}
 	_, invocationErr := client.Vms.CreateVms(
@@ -266,7 +265,6 @@ func TestVmsGetCostEstimateVmsWithWireMock(
 			RootDiskGb: 50,
 		},
 		Image:              "ubuntu-22.04",
-		Network:            "network-uuid",
 		SubscriptionPeriod: americancloudsdkgo.CreateVMDtoSubscriptionPeriodHourly,
 	}
 	_, invocationErr := client.Vms.GetCostEstimateVms(
@@ -322,14 +320,8 @@ func TestVmsScaleVmsWithWireMock(
 		option.WithBaseURL(WireMockBaseURL),
 		option.WithAPIKey("test-value"),
 	)
-	request := &americancloudsdkgo.ScaleVmsRequest{
+	request := &americancloudsdkgo.ScaleVMDto{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
-		CPU: americancloudsdkgo.Float64(
-			4,
-		),
-		MemoryMb: americancloudsdkgo.Float64(
-			4096,
-		),
 	}
 	invocationErr := client.Vms.ScaleVms(
 		context.TODO(),
@@ -340,7 +332,7 @@ func TestVmsScaleVmsWithWireMock(
 	)
 
 	require.NoError(t, invocationErr, "Client method call should succeed")
-	VerifyRequestCount(t, "TestVmsScaleVmsWithWireMock", "PUT", "/api/v1/compute/vms/123e4567-e89b-12d3-a456-426614174000/scale", map[string]interface{}{"cpu": "4", "memoryMb": "4096"}, 1)
+	VerifyRequestCount(t, "TestVmsScaleVmsWithWireMock", "PUT", "/api/v1/compute/vms/123e4567-e89b-12d3-a456-426614174000/scale", nil, 1)
 }
 
 func TestVmsResizeDiskVmsWithWireMock(
