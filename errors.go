@@ -31,7 +31,7 @@ func (b *BadRequestError) Unwrap() error {
 	return b.APIError
 }
 
-// An operation is already in progress
+// The network still has attached resources and cannot be deleted yet
 type ConflictError struct {
 	*core.APIError
 	Body *APIErrorDto
@@ -77,6 +77,30 @@ func (f *ForbiddenError) MarshalJSON() ([]byte, error) {
 
 func (f *ForbiddenError) Unwrap() error {
 	return f.APIError
+}
+
+// Network deletion is still in progress; retry to confirm
+type GatewayTimeoutError struct {
+	*core.APIError
+	Body *APIErrorDto
+}
+
+func (g *GatewayTimeoutError) UnmarshalJSON(data []byte) error {
+	var body *APIErrorDto
+	if err := json.Unmarshal(data, &body); err != nil {
+		return err
+	}
+	g.StatusCode = 504
+	g.Body = body
+	return nil
+}
+
+func (g *GatewayTimeoutError) MarshalJSON() ([]byte, error) {
+	return json.Marshal(g.Body)
+}
+
+func (g *GatewayTimeoutError) Unwrap() error {
+	return g.APIError
 }
 
 // An unexpected error occurred on the server.
