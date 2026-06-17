@@ -260,7 +260,7 @@ var (
 type ResetPasswordDto struct {
 	// ID of the virtual machine
 	ID string `json:"-" url:"-"`
-	// Custom password to set for the VM. If not provided, a random password will be generated.
+	// Custom password to set for the VM. If not provided, a random password will be generated. May contain letters, digits, and symbols only (printable ASCII, no spaces).
 	Password *string `json:"password,omitempty" url:"-"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted

@@ -510,6 +510,71 @@ func (b *BackupClusterConfigResponseDto) String() string {
 	return fmt.Sprintf("%#v", b)
 }
 
+type BackupConfigUpdateResponseDto struct {
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (b *BackupConfigUpdateResponseDto) GetExtraProperties() map[string]interface{} {
+	if b == nil {
+		return nil
+	}
+	return b.extraProperties
+}
+
+func (b *BackupConfigUpdateResponseDto) require(field *big.Int) {
+	if b.explicitFields == nil {
+		b.explicitFields = big.NewInt(0)
+	}
+	b.explicitFields.Or(b.explicitFields, field)
+}
+
+func (b *BackupConfigUpdateResponseDto) UnmarshalJSON(data []byte) error {
+	type unmarshaler BackupConfigUpdateResponseDto
+	var value unmarshaler
+	if err := json.Unmarshal(data, &value); err != nil {
+		return err
+	}
+	*b = BackupConfigUpdateResponseDto(value)
+	extraProperties, err := internal.ExtractExtraProperties(data, *b)
+	if err != nil {
+		return err
+	}
+	b.extraProperties = extraProperties
+	b.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (b *BackupConfigUpdateResponseDto) MarshalJSON() ([]byte, error) {
+	type embed BackupConfigUpdateResponseDto
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*b),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, b.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (b *BackupConfigUpdateResponseDto) String() string {
+	if b == nil {
+		return "<nil>"
+	}
+	if len(b.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(b.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(b); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", b)
+}
+
 type BackupDeleteResponseDto struct {
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
@@ -1262,6 +1327,73 @@ func NewTriggerBackupRequestDtoDeletionPolicyFromString(s string) (TriggerBackup
 
 func (t TriggerBackupRequestDtoDeletionPolicy) Ptr() *TriggerBackupRequestDtoDeletionPolicy {
 	return &t
+}
+
+var (
+	updateBackupConfigRequestDtoFieldClusterID         = big.NewInt(1 << 0)
+	updateBackupConfigRequestDtoFieldEncryptionEnabled = big.NewInt(1 << 1)
+	updateBackupConfigRequestDtoFieldPassphrase        = big.NewInt(1 << 2)
+)
+
+type UpdateBackupConfigRequestDto struct {
+	// Database cluster ID
+	ClusterID string `json:"-" url:"-"`
+	// Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
+	EncryptionEnabled bool `json:"encryptionEnabled" url:"-"`
+	// Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+	Passphrase *string `json:"passphrase,omitempty" url:"-"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+}
+
+func (u *UpdateBackupConfigRequestDto) require(field *big.Int) {
+	if u.explicitFields == nil {
+		u.explicitFields = big.NewInt(0)
+	}
+	u.explicitFields.Or(u.explicitFields, field)
+}
+
+// SetClusterID sets the ClusterID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (u *UpdateBackupConfigRequestDto) SetClusterID(clusterID string) {
+	u.ClusterID = clusterID
+	u.require(updateBackupConfigRequestDtoFieldClusterID)
+}
+
+// SetEncryptionEnabled sets the EncryptionEnabled field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (u *UpdateBackupConfigRequestDto) SetEncryptionEnabled(encryptionEnabled bool) {
+	u.EncryptionEnabled = encryptionEnabled
+	u.require(updateBackupConfigRequestDtoFieldEncryptionEnabled)
+}
+
+// SetPassphrase sets the Passphrase field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (u *UpdateBackupConfigRequestDto) SetPassphrase(passphrase *string) {
+	u.Passphrase = passphrase
+	u.require(updateBackupConfigRequestDtoFieldPassphrase)
+}
+
+func (u *UpdateBackupConfigRequestDto) UnmarshalJSON(data []byte) error {
+	type unmarshaler UpdateBackupConfigRequestDto
+	var body unmarshaler
+	if err := json.Unmarshal(data, &body); err != nil {
+		return err
+	}
+	*u = UpdateBackupConfigRequestDto(body)
+	return nil
+}
+
+func (u *UpdateBackupConfigRequestDto) MarshalJSON() ([]byte, error) {
+	type embed UpdateBackupConfigRequestDto
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*u),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, u.explicitFields)
+	return json.Marshal(explicitMarshaler)
 }
 
 var (

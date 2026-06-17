@@ -247,7 +247,7 @@ client.Vms.ResetPasswordVms(
 <dl>
 <dd>
 
-**password:** `*string` — Custom password to set for the VM. If not provided, a random password will be generated.
+**password:** `*string` — Custom password to set for the VM. If not provided, a random password will be generated. May contain letters, digits, and symbols only (printable ASCII, no spaces).
     
 </dd>
 </dl>
@@ -6074,6 +6074,84 @@ client.DatabaseBackups.GetConfigDatabaseBackups(
 </dl>
 </details>
 
+<details><summary><code>client.DatabaseBackups.UpdateConfigDatabaseBackups(ClusterID, request) -> *americancloudsdkgo.BackupConfigUpdateResponseDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Enable or disable encryption of this cluster’s backups. When enabling, provide a passphrase; keep it safe, as it is required to restore the resulting backups.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.UpdateBackupConfigRequestDto{
+        ClusterID: "123e4567-e89b-12d3-a456-426614174000",
+        EncryptionEnabled: true,
+    }
+client.DatabaseBackups.UpdateConfigDatabaseBackups(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**clusterID:** `string` — Database cluster ID
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**encryptionEnabled:** `bool` — Whether backups for this cluster should be encrypted at rest. When enabled, backups are encrypted with AES-256-CFB.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**passphrase:** `*string` — Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.DatabaseBackups.GetScheduleDatabaseBackups(ClusterID) -> *americancloudsdkgo.BackupScheduleListResponseDto</code></summary>
 <dl>
 <dd>
@@ -6839,7 +6917,7 @@ request := &americancloudsdkgo.SetupBackupRepoRequestDto{
         UserClusterID: "123e4567-e89b-12d3-a456-426614174000",
         RepoName: "primary-backup-repo",
         Bucket: "my-storage-bucket",
-        Endpoint: "https://s3.example.com",
+        Endpoint: "s3.example.com",
         AccessKeyID: "AKIAIOSFODNN7EXAMPLE",
         AccessKeySecret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
     }
@@ -6878,7 +6956,7 @@ client.DatabaseInfrastructure.CreateBackupRepoDatabaseInfrastructure(
 <dl>
 <dd>
 
-**bucket:** `string` — S3 bucket backups are stored in.
+**bucket:** `string` — Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
     
 </dd>
 </dl>
@@ -6886,7 +6964,7 @@ client.DatabaseInfrastructure.CreateBackupRepoDatabaseInfrastructure(
 <dl>
 <dd>
 
-**endpoint:** `string` — S3-compatible endpoint URL to use for the bucket.
+**endpoint:** `string` — Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
     
 </dd>
 </dl>
@@ -6939,7 +7017,7 @@ request := &americancloudsdkgo.UpdateBackupRepoRequestDto{
         UserClusterID: "123e4567-e89b-12d3-a456-426614174000",
         RepoName: "primary-backup-repo",
         Bucket: "my-storage-bucket",
-        Endpoint: "https://s3.example.com",
+        Endpoint: "s3.example.com",
         AccessKeyID: "AKIAIOSFODNN7EXAMPLE",
         AccessKeySecret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
     }
@@ -6978,7 +7056,7 @@ client.DatabaseInfrastructure.UpdateBackupRepoDatabaseInfrastructure(
 <dl>
 <dd>
 
-**bucket:** `string` — S3 bucket backups are stored in.
+**bucket:** `string` — Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
     
 </dd>
 </dl>
@@ -6986,7 +7064,7 @@ client.DatabaseInfrastructure.UpdateBackupRepoDatabaseInfrastructure(
 <dl>
 <dd>
 
-**endpoint:** `string` — S3-compatible endpoint URL to use for the bucket.
+**endpoint:** `string` — Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
     
 </dd>
 </dl>

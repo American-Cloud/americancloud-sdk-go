@@ -168,7 +168,7 @@ func TestDatabaseInfrastructureCreateBackupRepoDatabaseInfrastructureWithWireMoc
 		UserClusterID:   "123e4567-e89b-12d3-a456-426614174000",
 		RepoName:        "primary-backup-repo",
 		Bucket:          "my-storage-bucket",
-		Endpoint:        "https://s3.example.com",
+		Endpoint:        "s3.example.com",
 		AccessKeyID:     "AKIAIOSFODNN7EXAMPLE",
 		AccessKeySecret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
 	}
@@ -199,7 +199,7 @@ func TestDatabaseInfrastructureUpdateBackupRepoDatabaseInfrastructureWithWireMoc
 		UserClusterID:   "123e4567-e89b-12d3-a456-426614174000",
 		RepoName:        "primary-backup-repo",
 		Bucket:          "my-storage-bucket",
-		Endpoint:        "https://s3.example.com",
+		Endpoint:        "s3.example.com",
 		AccessKeyID:     "AKIAIOSFODNN7EXAMPLE",
 		AccessKeySecret: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
 	}

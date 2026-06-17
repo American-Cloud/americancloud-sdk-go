@@ -216,6 +216,53 @@ func (r *RawClient) GetConfigDatabaseBackups(
 	}, nil
 }
 
+func (r *RawClient) UpdateConfigDatabaseBackups(
+	ctx context.Context,
+	request *americancloudsdkgo.UpdateBackupConfigRequestDto,
+	opts ...option.RequestOption,
+) (*core.Response[*americancloudsdkgo.BackupConfigUpdateResponseDto], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := internal.EncodeURL(
+		baseURL+"/api/v1/databases/clusters/%v/backups/config",
+		request.ClusterID,
+	)
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	headers.Add("Content-Type", "application/json")
+	var response *americancloudsdkgo.BackupConfigUpdateResponseDto
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodPatch,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			Request:         request,
+			Response:        &response,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[*americancloudsdkgo.BackupConfigUpdateResponseDto]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       response,
+	}, nil
+}
+
 func (r *RawClient) GetScheduleDatabaseBackups(
 	ctx context.Context,
 	request *americancloudsdkgo.GetScheduleDatabaseBackupsRequest,

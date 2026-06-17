@@ -3411,6 +3411,42 @@
       }
     },
     {
+      "id": "7220b453-e98d-4d70-95e8-a10c96a3bb0d",
+      "name": "Update backup configuration for a database cluster - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/config",
+        "method": "PATCH",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "clusterId": {
+            "equalTo": "123e4567-e89b-12d3-a456-426614174000"
+          }
+        }
+      },
+      "response": {
+        "status": 202,
+        "body": "{}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "7220b453-e98d-4d70-95e8-a10c96a3bb0d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
       "id": "c1c1971f-838a-4378-845d-e5b7e1c4700d",
       "name": "Get backup schedules for a database cluster - default",
       "request": {
@@ -6117,6 +6153,6 @@
     }
   ],
   "meta": {
-    "total": 174
+    "total": 175
   }
 }

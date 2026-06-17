@@ -187,6 +187,33 @@ func TestDatabaseBackupsGetConfigDatabaseBackupsWithWireMock(
 	VerifyRequestCount(t, "TestDatabaseBackupsGetConfigDatabaseBackupsWithWireMock", "GET", "/api/v1/databases/clusters/123e4567-e89b-12d3-a456-426614174000/backups/config", nil, 1)
 }
 
+func TestDatabaseBackupsUpdateConfigDatabaseBackupsWithWireMock(
+	t *testing.T,
+) {
+	WireMockBaseURL := os.Getenv("WIREMOCK_URL")
+	if WireMockBaseURL == "" {
+		WireMockBaseURL = "http://localhost:8080"
+	}
+	client := client.NewClient(
+		option.WithBaseURL(WireMockBaseURL),
+		option.WithAPIKey("test-value"),
+	)
+	request := &americancloudsdkgo.UpdateBackupConfigRequestDto{
+		ClusterID:         "123e4567-e89b-12d3-a456-426614174000",
+		EncryptionEnabled: true,
+	}
+	_, invocationErr := client.DatabaseBackups.UpdateConfigDatabaseBackups(
+		context.TODO(),
+		request,
+		option.WithHTTPHeader(
+			http.Header{"X-Test-Id": []string{"TestDatabaseBackupsUpdateConfigDatabaseBackupsWithWireMock"}},
+		),
+	)
+
+	require.NoError(t, invocationErr, "Client method call should succeed")
+	VerifyRequestCount(t, "TestDatabaseBackupsUpdateConfigDatabaseBackupsWithWireMock", "PATCH", "/api/v1/databases/clusters/123e4567-e89b-12d3-a456-426614174000/backups/config", nil, 1)
+}
+
 func TestDatabaseBackupsGetScheduleDatabaseBackupsWithWireMock(
 	t *testing.T,
 ) {

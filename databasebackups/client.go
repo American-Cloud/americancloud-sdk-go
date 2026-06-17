@@ -98,6 +98,23 @@ func (c *Client) GetConfigDatabaseBackups(
 	return response.Body, nil
 }
 
+// Enable or disable encryption of this cluster’s backups. When enabling, provide a passphrase; keep it safe, as it is required to restore the resulting backups.
+func (c *Client) UpdateConfigDatabaseBackups(
+	ctx context.Context,
+	request *americancloudsdkgo.UpdateBackupConfigRequestDto,
+	opts ...option.RequestOption,
+) (*americancloudsdkgo.BackupConfigUpdateResponseDto, error) {
+	response, err := c.WithRawResponse.UpdateConfigDatabaseBackups(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return response.Body, nil
+}
+
 func (c *Client) GetScheduleDatabaseBackups(
 	ctx context.Context,
 	request *americancloudsdkgo.GetScheduleDatabaseBackupsRequest,

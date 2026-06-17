@@ -24,9 +24,9 @@ type SetupBackupRepoRequestDto struct {
 	UserClusterID string `json:"-" url:"-"`
 	// Name for the backup repository.
 	RepoName string `json:"repoName" url:"-"`
-	// S3 bucket backups are stored in.
+	// Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 	Bucket string `json:"bucket" url:"-"`
-	// S3-compatible endpoint URL to use for the bucket.
+	// Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 	Endpoint string `json:"endpoint" url:"-"`
 	// S3 access key identifier with access to the bucket.
 	AccessKeyID string `json:"accessKeyId" url:"-"`
@@ -564,9 +564,9 @@ type UpdateBackupRepoRequestDto struct {
 	UserClusterID string `json:"-" url:"-"`
 	// Name for the backup repository.
 	RepoName string `json:"repoName" url:"-"`
-	// S3 bucket backups are stored in.
+	// Name of the S3 bucket backups are stored in. Provide the bucket name only — no path or account/tenant prefix.
 	Bucket string `json:"bucket" url:"-"`
-	// S3-compatible endpoint URL to use for the bucket.
+	// Hostname of your S3-compatible endpoint (for example, "s3.example.com"), optionally with a port. Provide the host only — connections always use HTTPS.
 	Endpoint string `json:"endpoint" url:"-"`
 	// S3 access key identifier with access to the bucket.
 	AccessKeyID string `json:"accessKeyId" url:"-"`
