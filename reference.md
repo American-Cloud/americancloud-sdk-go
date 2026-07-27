@@ -310,6 +310,20 @@ client.Vms.GetVms(
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched.
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>
@@ -3368,6 +3382,14 @@ client.PortForwarding.CreatePortForwarding(
 <dd>
 
 **openFirewall:** `*string` — When `true`, automatically creates a matching firewall rule alongside the port forwarding rule.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**tierID:** `*string` — For a public IP reserved in a VPC, the VPC tier the rule applies to. A VPC IP is not bound to any single tier, so the rule must target one. You only need to set this when the VM has interfaces in more than one tier of the VPC — otherwise the tier is determined automatically from the VM. Ignored for IPs reserved in an isolated network.
     
 </dd>
 </dl>

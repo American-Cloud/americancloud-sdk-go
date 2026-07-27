@@ -17,6 +17,7 @@ var (
 	createPortForwardingRuleDtoFieldProtocol     = big.NewInt(1 << 3)
 	createPortForwardingRuleDtoFieldVmId         = big.NewInt(1 << 4)
 	createPortForwardingRuleDtoFieldOpenFirewall = big.NewInt(1 << 5)
+	createPortForwardingRuleDtoFieldTierID       = big.NewInt(1 << 6)
 )
 
 type CreatePortForwardingRuleDto struct {
@@ -32,6 +33,8 @@ type CreatePortForwardingRuleDto struct {
 	VmId string `json:"vmId" url:"-"`
 	// When `true`, automatically creates a matching firewall rule alongside the port forwarding rule.
 	OpenFirewall *string `json:"openFirewall,omitempty" url:"-"`
+	// For a public IP reserved in a VPC, the VPC tier the rule applies to. A VPC IP is not bound to any single tier, so the rule must target one. You only need to set this when the VM has interfaces in more than one tier of the VPC — otherwise the tier is determined automatically from the VM. Ignored for IPs reserved in an isolated network.
+	TierID *string `json:"tierId,omitempty" url:"-"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -84,6 +87,13 @@ func (c *CreatePortForwardingRuleDto) SetVmId(vmId string) {
 func (c *CreatePortForwardingRuleDto) SetOpenFirewall(openFirewall *string) {
 	c.OpenFirewall = openFirewall
 	c.require(createPortForwardingRuleDtoFieldOpenFirewall)
+}
+
+// SetTierID sets the TierID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *CreatePortForwardingRuleDto) SetTierID(tierID *string) {
+	c.TierID = tierID
+	c.require(createPortForwardingRuleDtoFieldTierID)
 }
 
 func (c *CreatePortForwardingRuleDto) UnmarshalJSON(data []byte) error {
