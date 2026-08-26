@@ -229,7 +229,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Nothing is charged now. Usage appears on your monthly bill, with a minimum of $5/month for 250 GB, prorated for your first partial month.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -806,7 +806,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"net-1a2b3c4d\",\n      \"name\": \"Production Network\",\n      \"description\": \"Production Network\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"status\": \"Active\",\n      \"region\": \"us-east-1\",\n      \"createdAt\": \"2023-05-15T10:30:00Z\",\n      \"type\": \"Isolated\",\n      \"aclType\": \"Account\"\n    }\n  ]\n}",
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"net-1a2b3c4d\",\n      \"name\": \"Production Network\",\n      \"description\": \"Production Network\",\n      \"cidr\": \"10.1.1.0/24\",\n      \"gateway\": \"10.1.1.1\",\n      \"status\": \"Active\",\n      \"region\": \"us-east-1\",\n      \"createdAt\": \"2023-05-15T10:30:00Z\",\n      \"type\": \"Isolated\",\n      \"aclType\": \"Account\",\n      \"defaultEgressPolicy\": \"allow\"\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -838,7 +838,7 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\"\n}",
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\",\n  \"defaultEgressPolicy\": \"allow\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -874,7 +874,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\",\n  \"ipAddresses\": [\n    \"10.1.1.5\",\n    \"10.1.1.6\"\n  ]\n}",
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\",\n  \"defaultEgressPolicy\": \"allow\",\n  \"ipAddresses\": [\n    \"10.1.1.5\",\n    \"10.1.1.6\"\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -910,7 +910,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\"\n}",
+        "body": "{\n  \"id\": \"net-1a2b3c4d\",\n  \"name\": \"Production Network\",\n  \"description\": \"Production Network\",\n  \"cidr\": \"10.1.1.0/24\",\n  \"gateway\": \"10.1.1.1\",\n  \"status\": \"Active\",\n  \"region\": \"us-east-1\",\n  \"createdAt\": \"2023-05-15T10:30:00Z\",\n  \"type\": \"Isolated\",\n  \"aclType\": \"Account\",\n  \"defaultEgressPolicy\": \"allow\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -1184,7 +1184,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Nothing is charged now. Usage appears on your monthly bill, with a minimum of $5/month for 250 GB, prorated for your first partial month.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -1645,7 +1645,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Nothing is charged now. Usage appears on your monthly bill, with a minimum of $5/month for 250 GB, prorated for your first partial month.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2252,7 +2252,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"protocol\": \"TCP\",\n      \"startPort\": 443,\n      \"endPort\": 443,\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"state\": \"Active\",\n      \"sourceCidrList\": \"10.0.0.0/24\",\n      \"destCidrList\": \"0.0.0.0/0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"protocol\": \"TCP\",\n      \"startPort\": 443,\n      \"endPort\": 443,\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"state\": \"Active\",\n      \"action\": \"allow\",\n      \"sourceCidrList\": \"10.0.0.0/24\",\n      \"destCidrList\": \"0.0.0.0/0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2284,7 +2284,7 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"action\": \"allow\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2320,7 +2320,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"protocol\": \"TCP\",\n      \"startPort\": 443,\n      \"endPort\": 443,\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"state\": \"Active\",\n      \"sourceCidrList\": \"10.0.0.0/24\",\n      \"destCidrList\": \"0.0.0.0/0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"protocol\": \"TCP\",\n      \"startPort\": 443,\n      \"endPort\": 443,\n      \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"state\": \"Active\",\n      \"action\": \"allow\",\n      \"sourceCidrList\": \"10.0.0.0/24\",\n      \"destCidrList\": \"0.0.0.0/0\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2356,7 +2356,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"action\": \"allow\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -2392,7 +2392,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"protocol\": \"TCP\",\n  \"startPort\": 443,\n  \"endPort\": 443,\n  \"networkId\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"state\": \"Active\",\n  \"action\": \"allow\",\n  \"sourceCidrList\": \"10.0.0.0/24\",\n  \"destCidrList\": \"0.0.0.0/0\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4577,7 +4577,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Nothing is charged now. Usage appears on your monthly bill, with a minimum of $5/month for 250 GB, prorated for your first partial month.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -4933,7 +4933,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Nothing is charged now. Usage appears on your monthly bill, with a minimum of $5/month for 250 GB, prorated for your first partial month.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5314,7 +5314,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Nothing is charged now. Usage appears on your monthly bill, with a minimum of $5/month for 250 GB, prorated for your first partial month.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5624,7 +5624,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Nothing is charged now. Usage appears on your monthly bill, with a minimum of $5/month for 250 GB, prorated for your first partial month.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5691,7 +5691,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"username\": \"mywpsite\",\n  \"name\": \"My WordPress Site\",\n  \"packageLabel\": \"wordpress-10\",\n  \"packageDisplayName\": \"WordPress Starter\",\n  \"rateMonthly\": \"10.00\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"deletedAt\": \"2026-05-29T12:34:56Z\",\n  \"ready\": true\n}",
+        "body": "{\n  \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"username\": \"mywpsite\",\n  \"name\": \"My WordPress Site\",\n  \"packageLabel\": \"wordpress-10\",\n  \"packageDisplayName\": \"WordPress Starter\",\n  \"rateMonthly\": \"10.00\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\",\n  \"deletedAt\": \"2026-05-29T12:34:56Z\",\n  \"ready\": true,\n  \"status\": \"provisioning\",\n  \"failureReason\": \"failureReason\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5723,7 +5723,7 @@
       },
       "response": {
         "status": 201,
-        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"id\": \"f6b1c0f2-9a4e-4a1a-9b0e-2c3d4e5f6a7b\",\n  \"status\": \"provisioning\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5754,7 +5754,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"id\": \"f6b1c0f2-9a4e-4a1a-9b0e-2c3d4e5f6a7b\",\n  \"status\": \"provisioning\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5785,7 +5785,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Minimum $5/month for 250 GB. First month will be prorated.\"\n}",
+        "body": "{\n  \"estimates\": {\n    \"hourly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    },\n    \"monthly\": {\n      \"base\": 36,\n      \"discount\": 7.2,\n      \"total\": 28.8,\n      \"prorated\": {\n        \"days_remaining\": 15,\n        \"amount\": 14.4\n      }\n    }\n  },\n  \"discount_applied\": {\n    \"name\": \"20% off VMs\",\n    \"percent\": 20,\n    \"resource_types\": [\n      \"Virtual Machine\",\n      \"Block Storage\"\n    ]\n  },\n  \"billing_note\": \"Nothing is charged now. Usage appears on your monthly bill, with a minimum of $5/month for 250 GB, prorated for your first partial month.\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -5816,7 +5816,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"id\": \"f6b1c0f2-9a4e-4a1a-9b0e-2c3d4e5f6a7b\",\n  \"status\": \"provisioning\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -6025,6 +6025,37 @@
       "postServeActions": []
     },
     {
+      "id": "bde09b46-be17-4f6a-97a7-3cbe2e159bfe",
+      "name": "Preview the cost of changing plan - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/wordpress/change-package/cost-estimate",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"proratedCharge\": 0.48,\n  \"monthlyDifference\": 15,\n  \"discount\": 2.04,\n  \"periodStart\": \"2026-08-12T20:53:16Z\",\n  \"periodEnd\": \"2026-08-17T23:59:59Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "bde09b46-be17-4f6a-97a7-3cbe2e159bfe",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
       "id": "8d157984-5adf-4441-8876-34d8e36bd7b5",
       "name": "Change WordPress package - default",
       "request": {
@@ -6038,7 +6069,7 @@
       },
       "response": {
         "status": 200,
-        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\"\n}",
+        "body": "{\n  \"success\": true,\n  \"message\": \"Operation completed successfully.\",\n  \"id\": \"f6b1c0f2-9a4e-4a1a-9b0e-2c3d4e5f6a7b\",\n  \"status\": \"provisioning\"\n}",
         "headers": {
           "Content-Type": "application/json"
         }
@@ -6153,6 +6184,6 @@
     }
   ],
   "meta": {
-    "total": 175
+    "total": 176
   }
 }

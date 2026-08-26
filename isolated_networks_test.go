@@ -511,6 +511,14 @@ func TestSettersDetailedIsolatedNetworkResponseDto(t *testing.T) {
 		assert.NotNil(t, obj.explicitFields)
 	})
 
+	t.Run("SetDefaultEgressPolicy", func(t *testing.T) {
+		obj := &DetailedIsolatedNetworkResponseDto{}
+		var fernTestValueDefaultEgressPolicy *DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy
+		obj.SetDefaultEgressPolicy(fernTestValueDefaultEgressPolicy)
+		assert.Equal(t, fernTestValueDefaultEgressPolicy, obj.DefaultEgressPolicy)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
 	t.Run("SetIPAddresses", func(t *testing.T) {
 		obj := &DetailedIsolatedNetworkResponseDto{}
 		var fernTestValueIPAddresses []string
@@ -770,6 +778,39 @@ func TestGettersDetailedIsolatedNetworkResponseDto(t *testing.T) {
 			}
 		}()
 		_ = obj.GetACLType() // Should return zero value
+	})
+
+	t.Run("GetDefaultEgressPolicy", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &DetailedIsolatedNetworkResponseDto{}
+		var expected *DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy
+		obj.DefaultEgressPolicy = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetDefaultEgressPolicy(), "getter should return the property value")
+	})
+
+	t.Run("GetDefaultEgressPolicy_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &DetailedIsolatedNetworkResponseDto{}
+		obj.DefaultEgressPolicy = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetDefaultEgressPolicy(), "getter should return nil when property is nil")
+	})
+
+	t.Run("GetDefaultEgressPolicy_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *DetailedIsolatedNetworkResponseDto
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetDefaultEgressPolicy() // Should return zero value
 	})
 
 	t.Run("GetIPAddresses", func(t *testing.T) {
@@ -1118,6 +1159,37 @@ func TestSettersMarkExplicitDetailedIsolatedNetworkResponseDto(t *testing.T) {
 		// It verifies that setting a field via setter allows successful JSON round-trip
 	})
 
+	t.Run("SetDefaultEgressPolicy_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &DetailedIsolatedNetworkResponseDto{}
+		var fernTestValueDefaultEgressPolicy *DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy
+
+		// Act
+		obj.SetDefaultEgressPolicy(fernTestValueDefaultEgressPolicy)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
 	t.Run("SetIPAddresses_MarksExplicit", func(t *testing.T) {
 		t.Parallel()
 		// Arrange
@@ -1229,6 +1301,14 @@ func TestSettersIsolatedNetworkResponseDto(t *testing.T) {
 		var fernTestValueACLType *string
 		obj.SetACLType(fernTestValueACLType)
 		assert.Equal(t, fernTestValueACLType, obj.ACLType)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
+	t.Run("SetDefaultEgressPolicy", func(t *testing.T) {
+		obj := &IsolatedNetworkResponseDto{}
+		var fernTestValueDefaultEgressPolicy *IsolatedNetworkResponseDtoDefaultEgressPolicy
+		obj.SetDefaultEgressPolicy(fernTestValueDefaultEgressPolicy)
+		assert.Equal(t, fernTestValueDefaultEgressPolicy, obj.DefaultEgressPolicy)
 		assert.NotNil(t, obj.explicitFields)
 	})
 
@@ -1483,6 +1563,39 @@ func TestGettersIsolatedNetworkResponseDto(t *testing.T) {
 			}
 		}()
 		_ = obj.GetACLType() // Should return zero value
+	})
+
+	t.Run("GetDefaultEgressPolicy", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &IsolatedNetworkResponseDto{}
+		var expected *IsolatedNetworkResponseDtoDefaultEgressPolicy
+		obj.DefaultEgressPolicy = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetDefaultEgressPolicy(), "getter should return the property value")
+	})
+
+	t.Run("GetDefaultEgressPolicy_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &IsolatedNetworkResponseDto{}
+		obj.DefaultEgressPolicy = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetDefaultEgressPolicy(), "getter should return nil when property is nil")
+	})
+
+	t.Run("GetDefaultEgressPolicy_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *IsolatedNetworkResponseDto
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetDefaultEgressPolicy() // Should return zero value
 	})
 
 }
@@ -1775,6 +1888,37 @@ func TestSettersMarkExplicitIsolatedNetworkResponseDto(t *testing.T) {
 
 		// Act
 		obj.SetACLType(fernTestValueACLType)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
+	t.Run("SetDefaultEgressPolicy_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &IsolatedNetworkResponseDto{}
+		var fernTestValueDefaultEgressPolicy *IsolatedNetworkResponseDtoDefaultEgressPolicy
+
+		// Act
+		obj.SetDefaultEgressPolicy(fernTestValueDefaultEgressPolicy)
 
 		// Assert - object with explicitly set field can be marshaled/unmarshaled
 		bytes, err := json.Marshal(obj)
@@ -2213,6 +2357,35 @@ func TestStringListIsolatedNetworksResponse(t *testing.T) {
 	})
 }
 
+func TestEnumDetailedIsolatedNetworkResponseDtoDefaultEgressPolicy(t *testing.T) {
+	t.Run("NewFromString_allow", func(t *testing.T) {
+		t.Parallel()
+		val, err := NewDetailedIsolatedNetworkResponseDtoDefaultEgressPolicyFromString("allow")
+		assert.NoError(t, err, "valid enum value should not return error")
+		assert.Equal(t, DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy("allow"), val, "enum value should match expected wire value")
+	})
+
+	t.Run("NewFromString_deny", func(t *testing.T) {
+		t.Parallel()
+		val, err := NewDetailedIsolatedNetworkResponseDtoDefaultEgressPolicyFromString("deny")
+		assert.NoError(t, err, "valid enum value should not return error")
+		assert.Equal(t, DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy("deny"), val, "enum value should match expected wire value")
+	})
+
+	t.Run("NewFromString_Invalid", func(t *testing.T) {
+		_, err := NewDetailedIsolatedNetworkResponseDtoDefaultEgressPolicyFromString("invalid_value_that_does_not_exist")
+		assert.Error(t, err)
+	})
+
+	t.Run("Ptr", func(t *testing.T) {
+		val, err := NewDetailedIsolatedNetworkResponseDtoDefaultEgressPolicyFromString("allow")
+		assert.NoError(t, err)
+		ptr := val.Ptr()
+		assert.NotNil(t, ptr)
+		assert.Equal(t, val, *ptr)
+	})
+}
+
 func TestEnumDetailedIsolatedNetworkResponseDtoStatus(t *testing.T) {
 	t.Run("NewFromString_Active", func(t *testing.T) {
 		t.Parallel()
@@ -2249,6 +2422,35 @@ func TestEnumDetailedIsolatedNetworkResponseDtoStatus(t *testing.T) {
 
 	t.Run("Ptr", func(t *testing.T) {
 		val, err := NewDetailedIsolatedNetworkResponseDtoStatusFromString("Active")
+		assert.NoError(t, err)
+		ptr := val.Ptr()
+		assert.NotNil(t, ptr)
+		assert.Equal(t, val, *ptr)
+	})
+}
+
+func TestEnumIsolatedNetworkResponseDtoDefaultEgressPolicy(t *testing.T) {
+	t.Run("NewFromString_allow", func(t *testing.T) {
+		t.Parallel()
+		val, err := NewIsolatedNetworkResponseDtoDefaultEgressPolicyFromString("allow")
+		assert.NoError(t, err, "valid enum value should not return error")
+		assert.Equal(t, IsolatedNetworkResponseDtoDefaultEgressPolicy("allow"), val, "enum value should match expected wire value")
+	})
+
+	t.Run("NewFromString_deny", func(t *testing.T) {
+		t.Parallel()
+		val, err := NewIsolatedNetworkResponseDtoDefaultEgressPolicyFromString("deny")
+		assert.NoError(t, err, "valid enum value should not return error")
+		assert.Equal(t, IsolatedNetworkResponseDtoDefaultEgressPolicy("deny"), val, "enum value should match expected wire value")
+	})
+
+	t.Run("NewFromString_Invalid", func(t *testing.T) {
+		_, err := NewIsolatedNetworkResponseDtoDefaultEgressPolicyFromString("invalid_value_that_does_not_exist")
+		assert.Error(t, err)
+	})
+
+	t.Run("Ptr", func(t *testing.T) {
+		val, err := NewIsolatedNetworkResponseDtoDefaultEgressPolicyFromString("allow")
 		assert.NoError(t, err)
 		ptr := val.Ptr()
 		assert.NotNil(t, ptr)

@@ -26,9 +26,9 @@ type CreateEgressRuleDto struct {
 	StartPort *int `json:"startPort,omitempty" url:"-"`
 	// End of the port range the rule applies to.
 	EndPort *int `json:"endPort,omitempty" url:"-"`
-	// Source CIDR within the guest network CIDR. Omit to allow the entire network.
+	// Source CIDR within the network's CIDR — which senders inside the network the rule matches. Omit to match the entire network.
 	SourceCidrList *string `json:"sourceCidrList,omitempty" url:"-"`
-	// Destination CIDR the traffic is allowed to reach. Defaults to `0.0.0.0/0`.
+	// Destination CIDR the rule matches — where the outbound traffic is headed. Defaults to `0.0.0.0/0` (anywhere). Whether matching traffic is permitted or blocked depends on the network: see `action` on the created rule.
 	DestCidrList *string `json:"destCidrList,omitempty" url:"-"`
 	// Identifier of the network the egress rule applies to.
 	NetworkID *string `json:"networkId,omitempty" url:"-"`
@@ -248,9 +248,10 @@ var (
 	egressRuleResponseDtoFieldEndPort        = big.NewInt(1 << 3)
 	egressRuleResponseDtoFieldNetworkID      = big.NewInt(1 << 4)
 	egressRuleResponseDtoFieldState          = big.NewInt(1 << 5)
-	egressRuleResponseDtoFieldSourceCidrList = big.NewInt(1 << 6)
-	egressRuleResponseDtoFieldDestCidrList   = big.NewInt(1 << 7)
-	egressRuleResponseDtoFieldCreatedAt      = big.NewInt(1 << 8)
+	egressRuleResponseDtoFieldAction         = big.NewInt(1 << 6)
+	egressRuleResponseDtoFieldSourceCidrList = big.NewInt(1 << 7)
+	egressRuleResponseDtoFieldDestCidrList   = big.NewInt(1 << 8)
+	egressRuleResponseDtoFieldCreatedAt      = big.NewInt(1 << 9)
 )
 
 type EgressRuleResponseDto struct {
@@ -266,9 +267,11 @@ type EgressRuleResponseDto struct {
 	NetworkID string `json:"networkId" url:"networkId"`
 	// Current lifecycle state of the rule.
 	State string `json:"state" url:"state"`
-	// Source CIDR within the guest network CIDR.
+	// `allow` permits the traffic this rule matches; `deny` blocks it. Which one applies is set by the rule's network, not by the rule, and is the opposite of that network's `defaultEgressPolicy`. Omitted when unknown.
+	Action *EgressRuleResponseDtoAction `json:"action,omitempty" url:"action,omitempty"`
+	// Source CIDR within the network's CIDR.
 	SourceCidrList string `json:"sourceCidrList" url:"sourceCidrList"`
-	// Destination CIDR the traffic is allowed to reach.
+	// Destination CIDR this rule matches. Whether matching traffic is permitted or blocked depends on `action`.
 	DestCidrList *string `json:"destCidrList,omitempty" url:"destCidrList,omitempty"`
 	// When the rule was created.
 	CreatedAt *time.Time `json:"createdAt,omitempty" url:"createdAt,omitempty"`
@@ -320,6 +323,13 @@ func (e *EgressRuleResponseDto) GetState() string {
 		return ""
 	}
 	return e.State
+}
+
+func (e *EgressRuleResponseDto) GetAction() *EgressRuleResponseDtoAction {
+	if e == nil {
+		return nil
+	}
+	return e.Action
 }
 
 func (e *EgressRuleResponseDto) GetSourceCidrList() string {
@@ -399,6 +409,13 @@ func (e *EgressRuleResponseDto) SetState(state string) {
 	e.require(egressRuleResponseDtoFieldState)
 }
 
+// SetAction sets the Action field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (e *EgressRuleResponseDto) SetAction(action *EgressRuleResponseDtoAction) {
+	e.Action = action
+	e.require(egressRuleResponseDtoFieldAction)
+}
+
 // SetSourceCidrList sets the SourceCidrList field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
 func (e *EgressRuleResponseDto) SetSourceCidrList(sourceCidrList string) {
@@ -468,6 +485,29 @@ func (e *EgressRuleResponseDto) String() string {
 		return value
 	}
 	return fmt.Sprintf("%#v", e)
+}
+
+// `allow` permits the traffic this rule matches; `deny` blocks it. Which one applies is set by the rule's network, not by the rule, and is the opposite of that network's `defaultEgressPolicy`. Omitted when unknown.
+type EgressRuleResponseDtoAction string
+
+const (
+	EgressRuleResponseDtoActionAllow EgressRuleResponseDtoAction = "allow"
+	EgressRuleResponseDtoActionDeny  EgressRuleResponseDtoAction = "deny"
+)
+
+func NewEgressRuleResponseDtoActionFromString(s string) (EgressRuleResponseDtoAction, error) {
+	switch s {
+	case "allow":
+		return EgressRuleResponseDtoActionAllow, nil
+	case "deny":
+		return EgressRuleResponseDtoActionDeny, nil
+	}
+	var t EgressRuleResponseDtoAction
+	return "", fmt.Errorf("%s is not a valid %T", s, t)
+}
+
+func (e EgressRuleResponseDtoAction) Ptr() *EgressRuleResponseDtoAction {
+	return &e
 }
 
 var (
@@ -683,9 +723,9 @@ var (
 type UpdateEgressRuleDto struct {
 	// ID of the egress rule
 	ID string `json:"-" url:"-"`
-	// Source CIDR within the guest network CIDR.
+	// Source CIDR within the network's CIDR — which senders inside the network the rule matches.
 	SourceCidrList *string `json:"sourceCidrList,omitempty" url:"-"`
-	// Destination CIDR the traffic is allowed to reach.
+	// Destination CIDR the rule matches — where the outbound traffic is headed.
 	DestCidrList *string `json:"destCidrList,omitempty" url:"-"`
 	// Start of the port range the rule applies to.
 	StartPort *int `json:"startPort,omitempty" url:"-"`

@@ -14,7 +14,9 @@ var (
 	aPIErrorDtoFieldStatusCode = big.NewInt(1 << 0)
 	aPIErrorDtoFieldMessage    = big.NewInt(1 << 1)
 	aPIErrorDtoFieldError      = big.NewInt(1 << 2)
-	aPIErrorDtoFieldErrors     = big.NewInt(1 << 3)
+	aPIErrorDtoFieldCode       = big.NewInt(1 << 3)
+	aPIErrorDtoFieldErrors     = big.NewInt(1 << 4)
+	aPIErrorDtoFieldSnapshots  = big.NewInt(1 << 5)
 )
 
 type APIErrorDto struct {
@@ -24,8 +26,12 @@ type APIErrorDto struct {
 	Message *APIErrorDtoMessage `json:"message" url:"message"`
 	// Short HTTP error label.
 	Error *string `json:"error,omitempty" url:"error,omitempty"`
+	// Machine-readable reason for the error. Match on this value rather than on `message`, which can be reworded at any time. Present on the errors that have more than one cause for the same status code; omitted otherwise.
+	Code *string `json:"code,omitempty" url:"code,omitempty"`
 	// Per-field validation details. Present on 400 responses produced by request-body validation; omitted otherwise.
 	Errors []*ValidationErrorItemDto `json:"errors,omitempty" url:"errors,omitempty"`
+	// The snapshots that block a delete. Present on a 409 whose `code` is `volume_has_snapshots`; omitted otherwise.
+	Snapshots []*BlockingSnapshotDto `json:"snapshots,omitempty" url:"snapshots,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -55,11 +61,25 @@ func (a *APIErrorDto) GetError() *string {
 	return a.Error
 }
 
+func (a *APIErrorDto) GetCode() *string {
+	if a == nil {
+		return nil
+	}
+	return a.Code
+}
+
 func (a *APIErrorDto) GetErrors() []*ValidationErrorItemDto {
 	if a == nil {
 		return nil
 	}
 	return a.Errors
+}
+
+func (a *APIErrorDto) GetSnapshots() []*BlockingSnapshotDto {
+	if a == nil {
+		return nil
+	}
+	return a.Snapshots
 }
 
 func (a *APIErrorDto) GetExtraProperties() map[string]interface{} {
@@ -97,11 +117,25 @@ func (a *APIErrorDto) SetError(error_ *string) {
 	a.require(aPIErrorDtoFieldError)
 }
 
+// SetCode sets the Code field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (a *APIErrorDto) SetCode(code *string) {
+	a.Code = code
+	a.require(aPIErrorDtoFieldCode)
+}
+
 // SetErrors sets the Errors field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
 func (a *APIErrorDto) SetErrors(errors []*ValidationErrorItemDto) {
 	a.Errors = errors
 	a.require(aPIErrorDtoFieldErrors)
+}
+
+// SetSnapshots sets the Snapshots field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (a *APIErrorDto) SetSnapshots(snapshots []*BlockingSnapshotDto) {
+	a.Snapshots = snapshots
+	a.require(aPIErrorDtoFieldSnapshots)
 }
 
 func (a *APIErrorDto) UnmarshalJSON(data []byte) error {
@@ -390,6 +424,108 @@ func (b *BackupRepoUpdateResponseDto) MarshalJSON() ([]byte, error) {
 }
 
 func (b *BackupRepoUpdateResponseDto) String() string {
+	if b == nil {
+		return "<nil>"
+	}
+	if len(b.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(b.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(b); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", b)
+}
+
+var (
+	blockingSnapshotDtoFieldID   = big.NewInt(1 << 0)
+	blockingSnapshotDtoFieldName = big.NewInt(1 << 1)
+)
+
+type BlockingSnapshotDto struct {
+	// Snapshot ID.
+	ID string `json:"id" url:"id"`
+	// Snapshot name.
+	Name string `json:"name" url:"name"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (b *BlockingSnapshotDto) GetID() string {
+	if b == nil {
+		return ""
+	}
+	return b.ID
+}
+
+func (b *BlockingSnapshotDto) GetName() string {
+	if b == nil {
+		return ""
+	}
+	return b.Name
+}
+
+func (b *BlockingSnapshotDto) GetExtraProperties() map[string]interface{} {
+	if b == nil {
+		return nil
+	}
+	return b.extraProperties
+}
+
+func (b *BlockingSnapshotDto) require(field *big.Int) {
+	if b.explicitFields == nil {
+		b.explicitFields = big.NewInt(0)
+	}
+	b.explicitFields.Or(b.explicitFields, field)
+}
+
+// SetID sets the ID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (b *BlockingSnapshotDto) SetID(id string) {
+	b.ID = id
+	b.require(blockingSnapshotDtoFieldID)
+}
+
+// SetName sets the Name field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (b *BlockingSnapshotDto) SetName(name string) {
+	b.Name = name
+	b.require(blockingSnapshotDtoFieldName)
+}
+
+func (b *BlockingSnapshotDto) UnmarshalJSON(data []byte) error {
+	type unmarshaler BlockingSnapshotDto
+	var value unmarshaler
+	if err := json.Unmarshal(data, &value); err != nil {
+		return err
+	}
+	*b = BlockingSnapshotDto(value)
+	extraProperties, err := internal.ExtractExtraProperties(data, *b)
+	if err != nil {
+		return err
+	}
+	b.extraProperties = extraProperties
+	b.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (b *BlockingSnapshotDto) MarshalJSON() ([]byte, error) {
+	type embed BlockingSnapshotDto
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*b),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, b.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (b *BlockingSnapshotDto) String() string {
 	if b == nil {
 		return "<nil>"
 	}

@@ -11,53 +11,6 @@ import (
 )
 
 var (
-	changePackageDtoFieldPackageLabel = big.NewInt(1 << 0)
-)
-
-type ChangePackageDto struct {
-	// New package label to upgrade to
-	PackageLabel string `json:"packageLabel" url:"-"`
-
-	// Private bitmask of fields set to an explicit value and therefore not to be omitted
-	explicitFields *big.Int `json:"-" url:"-"`
-}
-
-func (c *ChangePackageDto) require(field *big.Int) {
-	if c.explicitFields == nil {
-		c.explicitFields = big.NewInt(0)
-	}
-	c.explicitFields.Or(c.explicitFields, field)
-}
-
-// SetPackageLabel sets the PackageLabel field and marks it as non-optional;
-// this prevents an empty or null value for this field from being omitted during serialization.
-func (c *ChangePackageDto) SetPackageLabel(packageLabel string) {
-	c.PackageLabel = packageLabel
-	c.require(changePackageDtoFieldPackageLabel)
-}
-
-func (c *ChangePackageDto) UnmarshalJSON(data []byte) error {
-	type unmarshaler ChangePackageDto
-	var body unmarshaler
-	if err := json.Unmarshal(data, &body); err != nil {
-		return err
-	}
-	*c = ChangePackageDto(body)
-	return nil
-}
-
-func (c *ChangePackageDto) MarshalJSON() ([]byte, error) {
-	type embed ChangePackageDto
-	var marshaler = struct {
-		embed
-	}{
-		embed: embed(*c),
-	}
-	explicitMarshaler := internal.HandleExplicitFields(marshaler, c.explicitFields)
-	return json.Marshal(explicitMarshaler)
-}
-
-var (
 	listPackagesWordpressRequestFieldPage     = big.NewInt(1 << 0)
 	listPackagesWordpressRequestFieldPageSize = big.NewInt(1 << 1)
 )
@@ -402,6 +355,256 @@ func (b *BandwidthUsageDto) String() string {
 }
 
 var (
+	changePackageDtoFieldPackageLabel = big.NewInt(1 << 0)
+)
+
+type ChangePackageDto struct {
+	// New package label to upgrade to
+	PackageLabel string `json:"packageLabel" url:"packageLabel"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (c *ChangePackageDto) GetPackageLabel() string {
+	if c == nil {
+		return ""
+	}
+	return c.PackageLabel
+}
+
+func (c *ChangePackageDto) GetExtraProperties() map[string]interface{} {
+	if c == nil {
+		return nil
+	}
+	return c.extraProperties
+}
+
+func (c *ChangePackageDto) require(field *big.Int) {
+	if c.explicitFields == nil {
+		c.explicitFields = big.NewInt(0)
+	}
+	c.explicitFields.Or(c.explicitFields, field)
+}
+
+// SetPackageLabel sets the PackageLabel field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *ChangePackageDto) SetPackageLabel(packageLabel string) {
+	c.PackageLabel = packageLabel
+	c.require(changePackageDtoFieldPackageLabel)
+}
+
+func (c *ChangePackageDto) UnmarshalJSON(data []byte) error {
+	type unmarshaler ChangePackageDto
+	var value unmarshaler
+	if err := json.Unmarshal(data, &value); err != nil {
+		return err
+	}
+	*c = ChangePackageDto(value)
+	extraProperties, err := internal.ExtractExtraProperties(data, *c)
+	if err != nil {
+		return err
+	}
+	c.extraProperties = extraProperties
+	c.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (c *ChangePackageDto) MarshalJSON() ([]byte, error) {
+	type embed ChangePackageDto
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*c),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, c.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (c *ChangePackageDto) String() string {
+	if c == nil {
+		return "<nil>"
+	}
+	if len(c.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(c.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(c); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", c)
+}
+
+var (
+	changePackageEstimateDtoFieldProratedCharge    = big.NewInt(1 << 0)
+	changePackageEstimateDtoFieldMonthlyDifference = big.NewInt(1 << 1)
+	changePackageEstimateDtoFieldDiscount          = big.NewInt(1 << 2)
+	changePackageEstimateDtoFieldPeriodStart       = big.NewInt(1 << 3)
+	changePackageEstimateDtoFieldPeriodEnd         = big.NewInt(1 << 4)
+)
+
+type ChangePackageEstimateDto struct {
+	// Amount charged now for the rest of the current billing period.
+	ProratedCharge float64 `json:"proratedCharge" url:"proratedCharge"`
+	// Difference between the new and current monthly rates, before any discount.
+	MonthlyDifference float64 `json:"monthlyDifference" url:"monthlyDifference"`
+	// Amount taken off by an account discount. Omitted when no discount applies.
+	Discount *float64 `json:"discount,omitempty" url:"discount,omitempty"`
+	// Start of the period the prorated charge covers.
+	PeriodStart time.Time `json:"periodStart" url:"periodStart"`
+	// End of the period the prorated charge covers.
+	PeriodEnd time.Time `json:"periodEnd" url:"periodEnd"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (c *ChangePackageEstimateDto) GetProratedCharge() float64 {
+	if c == nil {
+		return 0
+	}
+	return c.ProratedCharge
+}
+
+func (c *ChangePackageEstimateDto) GetMonthlyDifference() float64 {
+	if c == nil {
+		return 0
+	}
+	return c.MonthlyDifference
+}
+
+func (c *ChangePackageEstimateDto) GetDiscount() *float64 {
+	if c == nil {
+		return nil
+	}
+	return c.Discount
+}
+
+func (c *ChangePackageEstimateDto) GetPeriodStart() time.Time {
+	if c == nil {
+		return time.Time{}
+	}
+	return c.PeriodStart
+}
+
+func (c *ChangePackageEstimateDto) GetPeriodEnd() time.Time {
+	if c == nil {
+		return time.Time{}
+	}
+	return c.PeriodEnd
+}
+
+func (c *ChangePackageEstimateDto) GetExtraProperties() map[string]interface{} {
+	if c == nil {
+		return nil
+	}
+	return c.extraProperties
+}
+
+func (c *ChangePackageEstimateDto) require(field *big.Int) {
+	if c.explicitFields == nil {
+		c.explicitFields = big.NewInt(0)
+	}
+	c.explicitFields.Or(c.explicitFields, field)
+}
+
+// SetProratedCharge sets the ProratedCharge field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *ChangePackageEstimateDto) SetProratedCharge(proratedCharge float64) {
+	c.ProratedCharge = proratedCharge
+	c.require(changePackageEstimateDtoFieldProratedCharge)
+}
+
+// SetMonthlyDifference sets the MonthlyDifference field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *ChangePackageEstimateDto) SetMonthlyDifference(monthlyDifference float64) {
+	c.MonthlyDifference = monthlyDifference
+	c.require(changePackageEstimateDtoFieldMonthlyDifference)
+}
+
+// SetDiscount sets the Discount field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *ChangePackageEstimateDto) SetDiscount(discount *float64) {
+	c.Discount = discount
+	c.require(changePackageEstimateDtoFieldDiscount)
+}
+
+// SetPeriodStart sets the PeriodStart field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *ChangePackageEstimateDto) SetPeriodStart(periodStart time.Time) {
+	c.PeriodStart = periodStart
+	c.require(changePackageEstimateDtoFieldPeriodStart)
+}
+
+// SetPeriodEnd sets the PeriodEnd field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *ChangePackageEstimateDto) SetPeriodEnd(periodEnd time.Time) {
+	c.PeriodEnd = periodEnd
+	c.require(changePackageEstimateDtoFieldPeriodEnd)
+}
+
+func (c *ChangePackageEstimateDto) UnmarshalJSON(data []byte) error {
+	type embed ChangePackageEstimateDto
+	var unmarshaler = struct {
+		embed
+		PeriodStart *internal.DateTime `json:"periodStart"`
+		PeriodEnd   *internal.DateTime `json:"periodEnd"`
+	}{
+		embed: embed(*c),
+	}
+	if err := json.Unmarshal(data, &unmarshaler); err != nil {
+		return err
+	}
+	*c = ChangePackageEstimateDto(unmarshaler.embed)
+	c.PeriodStart = unmarshaler.PeriodStart.Time()
+	c.PeriodEnd = unmarshaler.PeriodEnd.Time()
+	extraProperties, err := internal.ExtractExtraProperties(data, *c)
+	if err != nil {
+		return err
+	}
+	c.extraProperties = extraProperties
+	c.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (c *ChangePackageEstimateDto) MarshalJSON() ([]byte, error) {
+	type embed ChangePackageEstimateDto
+	var marshaler = struct {
+		embed
+		PeriodStart *internal.DateTime `json:"periodStart"`
+		PeriodEnd   *internal.DateTime `json:"periodEnd"`
+	}{
+		embed:       embed(*c),
+		PeriodStart: internal.NewDateTime(c.PeriodStart),
+		PeriodEnd:   internal.NewDateTime(c.PeriodEnd),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, c.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (c *ChangePackageEstimateDto) String() string {
+	if c == nil {
+		return "<nil>"
+	}
+	if len(c.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(c.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(c); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", c)
+}
+
+var (
 	createWordPressDtoFieldPackageLabel = big.NewInt(1 << 0)
 	createWordPressDtoFieldDomain       = big.NewInt(1 << 1)
 )
@@ -410,7 +613,7 @@ type CreateWordPressDto struct {
 	// Package label to use for the WordPress instance
 	PackageLabel string `json:"packageLabel" url:"packageLabel"`
 	// Optional custom domain for the WordPress site
-	Domain map[string]any `json:"domain,omitempty" url:"domain,omitempty"`
+	Domain *string `json:"domain,omitempty" url:"domain,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -426,7 +629,7 @@ func (c *CreateWordPressDto) GetPackageLabel() string {
 	return c.PackageLabel
 }
 
-func (c *CreateWordPressDto) GetDomain() map[string]any {
+func (c *CreateWordPressDto) GetDomain() *string {
 	if c == nil {
 		return nil
 	}
@@ -456,7 +659,7 @@ func (c *CreateWordPressDto) SetPackageLabel(packageLabel string) {
 
 // SetDomain sets the Domain field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateWordPressDto) SetDomain(domain map[string]any) {
+func (c *CreateWordPressDto) SetDomain(domain *string) {
 	c.Domain = domain
 	c.require(createWordPressDtoFieldDomain)
 }
@@ -1414,6 +1617,8 @@ var (
 	wordPressInstanceDtoFieldCreatedAt          = big.NewInt(1 << 6)
 	wordPressInstanceDtoFieldDeletedAt          = big.NewInt(1 << 7)
 	wordPressInstanceDtoFieldReady              = big.NewInt(1 << 8)
+	wordPressInstanceDtoFieldStatus             = big.NewInt(1 << 9)
+	wordPressInstanceDtoFieldFailureReason      = big.NewInt(1 << 10)
 )
 
 type WordPressInstanceDto struct {
@@ -1435,6 +1640,10 @@ type WordPressInstanceDto struct {
 	DeletedAt *time.Time `json:"deletedAt,omitempty" url:"deletedAt,omitempty"`
 	// Whether the WordPress instance is fully provisioned and ready to use.
 	Ready bool `json:"ready" url:"ready"`
+	// State of the instance. `provisioning` while the site is being set up, `active` once it is ready, `failed` if it could not be created.
+	Status WordPressInstanceDtoStatus `json:"status" url:"status"`
+	// Why the instance could not be created. Present only when `status` is `failed`.
+	FailureReason *string `json:"failureReason,omitempty" url:"failureReason,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -1504,6 +1713,20 @@ func (w *WordPressInstanceDto) GetReady() bool {
 		return false
 	}
 	return w.Ready
+}
+
+func (w *WordPressInstanceDto) GetStatus() WordPressInstanceDtoStatus {
+	if w == nil {
+		return ""
+	}
+	return w.Status
+}
+
+func (w *WordPressInstanceDto) GetFailureReason() *string {
+	if w == nil {
+		return nil
+	}
+	return w.FailureReason
 }
 
 func (w *WordPressInstanceDto) GetExtraProperties() map[string]interface{} {
@@ -1583,6 +1806,20 @@ func (w *WordPressInstanceDto) SetReady(ready bool) {
 	w.require(wordPressInstanceDtoFieldReady)
 }
 
+// SetStatus sets the Status field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (w *WordPressInstanceDto) SetStatus(status WordPressInstanceDtoStatus) {
+	w.Status = status
+	w.require(wordPressInstanceDtoFieldStatus)
+}
+
+// SetFailureReason sets the FailureReason field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (w *WordPressInstanceDto) SetFailureReason(failureReason *string) {
+	w.FailureReason = failureReason
+	w.require(wordPressInstanceDtoFieldFailureReason)
+}
+
 func (w *WordPressInstanceDto) UnmarshalJSON(data []byte) error {
 	type embed WordPressInstanceDto
 	var unmarshaler = struct {
@@ -1635,6 +1872,35 @@ func (w *WordPressInstanceDto) String() string {
 		return value
 	}
 	return fmt.Sprintf("%#v", w)
+}
+
+// State of the instance. `provisioning` while the site is being set up, `active` once it is ready, `failed` if it could not be created.
+type WordPressInstanceDtoStatus string
+
+const (
+	WordPressInstanceDtoStatusProvisioning WordPressInstanceDtoStatus = "provisioning"
+	WordPressInstanceDtoStatusActive       WordPressInstanceDtoStatus = "active"
+	WordPressInstanceDtoStatusFailed       WordPressInstanceDtoStatus = "failed"
+	WordPressInstanceDtoStatusDeleting     WordPressInstanceDtoStatus = "deleting"
+)
+
+func NewWordPressInstanceDtoStatusFromString(s string) (WordPressInstanceDtoStatus, error) {
+	switch s {
+	case "provisioning":
+		return WordPressInstanceDtoStatusProvisioning, nil
+	case "active":
+		return WordPressInstanceDtoStatusActive, nil
+	case "failed":
+		return WordPressInstanceDtoStatusFailed, nil
+	case "deleting":
+		return WordPressInstanceDtoStatusDeleting, nil
+	}
+	var t WordPressInstanceDtoStatus
+	return "", fmt.Errorf("%s is not a valid %T", s, t)
+}
+
+func (w WordPressInstanceDtoStatus) Ptr() *WordPressInstanceDtoStatus {
+	return &w
 }
 
 var (
@@ -1946,6 +2212,8 @@ func (w *WordPressPackageMetadataDto) String() string {
 var (
 	wordPressSuccessResponseDtoFieldSuccess = big.NewInt(1 << 0)
 	wordPressSuccessResponseDtoFieldMessage = big.NewInt(1 << 1)
+	wordPressSuccessResponseDtoFieldID      = big.NewInt(1 << 2)
+	wordPressSuccessResponseDtoFieldStatus  = big.NewInt(1 << 3)
 )
 
 type WordPressSuccessResponseDto struct {
@@ -1953,6 +2221,10 @@ type WordPressSuccessResponseDto struct {
 	Success bool `json:"success" url:"success"`
 	// Human-readable result message.
 	Message *string `json:"message,omitempty" url:"message,omitempty"`
+	// Identifier of the WordPress instance that was created. Use it to poll the instance while it is being set up.
+	ID *string `json:"id,omitempty" url:"id,omitempty"`
+	// State of the new instance. Creation is asynchronous, so a successful request returns `provisioning` and the site becomes `active` once it is ready.
+	Status *WordPressSuccessResponseDtoStatus `json:"status,omitempty" url:"status,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -1973,6 +2245,20 @@ func (w *WordPressSuccessResponseDto) GetMessage() *string {
 		return nil
 	}
 	return w.Message
+}
+
+func (w *WordPressSuccessResponseDto) GetID() *string {
+	if w == nil {
+		return nil
+	}
+	return w.ID
+}
+
+func (w *WordPressSuccessResponseDto) GetStatus() *WordPressSuccessResponseDtoStatus {
+	if w == nil {
+		return nil
+	}
+	return w.Status
 }
 
 func (w *WordPressSuccessResponseDto) GetExtraProperties() map[string]interface{} {
@@ -2001,6 +2287,20 @@ func (w *WordPressSuccessResponseDto) SetSuccess(success bool) {
 func (w *WordPressSuccessResponseDto) SetMessage(message *string) {
 	w.Message = message
 	w.require(wordPressSuccessResponseDtoFieldMessage)
+}
+
+// SetID sets the ID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (w *WordPressSuccessResponseDto) SetID(id *string) {
+	w.ID = id
+	w.require(wordPressSuccessResponseDtoFieldID)
+}
+
+// SetStatus sets the Status field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (w *WordPressSuccessResponseDto) SetStatus(status *WordPressSuccessResponseDtoStatus) {
+	w.Status = status
+	w.require(wordPressSuccessResponseDtoFieldStatus)
 }
 
 func (w *WordPressSuccessResponseDto) UnmarshalJSON(data []byte) error {
@@ -2043,6 +2343,35 @@ func (w *WordPressSuccessResponseDto) String() string {
 		return value
 	}
 	return fmt.Sprintf("%#v", w)
+}
+
+// State of the new instance. Creation is asynchronous, so a successful request returns `provisioning` and the site becomes `active` once it is ready.
+type WordPressSuccessResponseDtoStatus string
+
+const (
+	WordPressSuccessResponseDtoStatusProvisioning WordPressSuccessResponseDtoStatus = "provisioning"
+	WordPressSuccessResponseDtoStatusActive       WordPressSuccessResponseDtoStatus = "active"
+	WordPressSuccessResponseDtoStatusFailed       WordPressSuccessResponseDtoStatus = "failed"
+	WordPressSuccessResponseDtoStatusDeleting     WordPressSuccessResponseDtoStatus = "deleting"
+)
+
+func NewWordPressSuccessResponseDtoStatusFromString(s string) (WordPressSuccessResponseDtoStatus, error) {
+	switch s {
+	case "provisioning":
+		return WordPressSuccessResponseDtoStatusProvisioning, nil
+	case "active":
+		return WordPressSuccessResponseDtoStatusActive, nil
+	case "failed":
+		return WordPressSuccessResponseDtoStatusFailed, nil
+	case "deleting":
+		return WordPressSuccessResponseDtoStatusDeleting, nil
+	}
+	var t WordPressSuccessResponseDtoStatus
+	return "", fmt.Errorf("%s is not a valid %T", s, t)
+}
+
+func (w WordPressSuccessResponseDtoStatus) Ptr() *WordPressSuccessResponseDtoStatus {
+	return &w
 }
 
 var (

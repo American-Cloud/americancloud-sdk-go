@@ -116,7 +116,7 @@ func (c *Client) GetVms(
 	return response.Body, nil
 }
 
-// Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched.
+// Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched. Delete any snapshots of the root disk before you delete the virtual machine.
 func (c *Client) DeleteVms(
 	ctx context.Context,
 	request *americancloudsdkgo.DeleteVmsRequest,

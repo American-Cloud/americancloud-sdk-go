@@ -85,7 +85,7 @@ func (c *Client) GetBlockStorage(
 	return response.Body, nil
 }
 
-// Deletes a block storage volume. This operation cannot be undone.
+// Deletes a block storage volume. This operation cannot be undone. Delete any snapshots of the volume before you delete the volume.
 func (c *Client) DeleteBlockStorage(
 	ctx context.Context,
 	request *americancloudsdkgo.DeleteBlockStorageRequest,

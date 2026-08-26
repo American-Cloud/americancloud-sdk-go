@@ -212,17 +212,18 @@ func (r *RestartIsolatedNetworksRequest) SetID(id string) {
 }
 
 var (
-	detailedIsolatedNetworkResponseDtoFieldID          = big.NewInt(1 << 0)
-	detailedIsolatedNetworkResponseDtoFieldName        = big.NewInt(1 << 1)
-	detailedIsolatedNetworkResponseDtoFieldDescription = big.NewInt(1 << 2)
-	detailedIsolatedNetworkResponseDtoFieldCidr        = big.NewInt(1 << 3)
-	detailedIsolatedNetworkResponseDtoFieldGateway     = big.NewInt(1 << 4)
-	detailedIsolatedNetworkResponseDtoFieldStatus      = big.NewInt(1 << 5)
-	detailedIsolatedNetworkResponseDtoFieldRegion      = big.NewInt(1 << 6)
-	detailedIsolatedNetworkResponseDtoFieldCreatedAt   = big.NewInt(1 << 7)
-	detailedIsolatedNetworkResponseDtoFieldType        = big.NewInt(1 << 8)
-	detailedIsolatedNetworkResponseDtoFieldACLType     = big.NewInt(1 << 9)
-	detailedIsolatedNetworkResponseDtoFieldIPAddresses = big.NewInt(1 << 10)
+	detailedIsolatedNetworkResponseDtoFieldID                  = big.NewInt(1 << 0)
+	detailedIsolatedNetworkResponseDtoFieldName                = big.NewInt(1 << 1)
+	detailedIsolatedNetworkResponseDtoFieldDescription         = big.NewInt(1 << 2)
+	detailedIsolatedNetworkResponseDtoFieldCidr                = big.NewInt(1 << 3)
+	detailedIsolatedNetworkResponseDtoFieldGateway             = big.NewInt(1 << 4)
+	detailedIsolatedNetworkResponseDtoFieldStatus              = big.NewInt(1 << 5)
+	detailedIsolatedNetworkResponseDtoFieldRegion              = big.NewInt(1 << 6)
+	detailedIsolatedNetworkResponseDtoFieldCreatedAt           = big.NewInt(1 << 7)
+	detailedIsolatedNetworkResponseDtoFieldType                = big.NewInt(1 << 8)
+	detailedIsolatedNetworkResponseDtoFieldACLType             = big.NewInt(1 << 9)
+	detailedIsolatedNetworkResponseDtoFieldDefaultEgressPolicy = big.NewInt(1 << 10)
+	detailedIsolatedNetworkResponseDtoFieldIPAddresses         = big.NewInt(1 << 11)
 )
 
 type DetailedIsolatedNetworkResponseDto struct {
@@ -246,6 +247,8 @@ type DetailedIsolatedNetworkResponseDto struct {
 	Type string `json:"type" url:"type"`
 	// Type of the ACL list
 	ACLType *string `json:"aclType,omitempty" url:"aclType,omitempty"`
+	// How outbound traffic is treated when this network has no egress rules. `allow` means all outbound traffic is permitted and each egress rule blocks what it matches; `deny` means all outbound traffic is blocked and each egress rule permits what it matches. Fixed when the network is created and cannot be changed afterwards. Omitted when unknown.
+	DefaultEgressPolicy *DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy `json:"defaultEgressPolicy,omitempty" url:"defaultEgressPolicy,omitempty"`
 	// IP addresses associated with this network
 	IPAddresses []string `json:"ipAddresses" url:"ipAddresses"`
 
@@ -324,6 +327,13 @@ func (d *DetailedIsolatedNetworkResponseDto) GetACLType() *string {
 		return nil
 	}
 	return d.ACLType
+}
+
+func (d *DetailedIsolatedNetworkResponseDto) GetDefaultEgressPolicy() *DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy {
+	if d == nil {
+		return nil
+	}
+	return d.DefaultEgressPolicy
 }
 
 func (d *DetailedIsolatedNetworkResponseDto) GetIPAddresses() []string {
@@ -417,6 +427,13 @@ func (d *DetailedIsolatedNetworkResponseDto) SetACLType(aclType *string) {
 	d.require(detailedIsolatedNetworkResponseDtoFieldACLType)
 }
 
+// SetDefaultEgressPolicy sets the DefaultEgressPolicy field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (d *DetailedIsolatedNetworkResponseDto) SetDefaultEgressPolicy(defaultEgressPolicy *DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy) {
+	d.DefaultEgressPolicy = defaultEgressPolicy
+	d.require(detailedIsolatedNetworkResponseDtoFieldDefaultEgressPolicy)
+}
+
 // SetIPAddresses sets the IPAddresses field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
 func (d *DetailedIsolatedNetworkResponseDto) SetIPAddresses(ipAddresses []string) {
@@ -474,6 +491,29 @@ func (d *DetailedIsolatedNetworkResponseDto) String() string {
 	return fmt.Sprintf("%#v", d)
 }
 
+// How outbound traffic is treated when this network has no egress rules. `allow` means all outbound traffic is permitted and each egress rule blocks what it matches; `deny` means all outbound traffic is blocked and each egress rule permits what it matches. Fixed when the network is created and cannot be changed afterwards. Omitted when unknown.
+type DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy string
+
+const (
+	DetailedIsolatedNetworkResponseDtoDefaultEgressPolicyAllow DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy = "allow"
+	DetailedIsolatedNetworkResponseDtoDefaultEgressPolicyDeny  DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy = "deny"
+)
+
+func NewDetailedIsolatedNetworkResponseDtoDefaultEgressPolicyFromString(s string) (DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy, error) {
+	switch s {
+	case "allow":
+		return DetailedIsolatedNetworkResponseDtoDefaultEgressPolicyAllow, nil
+	case "deny":
+		return DetailedIsolatedNetworkResponseDtoDefaultEgressPolicyDeny, nil
+	}
+	var t DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy
+	return "", fmt.Errorf("%s is not a valid %T", s, t)
+}
+
+func (d DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy) Ptr() *DetailedIsolatedNetworkResponseDtoDefaultEgressPolicy {
+	return &d
+}
+
 // Network status
 type DetailedIsolatedNetworkResponseDtoStatus string
 
@@ -504,16 +544,17 @@ func (d DetailedIsolatedNetworkResponseDtoStatus) Ptr() *DetailedIsolatedNetwork
 }
 
 var (
-	isolatedNetworkResponseDtoFieldID          = big.NewInt(1 << 0)
-	isolatedNetworkResponseDtoFieldName        = big.NewInt(1 << 1)
-	isolatedNetworkResponseDtoFieldDescription = big.NewInt(1 << 2)
-	isolatedNetworkResponseDtoFieldCidr        = big.NewInt(1 << 3)
-	isolatedNetworkResponseDtoFieldGateway     = big.NewInt(1 << 4)
-	isolatedNetworkResponseDtoFieldStatus      = big.NewInt(1 << 5)
-	isolatedNetworkResponseDtoFieldRegion      = big.NewInt(1 << 6)
-	isolatedNetworkResponseDtoFieldCreatedAt   = big.NewInt(1 << 7)
-	isolatedNetworkResponseDtoFieldType        = big.NewInt(1 << 8)
-	isolatedNetworkResponseDtoFieldACLType     = big.NewInt(1 << 9)
+	isolatedNetworkResponseDtoFieldID                  = big.NewInt(1 << 0)
+	isolatedNetworkResponseDtoFieldName                = big.NewInt(1 << 1)
+	isolatedNetworkResponseDtoFieldDescription         = big.NewInt(1 << 2)
+	isolatedNetworkResponseDtoFieldCidr                = big.NewInt(1 << 3)
+	isolatedNetworkResponseDtoFieldGateway             = big.NewInt(1 << 4)
+	isolatedNetworkResponseDtoFieldStatus              = big.NewInt(1 << 5)
+	isolatedNetworkResponseDtoFieldRegion              = big.NewInt(1 << 6)
+	isolatedNetworkResponseDtoFieldCreatedAt           = big.NewInt(1 << 7)
+	isolatedNetworkResponseDtoFieldType                = big.NewInt(1 << 8)
+	isolatedNetworkResponseDtoFieldACLType             = big.NewInt(1 << 9)
+	isolatedNetworkResponseDtoFieldDefaultEgressPolicy = big.NewInt(1 << 10)
 )
 
 type IsolatedNetworkResponseDto struct {
@@ -537,6 +578,8 @@ type IsolatedNetworkResponseDto struct {
 	Type string `json:"type" url:"type"`
 	// Type of the ACL list
 	ACLType *string `json:"aclType,omitempty" url:"aclType,omitempty"`
+	// How outbound traffic is treated when this network has no egress rules. `allow` means all outbound traffic is permitted and each egress rule blocks what it matches; `deny` means all outbound traffic is blocked and each egress rule permits what it matches. Fixed when the network is created and cannot be changed afterwards. Omitted when unknown.
+	DefaultEgressPolicy *IsolatedNetworkResponseDtoDefaultEgressPolicy `json:"defaultEgressPolicy,omitempty" url:"defaultEgressPolicy,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -613,6 +656,13 @@ func (i *IsolatedNetworkResponseDto) GetACLType() *string {
 		return nil
 	}
 	return i.ACLType
+}
+
+func (i *IsolatedNetworkResponseDto) GetDefaultEgressPolicy() *IsolatedNetworkResponseDtoDefaultEgressPolicy {
+	if i == nil {
+		return nil
+	}
+	return i.DefaultEgressPolicy
 }
 
 func (i *IsolatedNetworkResponseDto) GetExtraProperties() map[string]interface{} {
@@ -699,6 +749,13 @@ func (i *IsolatedNetworkResponseDto) SetACLType(aclType *string) {
 	i.require(isolatedNetworkResponseDtoFieldACLType)
 }
 
+// SetDefaultEgressPolicy sets the DefaultEgressPolicy field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (i *IsolatedNetworkResponseDto) SetDefaultEgressPolicy(defaultEgressPolicy *IsolatedNetworkResponseDtoDefaultEgressPolicy) {
+	i.DefaultEgressPolicy = defaultEgressPolicy
+	i.require(isolatedNetworkResponseDtoFieldDefaultEgressPolicy)
+}
+
 func (i *IsolatedNetworkResponseDto) UnmarshalJSON(data []byte) error {
 	type embed IsolatedNetworkResponseDto
 	var unmarshaler = struct {
@@ -747,6 +804,29 @@ func (i *IsolatedNetworkResponseDto) String() string {
 		return value
 	}
 	return fmt.Sprintf("%#v", i)
+}
+
+// How outbound traffic is treated when this network has no egress rules. `allow` means all outbound traffic is permitted and each egress rule blocks what it matches; `deny` means all outbound traffic is blocked and each egress rule permits what it matches. Fixed when the network is created and cannot be changed afterwards. Omitted when unknown.
+type IsolatedNetworkResponseDtoDefaultEgressPolicy string
+
+const (
+	IsolatedNetworkResponseDtoDefaultEgressPolicyAllow IsolatedNetworkResponseDtoDefaultEgressPolicy = "allow"
+	IsolatedNetworkResponseDtoDefaultEgressPolicyDeny  IsolatedNetworkResponseDtoDefaultEgressPolicy = "deny"
+)
+
+func NewIsolatedNetworkResponseDtoDefaultEgressPolicyFromString(s string) (IsolatedNetworkResponseDtoDefaultEgressPolicy, error) {
+	switch s {
+	case "allow":
+		return IsolatedNetworkResponseDtoDefaultEgressPolicyAllow, nil
+	case "deny":
+		return IsolatedNetworkResponseDtoDefaultEgressPolicyDeny, nil
+	}
+	var t IsolatedNetworkResponseDtoDefaultEgressPolicy
+	return "", fmt.Errorf("%s is not a valid %T", s, t)
+}
+
+func (i IsolatedNetworkResponseDtoDefaultEgressPolicy) Ptr() *IsolatedNetworkResponseDtoDefaultEgressPolicy {
+	return &i
 }
 
 // Network status

@@ -318,7 +318,7 @@ client.Vms.GetVms(
 <dl>
 <dd>
 
-Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched.
+Deletes the virtual machine. If its network was auto-created and no other VMs remain on it, that network is also deleted and its public IPs released; networks you created explicitly are left untouched. Delete any snapshots of the root disk before you delete the virtual machine.
 </dd>
 </dl>
 </dd>
@@ -792,7 +792,7 @@ client.Vms.UpdateHostnameVms(
 <dl>
 <dd>
 
-**hostname:** `string` — The new hostname for the virtual machine
+**hostname:** `string` — The new hostname for the virtual machine. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
     
 </dd>
 </dl>
@@ -4071,7 +4071,7 @@ client.EgressRules.CreateEgressRules(
 <dl>
 <dd>
 
-**sourceCidrList:** `*string` — Source CIDR within the guest network CIDR. Omit to allow the entire network.
+**sourceCidrList:** `*string` — Source CIDR within the network's CIDR — which senders inside the network the rule matches. Omit to match the entire network.
     
 </dd>
 </dl>
@@ -4079,7 +4079,7 @@ client.EgressRules.CreateEgressRules(
 <dl>
 <dd>
 
-**destCidrList:** `*string` — Destination CIDR the traffic is allowed to reach. Defaults to `0.0.0.0/0`.
+**destCidrList:** `*string` — Destination CIDR the rule matches — where the outbound traffic is headed. Defaults to `0.0.0.0/0` (anywhere). Whether matching traffic is permitted or blocked depends on the network: see `action` on the created rule.
     
 </dd>
 </dl>
@@ -4252,7 +4252,7 @@ client.EgressRules.UpdateEgressRules(
 <dl>
 <dd>
 
-**sourceCidrList:** `*string` — Source CIDR within the guest network CIDR.
+**sourceCidrList:** `*string` — Source CIDR within the network's CIDR — which senders inside the network the rule matches.
     
 </dd>
 </dl>
@@ -4260,7 +4260,7 @@ client.EgressRules.UpdateEgressRules(
 <dl>
 <dd>
 
-**destCidrList:** `*string` — Destination CIDR the traffic is allowed to reach.
+**destCidrList:** `*string` — Destination CIDR the rule matches — where the outbound traffic is headed.
     
 </dd>
 </dl>
@@ -9550,7 +9550,7 @@ client.BlockStorage.GetBlockStorage(
 <dl>
 <dd>
 
-Deletes a block storage volume. This operation cannot be undone.
+Deletes a block storage volume. This operation cannot be undone. Delete any snapshots of the volume before you delete the volume.
 </dd>
 </dl>
 </dd>
@@ -10837,6 +10837,67 @@ client.Wordpress.GetNameserversWordpress(
 </dl>
 </details>
 
+<details><summary><code>client.Wordpress.GetChangePackageEstimateWordpress(request) -> *americancloudsdkgo.ChangePackageEstimateDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the prorated charge for moving to a different package, without changing anything. The charge covers the remainder of the current billing period and reflects any account discount.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.ChangePackageDto{
+        PackageLabel: "wordpress-25",
+    }
+client.Wordpress.GetChangePackageEstimateWordpress(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `*americancloudsdkgo.ChangePackageDto` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Wordpress.ChangePackageWordpress(request) -> *americancloudsdkgo.WordPressSuccessResponseDto</code></summary>
 <dl>
 <dd>
@@ -10886,7 +10947,7 @@ client.Wordpress.ChangePackageWordpress(
 <dl>
 <dd>
 
-**packageLabel:** `string` — New package label to upgrade to
+**request:** `*americancloudsdkgo.ChangePackageDto` 
     
 </dd>
 </dl>

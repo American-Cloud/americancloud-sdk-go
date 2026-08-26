@@ -205,6 +205,23 @@ func (c *Client) GetNameserversWordpress(
 	return response.Body, nil
 }
 
+// Returns the prorated charge for moving to a different package, without changing anything. The charge covers the remainder of the current billing period and reflects any account discount.
+func (c *Client) GetChangePackageEstimateWordpress(
+	ctx context.Context,
+	request *americancloudsdkgo.ChangePackageDto,
+	opts ...option.RequestOption,
+) (*americancloudsdkgo.ChangePackageEstimateDto, error) {
+	response, err := c.WithRawResponse.GetChangePackageEstimateWordpress(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return response.Body, nil
+}
+
 // Upgrades the WordPress instance to a higher tier package/plan
 func (c *Client) ChangePackageWordpress(
 	ctx context.Context,

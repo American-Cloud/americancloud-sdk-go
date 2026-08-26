@@ -458,7 +458,7 @@ var (
 )
 
 type CreateVMDto struct {
-	// VM name
+	// VM name. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
 	Name string `json:"name" url:"name"`
 	// Region label
 	Region string `json:"region" url:"region"`
@@ -478,7 +478,7 @@ type CreateVMDto struct {
 	Keypairs []string `json:"keypairs,omitempty" url:"keypairs,omitempty"`
 	// Base64-encoded cloud-init userdata script (optional)
 	Userdata *string `json:"userdata,omitempty" url:"userdata,omitempty"`
-	// Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Creates an egress allow-all rule (if requested) and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
+	// Optional network access configuration applied after the VM is created. Only honored when no `network` is provided (i.e. an isolated network is auto-created). Applies the requested outbound traffic setting and adds port forwarding + firewall rules for the requested inbound ports against the network's public IP.
 	NetworkAccess *NetworkAccessDto `json:"networkAccess,omitempty" url:"networkAccess,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
@@ -1390,7 +1390,7 @@ var (
 )
 
 type NetworkAccessDto struct {
-	// Allow all outbound traffic from the VM. New isolated networks deny outbound by default.
+	// Allow all outbound traffic from the VM, so it can reach the internet. Set to `false` to block all outbound traffic instead.
 	AllowEgressAll bool `json:"allowEgressAll" url:"allowEgressAll"`
 	// Inbound ports to open on the network's public IP. Omit or empty for no inbound. When provided, port forwarding and firewall rules are created on the source NAT IP.
 	InboundPorts []*InboundPortDto `json:"inboundPorts,omitempty" url:"inboundPorts,omitempty"`
@@ -2359,8 +2359,8 @@ type VMResponseDto struct {
 	RootDiskGb int `json:"rootDiskGb" url:"rootDiskGb"`
 	// Tags assigned to this VM for grouping and filtering.
 	Tags []string `json:"tags,omitempty" url:"tags,omitempty"`
-	// Billing cadence applied to this VM.
-	SubscriptionPeriod string `json:"subscriptionPeriod" url:"subscriptionPeriod"`
+	// Billing cadence applied to this VM. Absent for a few moments after the VM is created, while the billing term is still being recorded. Poll until it appears.
+	SubscriptionPeriod *string `json:"subscriptionPeriod,omitempty" url:"subscriptionPeriod,omitempty"`
 	// Image label the VM was provisioned from. References /v1/compute/images.
 	Image string `json:"image" url:"image"`
 	// Friendly name of the source image.
@@ -2450,9 +2450,9 @@ func (v *VMResponseDto) GetTags() []string {
 	return v.Tags
 }
 
-func (v *VMResponseDto) GetSubscriptionPeriod() string {
+func (v *VMResponseDto) GetSubscriptionPeriod() *string {
 	if v == nil {
-		return ""
+		return nil
 	}
 	return v.SubscriptionPeriod
 }
@@ -2599,7 +2599,7 @@ func (v *VMResponseDto) SetTags(tags []string) {
 
 // SetSubscriptionPeriod sets the SubscriptionPeriod field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (v *VMResponseDto) SetSubscriptionPeriod(subscriptionPeriod string) {
+func (v *VMResponseDto) SetSubscriptionPeriod(subscriptionPeriod *string) {
 	v.SubscriptionPeriod = subscriptionPeriod
 	v.require(vMResponseDtoFieldSubscriptionPeriod)
 }
@@ -2974,7 +2974,7 @@ var (
 type UpdateHostnameVmsRequest struct {
 	// ID of the virtual machine
 	ID string `json:"-" url:"-"`
-	// The new hostname for the virtual machine
+	// The new hostname for the virtual machine. It must be 1 to 63 characters, start with a letter, end with a letter or a digit, and hold only letters, digits and hyphens.
 	Hostname string `json:"-" url:"hostname"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted

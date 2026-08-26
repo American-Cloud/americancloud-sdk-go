@@ -490,6 +490,49 @@ func (r *RawClient) GetNameserversWordpress(
 	}, nil
 }
 
+func (r *RawClient) GetChangePackageEstimateWordpress(
+	ctx context.Context,
+	request *americancloudsdkgo.ChangePackageDto,
+	opts ...option.RequestOption,
+) (*core.Response[*americancloudsdkgo.ChangePackageEstimateDto], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := baseURL + "/api/v1/wordpress/change-package/cost-estimate"
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	var response *americancloudsdkgo.ChangePackageEstimateDto
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodPost,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			Request:         request,
+			Response:        &response,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[*americancloudsdkgo.ChangePackageEstimateDto]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       response,
+	}, nil
+}
+
 func (r *RawClient) ChangePackageWordpress(
 	ctx context.Context,
 	request *americancloudsdkgo.ChangePackageDto,
@@ -506,7 +549,6 @@ func (r *RawClient) ChangePackageWordpress(
 		r.options.ToHeader(),
 		options.ToHeader(),
 	)
-	headers.Add("Content-Type", "application/json")
 	var response *americancloudsdkgo.WordPressSuccessResponseDto
 	raw, err := r.caller.Call(
 		ctx,

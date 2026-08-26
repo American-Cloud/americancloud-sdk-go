@@ -4806,7 +4806,7 @@ func TestSettersVMResponseDto(t *testing.T) {
 
 	t.Run("SetSubscriptionPeriod", func(t *testing.T) {
 		obj := &VMResponseDto{}
-		var fernTestValueSubscriptionPeriod string
+		var fernTestValueSubscriptionPeriod *string
 		obj.SetSubscriptionPeriod(fernTestValueSubscriptionPeriod)
 		assert.Equal(t, fernTestValueSubscriptionPeriod, obj.SubscriptionPeriod)
 		assert.NotNil(t, obj.explicitFields)
@@ -5118,11 +5118,21 @@ func TestGettersVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &VMResponseDto{}
-		var expected string
+		var expected *string
 		obj.SubscriptionPeriod = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetSubscriptionPeriod(), "getter should return the property value")
+	})
+
+	t.Run("GetSubscriptionPeriod_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &VMResponseDto{}
+		obj.SubscriptionPeriod = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetSubscriptionPeriod(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetSubscriptionPeriod_NilReceiver", func(t *testing.T) {
@@ -5690,7 +5700,7 @@ func TestSettersMarkExplicitVMResponseDto(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &VMResponseDto{}
-		var fernTestValueSubscriptionPeriod string
+		var fernTestValueSubscriptionPeriod *string
 
 		// Act
 		obj.SetSubscriptionPeriod(fernTestValueSubscriptionPeriod)

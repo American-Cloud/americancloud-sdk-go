@@ -31,7 +31,7 @@ func (b *BadRequestError) Unwrap() error {
 	return b.APIError
 }
 
-// The network still has attached resources and cannot be deleted yet
+// The root disk of the virtual machine has one or more snapshots. Delete the snapshots first, then delete the virtual machine. `code` is `volume_has_snapshots`.
 type ConflictError struct {
 	*core.APIError
 	Body *APIErrorDto
