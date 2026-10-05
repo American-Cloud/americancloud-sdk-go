@@ -102,7 +102,7 @@ func (c *Client) CreateBucketObjectStorage(
 	return response.Body, nil
 }
 
-// Returns all access keys (access key and secret key pairs) for the specified storage unit
+// Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
 func (c *Client) GetKeysObjectStorage(
 	ctx context.Context,
 	request *americancloudsdkgo.GetKeysObjectStorageRequest,
@@ -117,6 +117,57 @@ func (c *Client) GetKeysObjectStorage(
 		return nil, err
 	}
 	return response.Body, nil
+}
+
+// Returns every access key of the storage unit, oldest first. All of the keys work at the same time, so you can move each client to a new key before you delete the old one.
+func (c *Client) ListAccessKeysObjectStorage(
+	ctx context.Context,
+	request *americancloudsdkgo.ListAccessKeysObjectStorageRequest,
+	opts ...option.RequestOption,
+) (*americancloudsdkgo.ListAccessKeysObjectStorageResponse, error) {
+	response, err := c.WithRawResponse.ListAccessKeysObjectStorage(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return response.Body, nil
+}
+
+// Creates a new access key and secret key with the given label for the storage unit, and returns them. The existing keys continue to work. A storage unit can hold up to 10 access keys.
+func (c *Client) CreateAccessKeyObjectStorage(
+	ctx context.Context,
+	request *americancloudsdkgo.CreateAccessKeyRequestDto,
+	opts ...option.RequestOption,
+) (*americancloudsdkgo.ObjectStorageAccessKeyDto, error) {
+	response, err := c.WithRawResponse.CreateAccessKeyObjectStorage(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return nil, err
+	}
+	return response.Body, nil
+}
+
+// Deletes the access key. Requests signed with the key fail after this call. The other keys of the storage unit continue to work. A storage unit always keeps at least one access key.
+func (c *Client) DeleteAccessKeyObjectStorage(
+	ctx context.Context,
+	request *americancloudsdkgo.DeleteAccessKeyObjectStorageRequest,
+	opts ...option.RequestOption,
+) error {
+	_, err := c.WithRawResponse.DeleteAccessKeyObjectStorage(
+		ctx,
+		request,
+		opts...,
+	)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 // Returns the estimated cost of an object storage unit without creating one.

@@ -269,6 +269,149 @@ func (r *RawClient) GetKeysObjectStorage(
 	}, nil
 }
 
+func (r *RawClient) ListAccessKeysObjectStorage(
+	ctx context.Context,
+	request *americancloudsdkgo.ListAccessKeysObjectStorageRequest,
+	opts ...option.RequestOption,
+) (*core.Response[*americancloudsdkgo.ListAccessKeysObjectStorageResponse], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := internal.EncodeURL(
+		baseURL+"/api/v1/object-storage/units/%v/access-keys",
+		request.StorageUnitID,
+	)
+	queryParams, err := internal.QueryValues(request)
+	if err != nil {
+		return nil, err
+	}
+	if len(queryParams) > 0 {
+		endpointURL += "?" + queryParams.Encode()
+	}
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	var response *americancloudsdkgo.ListAccessKeysObjectStorageResponse
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodGet,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			Response:        &response,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[*americancloudsdkgo.ListAccessKeysObjectStorageResponse]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       response,
+	}, nil
+}
+
+func (r *RawClient) CreateAccessKeyObjectStorage(
+	ctx context.Context,
+	request *americancloudsdkgo.CreateAccessKeyRequestDto,
+	opts ...option.RequestOption,
+) (*core.Response[*americancloudsdkgo.ObjectStorageAccessKeyDto], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := internal.EncodeURL(
+		baseURL+"/api/v1/object-storage/units/%v/access-keys",
+		request.StorageUnitID,
+	)
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	headers.Add("Content-Type", "application/json")
+	var response *americancloudsdkgo.ObjectStorageAccessKeyDto
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodPost,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			Request:         request,
+			Response:        &response,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[*americancloudsdkgo.ObjectStorageAccessKeyDto]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       response,
+	}, nil
+}
+
+func (r *RawClient) DeleteAccessKeyObjectStorage(
+	ctx context.Context,
+	request *americancloudsdkgo.DeleteAccessKeyObjectStorageRequest,
+	opts ...option.RequestOption,
+) (*core.Response[any], error) {
+	options := core.NewRequestOptions(opts...)
+	baseURL := internal.ResolveBaseURL(
+		options.BaseURL,
+		r.baseURL,
+		"https://api.americancloud.com",
+	)
+	endpointURL := internal.EncodeURL(
+		baseURL+"/api/v1/object-storage/units/%v/access-keys/%v",
+		request.StorageUnitID,
+		request.AccessKey,
+	)
+	headers := internal.MergeHeaders(
+		r.options.ToHeader(),
+		options.ToHeader(),
+	)
+	raw, err := r.caller.Call(
+		ctx,
+		&internal.CallParams{
+			URL:             endpointURL,
+			Method:          http.MethodDelete,
+			Headers:         headers,
+			MaxAttempts:     options.MaxAttempts,
+			DisableRetries:  options.DisableRetries,
+			BodyProperties:  options.BodyProperties,
+			QueryParameters: options.QueryParameters,
+			Client:          options.HTTPClient,
+			ErrorDecoder:    internal.NewErrorDecoder(americancloudsdkgo.ErrorCodes),
+		},
+	)
+	if err != nil {
+		return nil, err
+	}
+	return &core.Response[any]{
+		StatusCode: raw.StatusCode,
+		Header:     raw.Header,
+		Body:       nil,
+	}, nil
+}
+
 func (r *RawClient) GetCostEstimateObjectStorage(
 	ctx context.Context,
 	opts ...option.RequestOption,

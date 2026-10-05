@@ -4920,6 +4920,117 @@
       }
     },
     {
+      "id": "e7e59d48-22c8-4267-927a-c56392496b7d",
+      "name": "List the access keys of a storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/access-keys",
+        "method": "GET",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"total\": 42,\n  \"data\": [\n    {\n      \"accessKey\": \"AKIAIOSFODNN7EXAMPLE\",\n      \"secretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n      \"label\": \"ci-deploy\",\n      \"createdAt\": \"2026-05-29T12:34:56Z\"\n    }\n  ]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "e7e59d48-22c8-4267-927a-c56392496b7d",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "59bf8cee-2c27-4399-abb6-c0b84528c277",
+      "name": "Create an access key for a storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/access-keys",
+        "method": "POST",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          }
+        }
+      },
+      "response": {
+        "status": 201,
+        "body": "{\n  \"accessKey\": \"AKIAIOSFODNN7EXAMPLE\",\n  \"secretKey\": \"wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY\",\n  \"label\": \"ci-deploy\",\n  \"createdAt\": \"2026-05-29T12:34:56Z\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "59bf8cee-2c27-4399-abb6-c0b84528c277",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
+      "id": "6a7cf835-7d85-44d7-b781-7337121bcde7",
+      "name": "Delete an access key of a storage unit - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/access-keys/{accessKey}",
+        "method": "DELETE",
+        "headers": {
+          "X-API-Client-ID": {
+            "matches": ".+"
+          }
+        },
+        "pathParameters": {
+          "storageUnitId": {
+            "equalTo": "tenant$user"
+          },
+          "accessKey": {
+            "equalTo": "AKIAIOSFODNN7EXAMPLE"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "\"\"",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "6a7cf835-7d85-44d7-b781-7337121bcde7",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      }
+    },
+    {
       "id": "2227d660-f06a-4a5a-a73c-e0864490b680",
       "name": "Get a cost estimate for an object storage unit - default",
       "request": {
@@ -6184,6 +6295,6 @@
     }
   ],
   "meta": {
-    "total": 176
+    "total": 179
   }
 }

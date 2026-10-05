@@ -11,6 +11,63 @@ import (
 )
 
 var (
+	createAccessKeyRequestDtoFieldStorageUnitID = big.NewInt(1 << 0)
+	createAccessKeyRequestDtoFieldLabel         = big.NewInt(1 << 1)
+)
+
+type CreateAccessKeyRequestDto struct {
+	// Storage unit ID (UID)
+	StorageUnitID string `json:"-" url:"-"`
+	// A label that identifies the key, for example the application that uses it. The label must be 1 to 64 characters, start with a letter or a number, and hold only letters, numbers, single spaces, and . _ - : , / @ # ( ) + & '. It cannot be changed later.
+	Label string `json:"label" url:"-"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+}
+
+func (c *CreateAccessKeyRequestDto) require(field *big.Int) {
+	if c.explicitFields == nil {
+		c.explicitFields = big.NewInt(0)
+	}
+	c.explicitFields.Or(c.explicitFields, field)
+}
+
+// SetStorageUnitID sets the StorageUnitID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *CreateAccessKeyRequestDto) SetStorageUnitID(storageUnitID string) {
+	c.StorageUnitID = storageUnitID
+	c.require(createAccessKeyRequestDtoFieldStorageUnitID)
+}
+
+// SetLabel sets the Label field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *CreateAccessKeyRequestDto) SetLabel(label string) {
+	c.Label = label
+	c.require(createAccessKeyRequestDtoFieldLabel)
+}
+
+func (c *CreateAccessKeyRequestDto) UnmarshalJSON(data []byte) error {
+	type unmarshaler CreateAccessKeyRequestDto
+	var body unmarshaler
+	if err := json.Unmarshal(data, &body); err != nil {
+		return err
+	}
+	*c = CreateAccessKeyRequestDto(body)
+	return nil
+}
+
+func (c *CreateAccessKeyRequestDto) MarshalJSON() ([]byte, error) {
+	type embed CreateAccessKeyRequestDto
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*c),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, c.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+var (
 	createBucketRequestDtoFieldStorageUnitID = big.NewInt(1 << 0)
 	createBucketRequestDtoFieldName          = big.NewInt(1 << 1)
 )
@@ -115,6 +172,42 @@ func (c *CreateStorageUnitRequestDto) MarshalJSON() ([]byte, error) {
 }
 
 var (
+	deleteAccessKeyObjectStorageRequestFieldStorageUnitID = big.NewInt(1 << 0)
+	deleteAccessKeyObjectStorageRequestFieldAccessKey     = big.NewInt(1 << 1)
+)
+
+type DeleteAccessKeyObjectStorageRequest struct {
+	// Storage unit ID (UID)
+	StorageUnitID string `json:"-" url:"-"`
+	// The access key to delete
+	AccessKey string `json:"-" url:"-"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+}
+
+func (d *DeleteAccessKeyObjectStorageRequest) require(field *big.Int) {
+	if d.explicitFields == nil {
+		d.explicitFields = big.NewInt(0)
+	}
+	d.explicitFields.Or(d.explicitFields, field)
+}
+
+// SetStorageUnitID sets the StorageUnitID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (d *DeleteAccessKeyObjectStorageRequest) SetStorageUnitID(storageUnitID string) {
+	d.StorageUnitID = storageUnitID
+	d.require(deleteAccessKeyObjectStorageRequestFieldStorageUnitID)
+}
+
+// SetAccessKey sets the AccessKey field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (d *DeleteAccessKeyObjectStorageRequest) SetAccessKey(accessKey string) {
+	d.AccessKey = accessKey
+	d.require(deleteAccessKeyObjectStorageRequestFieldAccessKey)
+}
+
+var (
 	deleteBucketObjectStorageRequestFieldStorageUnitID = big.NewInt(1 << 0)
 	deleteBucketObjectStorageRequestFieldBucketName    = big.NewInt(1 << 1)
 	deleteBucketObjectStorageRequestFieldPurgeObjects  = big.NewInt(1 << 2)
@@ -210,6 +303,52 @@ func (g *GetKeysObjectStorageRequest) require(field *big.Int) {
 func (g *GetKeysObjectStorageRequest) SetStorageUnitID(storageUnitID string) {
 	g.StorageUnitID = storageUnitID
 	g.require(getKeysObjectStorageRequestFieldStorageUnitID)
+}
+
+var (
+	listAccessKeysObjectStorageRequestFieldStorageUnitID = big.NewInt(1 << 0)
+	listAccessKeysObjectStorageRequestFieldPage          = big.NewInt(1 << 1)
+	listAccessKeysObjectStorageRequestFieldPageSize      = big.NewInt(1 << 2)
+)
+
+type ListAccessKeysObjectStorageRequest struct {
+	// Storage unit ID (UID)
+	StorageUnitID string `json:"-" url:"-"`
+	// Page number, 1-indexed. Defaults to 1 when omitted.
+	Page *int `json:"-" url:"page,omitempty"`
+	// Items per page. Defaults to 100 when omitted; server cap 500.
+	PageSize *int `json:"-" url:"pageSize,omitempty"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+}
+
+func (l *ListAccessKeysObjectStorageRequest) require(field *big.Int) {
+	if l.explicitFields == nil {
+		l.explicitFields = big.NewInt(0)
+	}
+	l.explicitFields.Or(l.explicitFields, field)
+}
+
+// SetStorageUnitID sets the StorageUnitID field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (l *ListAccessKeysObjectStorageRequest) SetStorageUnitID(storageUnitID string) {
+	l.StorageUnitID = storageUnitID
+	l.require(listAccessKeysObjectStorageRequestFieldStorageUnitID)
+}
+
+// SetPage sets the Page field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (l *ListAccessKeysObjectStorageRequest) SetPage(page *int) {
+	l.Page = page
+	l.require(listAccessKeysObjectStorageRequestFieldPage)
+}
+
+// SetPageSize sets the PageSize field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (l *ListAccessKeysObjectStorageRequest) SetPageSize(pageSize *int) {
+	l.PageSize = pageSize
+	l.require(listAccessKeysObjectStorageRequestFieldPageSize)
 }
 
 var (
@@ -652,6 +791,150 @@ func (b *BucketDto) String() string {
 }
 
 var (
+	objectStorageAccessKeyDtoFieldAccessKey = big.NewInt(1 << 0)
+	objectStorageAccessKeyDtoFieldSecretKey = big.NewInt(1 << 1)
+	objectStorageAccessKeyDtoFieldLabel     = big.NewInt(1 << 2)
+	objectStorageAccessKeyDtoFieldCreatedAt = big.NewInt(1 << 3)
+)
+
+type ObjectStorageAccessKeyDto struct {
+	// S3 access key identifier.
+	AccessKey string `json:"accessKey" url:"accessKey"`
+	// S3 secret key paired with the access key.
+	SecretKey string `json:"secretKey" url:"secretKey"`
+	// The label given to the access key when it was created. Null for a key created without a label, such as the first key of a storage unit.
+	Label *string `json:"label,omitempty" url:"label,omitempty"`
+	// When the access key was created. Null when the creation time is not known.
+	CreatedAt *time.Time `json:"createdAt,omitempty" url:"createdAt,omitempty"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (o *ObjectStorageAccessKeyDto) GetAccessKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.AccessKey
+}
+
+func (o *ObjectStorageAccessKeyDto) GetSecretKey() string {
+	if o == nil {
+		return ""
+	}
+	return o.SecretKey
+}
+
+func (o *ObjectStorageAccessKeyDto) GetLabel() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Label
+}
+
+func (o *ObjectStorageAccessKeyDto) GetCreatedAt() *time.Time {
+	if o == nil {
+		return nil
+	}
+	return o.CreatedAt
+}
+
+func (o *ObjectStorageAccessKeyDto) GetExtraProperties() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.extraProperties
+}
+
+func (o *ObjectStorageAccessKeyDto) require(field *big.Int) {
+	if o.explicitFields == nil {
+		o.explicitFields = big.NewInt(0)
+	}
+	o.explicitFields.Or(o.explicitFields, field)
+}
+
+// SetAccessKey sets the AccessKey field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (o *ObjectStorageAccessKeyDto) SetAccessKey(accessKey string) {
+	o.AccessKey = accessKey
+	o.require(objectStorageAccessKeyDtoFieldAccessKey)
+}
+
+// SetSecretKey sets the SecretKey field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (o *ObjectStorageAccessKeyDto) SetSecretKey(secretKey string) {
+	o.SecretKey = secretKey
+	o.require(objectStorageAccessKeyDtoFieldSecretKey)
+}
+
+// SetLabel sets the Label field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (o *ObjectStorageAccessKeyDto) SetLabel(label *string) {
+	o.Label = label
+	o.require(objectStorageAccessKeyDtoFieldLabel)
+}
+
+// SetCreatedAt sets the CreatedAt field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (o *ObjectStorageAccessKeyDto) SetCreatedAt(createdAt *time.Time) {
+	o.CreatedAt = createdAt
+	o.require(objectStorageAccessKeyDtoFieldCreatedAt)
+}
+
+func (o *ObjectStorageAccessKeyDto) UnmarshalJSON(data []byte) error {
+	type embed ObjectStorageAccessKeyDto
+	var unmarshaler = struct {
+		embed
+		CreatedAt *internal.DateTime `json:"createdAt,omitempty"`
+	}{
+		embed: embed(*o),
+	}
+	if err := json.Unmarshal(data, &unmarshaler); err != nil {
+		return err
+	}
+	*o = ObjectStorageAccessKeyDto(unmarshaler.embed)
+	o.CreatedAt = unmarshaler.CreatedAt.TimePtr()
+	extraProperties, err := internal.ExtractExtraProperties(data, *o)
+	if err != nil {
+		return err
+	}
+	o.extraProperties = extraProperties
+	o.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (o *ObjectStorageAccessKeyDto) MarshalJSON() ([]byte, error) {
+	type embed ObjectStorageAccessKeyDto
+	var marshaler = struct {
+		embed
+		CreatedAt *internal.DateTime `json:"createdAt,omitempty"`
+	}{
+		embed:     embed(*o),
+		CreatedAt: internal.NewOptionalDateTime(o.CreatedAt),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, o.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (o *ObjectStorageAccessKeyDto) String() string {
+	if o == nil {
+		return "<nil>"
+	}
+	if len(o.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(o.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(o); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", o)
+}
+
+var (
 	objectStorageSuccessResponseDtoFieldSuccess = big.NewInt(1 << 0)
 	objectStorageSuccessResponseDtoFieldMessage = big.NewInt(1 << 1)
 )
@@ -912,6 +1195,107 @@ func (o *ObjectStorageUnitDto) String() string {
 		return value
 	}
 	return fmt.Sprintf("%#v", o)
+}
+
+var (
+	listAccessKeysObjectStorageResponseFieldTotal = big.NewInt(1 << 0)
+	listAccessKeysObjectStorageResponseFieldData  = big.NewInt(1 << 1)
+)
+
+type ListAccessKeysObjectStorageResponse struct {
+	// Total number of items matching the request, across all pages. Use this together with `pageSize` to compute how many pages exist.
+	Total float64                      `json:"total" url:"total"`
+	Data  []*ObjectStorageAccessKeyDto `json:"data" url:"data"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (l *ListAccessKeysObjectStorageResponse) GetTotal() float64 {
+	if l == nil {
+		return 0
+	}
+	return l.Total
+}
+
+func (l *ListAccessKeysObjectStorageResponse) GetData() []*ObjectStorageAccessKeyDto {
+	if l == nil {
+		return nil
+	}
+	return l.Data
+}
+
+func (l *ListAccessKeysObjectStorageResponse) GetExtraProperties() map[string]interface{} {
+	if l == nil {
+		return nil
+	}
+	return l.extraProperties
+}
+
+func (l *ListAccessKeysObjectStorageResponse) require(field *big.Int) {
+	if l.explicitFields == nil {
+		l.explicitFields = big.NewInt(0)
+	}
+	l.explicitFields.Or(l.explicitFields, field)
+}
+
+// SetTotal sets the Total field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (l *ListAccessKeysObjectStorageResponse) SetTotal(total float64) {
+	l.Total = total
+	l.require(listAccessKeysObjectStorageResponseFieldTotal)
+}
+
+// SetData sets the Data field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (l *ListAccessKeysObjectStorageResponse) SetData(data []*ObjectStorageAccessKeyDto) {
+	l.Data = data
+	l.require(listAccessKeysObjectStorageResponseFieldData)
+}
+
+func (l *ListAccessKeysObjectStorageResponse) UnmarshalJSON(data []byte) error {
+	type unmarshaler ListAccessKeysObjectStorageResponse
+	var value unmarshaler
+	if err := json.Unmarshal(data, &value); err != nil {
+		return err
+	}
+	*l = ListAccessKeysObjectStorageResponse(value)
+	extraProperties, err := internal.ExtractExtraProperties(data, *l)
+	if err != nil {
+		return err
+	}
+	l.extraProperties = extraProperties
+	l.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (l *ListAccessKeysObjectStorageResponse) MarshalJSON() ([]byte, error) {
+	type embed ListAccessKeysObjectStorageResponse
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*l),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, l.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (l *ListAccessKeysObjectStorageResponse) String() string {
+	if l == nil {
+		return "<nil>"
+	}
+	if len(l.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(l.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(l); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", l)
 }
 
 var (

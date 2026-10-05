@@ -210,6 +210,86 @@ func TestObjectStorageGetKeysObjectStorageWithWireMock(
 	VerifyRequestCount(t, "TestObjectStorageGetKeysObjectStorageWithWireMock", "GET", "/api/v1/object-storage/units/tenant$user/keys", nil, 1)
 }
 
+func TestObjectStorageListAccessKeysObjectStorageWithWireMock(
+	t *testing.T,
+) {
+	WireMockBaseURL := os.Getenv("WIREMOCK_URL")
+	if WireMockBaseURL == "" {
+		WireMockBaseURL = "http://localhost:8080"
+	}
+	client := client.NewClient(
+		option.WithBaseURL(WireMockBaseURL),
+		option.WithAPIKey("test-value"),
+	)
+	request := &americancloudsdkgo.ListAccessKeysObjectStorageRequest{
+		StorageUnitID: "tenant$user",
+	}
+	_, invocationErr := client.ObjectStorage.ListAccessKeysObjectStorage(
+		context.TODO(),
+		request,
+		option.WithHTTPHeader(
+			http.Header{"X-Test-Id": []string{"TestObjectStorageListAccessKeysObjectStorageWithWireMock"}},
+		),
+	)
+
+	require.NoError(t, invocationErr, "Client method call should succeed")
+	VerifyRequestCount(t, "TestObjectStorageListAccessKeysObjectStorageWithWireMock", "GET", "/api/v1/object-storage/units/tenant$user/access-keys", nil, 1)
+}
+
+func TestObjectStorageCreateAccessKeyObjectStorageWithWireMock(
+	t *testing.T,
+) {
+	WireMockBaseURL := os.Getenv("WIREMOCK_URL")
+	if WireMockBaseURL == "" {
+		WireMockBaseURL = "http://localhost:8080"
+	}
+	client := client.NewClient(
+		option.WithBaseURL(WireMockBaseURL),
+		option.WithAPIKey("test-value"),
+	)
+	request := &americancloudsdkgo.CreateAccessKeyRequestDto{
+		StorageUnitID: "tenant$user",
+		Label:         "ci-deploy",
+	}
+	_, invocationErr := client.ObjectStorage.CreateAccessKeyObjectStorage(
+		context.TODO(),
+		request,
+		option.WithHTTPHeader(
+			http.Header{"X-Test-Id": []string{"TestObjectStorageCreateAccessKeyObjectStorageWithWireMock"}},
+		),
+	)
+
+	require.NoError(t, invocationErr, "Client method call should succeed")
+	VerifyRequestCount(t, "TestObjectStorageCreateAccessKeyObjectStorageWithWireMock", "POST", "/api/v1/object-storage/units/tenant$user/access-keys", nil, 1)
+}
+
+func TestObjectStorageDeleteAccessKeyObjectStorageWithWireMock(
+	t *testing.T,
+) {
+	WireMockBaseURL := os.Getenv("WIREMOCK_URL")
+	if WireMockBaseURL == "" {
+		WireMockBaseURL = "http://localhost:8080"
+	}
+	client := client.NewClient(
+		option.WithBaseURL(WireMockBaseURL),
+		option.WithAPIKey("test-value"),
+	)
+	request := &americancloudsdkgo.DeleteAccessKeyObjectStorageRequest{
+		StorageUnitID: "tenant$user",
+		AccessKey:     "AKIAIOSFODNN7EXAMPLE",
+	}
+	invocationErr := client.ObjectStorage.DeleteAccessKeyObjectStorage(
+		context.TODO(),
+		request,
+		option.WithHTTPHeader(
+			http.Header{"X-Test-Id": []string{"TestObjectStorageDeleteAccessKeyObjectStorageWithWireMock"}},
+		),
+	)
+
+	require.NoError(t, invocationErr, "Client method call should succeed")
+	VerifyRequestCount(t, "TestObjectStorageDeleteAccessKeyObjectStorageWithWireMock", "DELETE", "/api/v1/object-storage/units/tenant$user/access-keys/AKIAIOSFODNN7EXAMPLE", nil, 1)
+}
+
 func TestObjectStorageGetCostEstimateObjectStorageWithWireMock(
 	t *testing.T,
 ) {

@@ -8858,7 +8858,7 @@ client.ObjectStorage.CreateBucketObjectStorage(
 <dl>
 <dd>
 
-Returns all access keys (access key and secret key pairs) for the specified storage unit
+Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
 </dd>
 </dl>
 </dd>
@@ -8896,6 +8896,223 @@ client.ObjectStorage.GetKeysObjectStorage(
 <dd>
 
 **storageUnitID:** `string` — Storage unit ID (UID)
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ObjectStorage.ListAccessKeysObjectStorage(StorageUnitID) -> *americancloudsdkgo.ListAccessKeysObjectStorageResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns every access key of the storage unit, oldest first. All of the keys work at the same time, so you can move each client to a new key before you delete the old one.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.ListAccessKeysObjectStorageRequest{
+        StorageUnitID: "tenant$user",
+    }
+client.ObjectStorage.ListAccessKeysObjectStorage(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**storageUnitID:** `string` — Storage unit ID (UID)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**page:** `*int` — Page number, 1-indexed. Defaults to 1 when omitted.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**pageSize:** `*int` — Items per page. Defaults to 100 when omitted; server cap 500.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ObjectStorage.CreateAccessKeyObjectStorage(StorageUnitID, request) -> *americancloudsdkgo.ObjectStorageAccessKeyDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new access key and secret key with the given label for the storage unit, and returns them. The existing keys continue to work. A storage unit can hold up to 10 access keys.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.CreateAccessKeyRequestDto{
+        StorageUnitID: "tenant$user",
+        Label: "ci-deploy",
+    }
+client.ObjectStorage.CreateAccessKeyObjectStorage(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**storageUnitID:** `string` — Storage unit ID (UID)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**label:** `string` — A label that identifies the key, for example the application that uses it. The label must be 1 to 64 characters, start with a letter or a number, and hold only letters, numbers, single spaces, and . _ - : , / @ # ( ) + & '. It cannot be changed later.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.ObjectStorage.DeleteAccessKeyObjectStorage(StorageUnitID, AccessKey) -> error</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Deletes the access key. Requests signed with the key fail after this call. The other keys of the storage unit continue to work. A storage unit always keeps at least one access key.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+request := &americancloudsdkgo.DeleteAccessKeyObjectStorageRequest{
+        StorageUnitID: "tenant$user",
+        AccessKey: "AKIAIOSFODNN7EXAMPLE",
+    }
+client.ObjectStorage.DeleteAccessKeyObjectStorage(
+        context.TODO(),
+        request,
+    )
+}
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**storageUnitID:** `string` — Storage unit ID (UID)
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**accessKey:** `string` — The access key to delete
     
 </dd>
 </dl>
