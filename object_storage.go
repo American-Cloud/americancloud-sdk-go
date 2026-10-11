@@ -75,7 +75,7 @@ var (
 type CreateBucketRequestDto struct {
 	// Storage unit ID (UID)
 	StorageUnitID string `json:"-" url:"-"`
-	// Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number.
+	// Bucket name. Lowercase letters, numbers, dots, and hyphens only; must start and end with a letter or number. It cannot hold two dots together or a dot next to a hyphen, and it cannot be an IP address.
 	Name string `json:"name" url:"-"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
@@ -129,7 +129,7 @@ var (
 )
 
 type CreateStorageUnitRequestDto struct {
-	// Storage unit name. Alphanumeric characters only.
+	// Storage unit name. Letters, numbers, hyphens, and underscores, up to 100 characters; must start and end with a letter or number. It cannot be changed later.
 	Name string `json:"name" url:"-"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted

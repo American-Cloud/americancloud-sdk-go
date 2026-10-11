@@ -117,7 +117,7 @@ func TestObjectStorageCreateUnitObjectStorageWithWireMock(
 		option.WithAPIKey("test-value"),
 	)
 	request := &americancloudsdkgo.CreateStorageUnitRequestDto{
-		Name: "storageunit01",
+		Name: "prod-assets",
 	}
 	_, invocationErr := client.ObjectStorage.CreateUnitObjectStorage(
 		context.TODO(),

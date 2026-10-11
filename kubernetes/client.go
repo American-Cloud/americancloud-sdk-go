@@ -167,7 +167,7 @@ func (c *Client) ClusterPowerKubernetes(
 	return nil
 }
 
-// Returns the kubeconfig file content for connecting to the cluster
+// Returns the kubeconfig file content for connecting to the cluster. The kubeconfig grants full access to the cluster, so this requires Kubernetes manage access (a read-write API key).
 func (c *Client) GetClusterConfigKubernetes(
 	ctx context.Context,
 	request *americancloudsdkgo.GetClusterConfigKubernetesRequest,

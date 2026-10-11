@@ -680,6 +680,7 @@ var (
 	costEstimateResponseDtoFieldEstimates       = big.NewInt(1 << 0)
 	costEstimateResponseDtoFieldDiscountApplied = big.NewInt(1 << 1)
 	costEstimateResponseDtoFieldBillingNote     = big.NewInt(1 << 2)
+	costEstimateResponseDtoFieldMetered         = big.NewInt(1 << 3)
 )
 
 type CostEstimateResponseDto struct {
@@ -689,6 +690,8 @@ type CostEstimateResponseDto struct {
 	DiscountApplied *DiscountAppliedDto `json:"discount_applied,omitempty" url:"discount_applied,omitempty"`
 	// Additional billing information or notes about pricing structure
 	BillingNote *string `json:"billing_note,omitempty" url:"billing_note,omitempty"`
+	// The usage rate, for a resource that is billed by usage (object storage only).
+	Metered *MeteredRateDto `json:"metered,omitempty" url:"metered,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -716,6 +719,13 @@ func (c *CostEstimateResponseDto) GetBillingNote() *string {
 		return nil
 	}
 	return c.BillingNote
+}
+
+func (c *CostEstimateResponseDto) GetMetered() *MeteredRateDto {
+	if c == nil {
+		return nil
+	}
+	return c.Metered
 }
 
 func (c *CostEstimateResponseDto) GetExtraProperties() map[string]interface{} {
@@ -751,6 +761,13 @@ func (c *CostEstimateResponseDto) SetDiscountApplied(discountApplied *DiscountAp
 func (c *CostEstimateResponseDto) SetBillingNote(billingNote *string) {
 	c.BillingNote = billingNote
 	c.require(costEstimateResponseDtoFieldBillingNote)
+}
+
+// SetMetered sets the Metered field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *CostEstimateResponseDto) SetMetered(metered *MeteredRateDto) {
+	c.Metered = metered
+	c.require(costEstimateResponseDtoFieldMetered)
 }
 
 func (c *CostEstimateResponseDto) UnmarshalJSON(data []byte) error {
@@ -1014,6 +1031,108 @@ func (e *EstimatesDto) String() string {
 		return value
 	}
 	return fmt.Sprintf("%#v", e)
+}
+
+var (
+	meteredRateDtoFieldRatePerGbMonth = big.NewInt(1 << 0)
+	meteredRateDtoFieldMinimumGb      = big.NewInt(1 << 1)
+)
+
+type MeteredRateDto struct {
+	// Price for each GB stored for a month. Usage is billed at the total, after any discount.
+	RatePerGbMonth *CostBreakdownDto `json:"rate_per_gb_month" url:"rate_per_gb_month"`
+	// Storage that the monthly minimum covers, in GB.
+	MinimumGb float64 `json:"minimum_gb" url:"minimum_gb"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (m *MeteredRateDto) GetRatePerGbMonth() *CostBreakdownDto {
+	if m == nil {
+		return nil
+	}
+	return m.RatePerGbMonth
+}
+
+func (m *MeteredRateDto) GetMinimumGb() float64 {
+	if m == nil {
+		return 0
+	}
+	return m.MinimumGb
+}
+
+func (m *MeteredRateDto) GetExtraProperties() map[string]interface{} {
+	if m == nil {
+		return nil
+	}
+	return m.extraProperties
+}
+
+func (m *MeteredRateDto) require(field *big.Int) {
+	if m.explicitFields == nil {
+		m.explicitFields = big.NewInt(0)
+	}
+	m.explicitFields.Or(m.explicitFields, field)
+}
+
+// SetRatePerGbMonth sets the RatePerGbMonth field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (m *MeteredRateDto) SetRatePerGbMonth(ratePerGbMonth *CostBreakdownDto) {
+	m.RatePerGbMonth = ratePerGbMonth
+	m.require(meteredRateDtoFieldRatePerGbMonth)
+}
+
+// SetMinimumGb sets the MinimumGb field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (m *MeteredRateDto) SetMinimumGb(minimumGb float64) {
+	m.MinimumGb = minimumGb
+	m.require(meteredRateDtoFieldMinimumGb)
+}
+
+func (m *MeteredRateDto) UnmarshalJSON(data []byte) error {
+	type unmarshaler MeteredRateDto
+	var value unmarshaler
+	if err := json.Unmarshal(data, &value); err != nil {
+		return err
+	}
+	*m = MeteredRateDto(value)
+	extraProperties, err := internal.ExtractExtraProperties(data, *m)
+	if err != nil {
+		return err
+	}
+	m.extraProperties = extraProperties
+	m.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (m *MeteredRateDto) MarshalJSON() ([]byte, error) {
+	type embed MeteredRateDto
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*m),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, m.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (m *MeteredRateDto) String() string {
+	if m == nil {
+		return "<nil>"
+	}
+	if len(m.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(m.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(m); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", m)
 }
 
 var (
