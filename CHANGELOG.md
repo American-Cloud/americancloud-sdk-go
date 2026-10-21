@@ -8,6 +8,77 @@ See [`VERSIONING.md`](./VERSIONING.md) for how SDK versions relate to the API ve
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-10-20
+
+### Added
+
+- Kubernetes: a cluster can use one package for its control-plane nodes and
+  another for its worker nodes. `Kubernetes.CreateClusterKubernetes` and
+  `Kubernetes.GetCostEstimateKubernetes` take two new optional fields on
+  `CreateKubernetesClusterRequest`, `ControlPackage` and `WorkerPackage`. Each
+  one overrides `Package` for its own node type.
+  - Set `Package` alone to use one package for every node, as before.
+  - Set `Package` and one override to change one node type.
+  - Set `ControlPackage` and `WorkerPackage` without `Package` to set both.
+  A request with all three answers `400`. The estimate prices each node type
+  at its own package. The first control node is free up to the price of one
+  worker; when the control package costs more, the first control node costs
+  the difference.
+- `KubernetesNodePool` has `Control` and `Worker` (`*KubernetesNodeTypeSpec`:
+  `Package`, `CPUCores`, `MemoryMb`), one for each node type. `Package` is nil
+  when the package of that node type is not known.
+
+### Changed
+
+- **Source change: `CreateKubernetesClusterRequest.Package` is now `*string`.**
+  The field became optional in API 1.7.0, so code that sets it as a string no
+  longer compiles. Use the pointer helper:
+
+  ```go
+  // 1.6.0
+  Package: "basic",
+  // 1.7.0
+  Package: americancloudsdkgo.String("basic"),
+  ```
+
+  `GetPackage()` returns `*string` and `SetPackage()` takes `*string` for the
+  same reason. The request on the wire does not change.
+- An expired card on file: a request that creates or changes billable
+  resources (`POST`, `PUT` and `PATCH` on the compute, Kubernetes, block
+  storage, snapshot, object storage, networking, database, WordPress, SSH key
+  and DNS operations) now fails with a `*core.APIError` with `StatusCode`
+  `402` and `code: payment_method_expired`, and nothing changes. A card counts
+  as expired from the first day of the month after its printed expiry month.
+  `GET` and `DELETE` still work.
+- `DatabaseBackups.UpdateConfigDatabaseBackups` with `EncryptionEnabled: true`
+  and a new `Passphrase` changes the passphrase of a cluster that already
+  encrypts its backups. Earlier backups still restore.
+- The README links to the API reference at
+  [americancloud.com/docs/api](https://americancloud.com/docs/api).
+
+### Deprecated
+
+These fields keep their values and describe the worker nodes only:
+
+- `KubernetesClusterResponse.Package`: use `NodePool.Worker.Package` and
+  `NodePool.Control.Package`.
+- `KubernetesNodePool.CPUCores` and `MemoryMb`: use `NodePool.Worker` and
+  `NodePool.Control`.
+
+### Fixed
+
+- `Kubernetes.ListPackagesKubernetes` no longer lists a region where a package
+  is not offered, and leaves out a package that no region offers.
+- `ControlNodes` and `WorkerNodes` on `Kubernetes.CreateClusterKubernetes` and
+  `Kubernetes.GetCostEstimateKubernetes`, and `WorkerNodes`, `MinWorkers` and
+  `MaxWorkers` on `Kubernetes.ScaleClusterKubernetes`, must be whole numbers of
+  at least 1. Other values answer `400`, not `500`, and an estimate is never
+  negative.
+- `Kubernetes.ScaleClusterKubernetes` answers `400` when the autoscaling fields
+  do not fit. With `AutoscalingEnabled: true`, set `MinWorkers` and
+  `MaxWorkers`, with `MaxWorkers` greater than `MinWorkers`, and no
+  `WorkerNodes`.
+
 ## [1.6.0] - 2026-10-10
 
 ### Added
@@ -246,7 +317,8 @@ See [`VERSIONING.md`](./VERSIONING.md) for how SDK versions relate to the API ve
   networks, ACLs, firewall, port-forwarding, load-balancer and egress rules),
   public IPs, DNS, managed databases, Kubernetes, object storage, and WordPress.
 
-[Unreleased]: https://github.com/American-Cloud/americancloud-sdk-go/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/American-Cloud/americancloud-sdk-go/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/American-Cloud/americancloud-sdk-go/releases/tag/v1.7.0
 [1.6.0]: https://github.com/American-Cloud/americancloud-sdk-go/releases/tag/v1.6.0
 [1.5.0]: https://github.com/American-Cloud/americancloud-sdk-go/releases/tag/v1.5.0
 [1.4.0]: https://github.com/American-Cloud/americancloud-sdk-go/releases/tag/v1.4.0

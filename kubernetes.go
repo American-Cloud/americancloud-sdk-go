@@ -263,13 +263,13 @@ var (
 type ScaleKubernetesClusterRequest struct {
 	// ID of the Kubernetes cluster
 	ID string `json:"-" url:"-"`
-	// Number of worker nodes
+	// Number of worker nodes: a whole number, 1 or more. Do not send it with autoscalingEnabled: true.
 	WorkerNodes *float64 `json:"workerNodes,omitempty" url:"-"`
 	// Enable or disable autoscaling
 	AutoscalingEnabled *bool `json:"autoscalingEnabled,omitempty" url:"-"`
-	// Minimum number of worker nodes when autoscaling is enabled
+	// Minimum number of worker nodes when autoscaling is enabled: a whole number, 1 or more. Send it with autoscalingEnabled: true.
 	MinWorkers *float64 `json:"minWorkers,omitempty" url:"-"`
-	// Maximum number of worker nodes when autoscaling is enabled
+	// Maximum number of worker nodes when autoscaling is enabled: a whole number, greater than minWorkers. Send it with autoscalingEnabled: true.
 	MaxWorkers *float64 `json:"maxWorkers,omitempty" url:"-"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
@@ -340,29 +340,35 @@ func (s *ScaleKubernetesClusterRequest) MarshalJSON() ([]byte, error) {
 }
 
 var (
-	createKubernetesClusterRequestFieldName         = big.NewInt(1 << 0)
-	createKubernetesClusterRequestFieldPackage      = big.NewInt(1 << 1)
-	createKubernetesClusterRequestFieldRegion       = big.NewInt(1 << 2)
-	createKubernetesClusterRequestFieldVersion      = big.NewInt(1 << 3)
-	createKubernetesClusterRequestFieldControlNodes = big.NewInt(1 << 4)
-	createKubernetesClusterRequestFieldWorkerNodes  = big.NewInt(1 << 5)
-	createKubernetesClusterRequestFieldDescription  = big.NewInt(1 << 6)
-	createKubernetesClusterRequestFieldNetworkID    = big.NewInt(1 << 7)
-	createKubernetesClusterRequestFieldKeypair      = big.NewInt(1 << 8)
+	createKubernetesClusterRequestFieldName           = big.NewInt(1 << 0)
+	createKubernetesClusterRequestFieldPackage        = big.NewInt(1 << 1)
+	createKubernetesClusterRequestFieldControlPackage = big.NewInt(1 << 2)
+	createKubernetesClusterRequestFieldWorkerPackage  = big.NewInt(1 << 3)
+	createKubernetesClusterRequestFieldRegion         = big.NewInt(1 << 4)
+	createKubernetesClusterRequestFieldVersion        = big.NewInt(1 << 5)
+	createKubernetesClusterRequestFieldControlNodes   = big.NewInt(1 << 6)
+	createKubernetesClusterRequestFieldWorkerNodes    = big.NewInt(1 << 7)
+	createKubernetesClusterRequestFieldDescription    = big.NewInt(1 << 8)
+	createKubernetesClusterRequestFieldNetworkID      = big.NewInt(1 << 9)
+	createKubernetesClusterRequestFieldKeypair        = big.NewInt(1 << 10)
 )
 
 type CreateKubernetesClusterRequest struct {
 	// Name of the cluster
 	Name string `json:"name" url:"name"`
-	// Package label to use for the cluster
-	Package string `json:"package" url:"package"`
+	// Package label to use for every node in the cluster. Use controlPackage or workerPackage to give one node type a different package. Required unless you send both controlPackage and workerPackage. Leave it out when you send both.
+	Package *string `json:"package,omitempty" url:"package,omitempty"`
+	// Package label for the control-plane nodes. Overrides package.
+	ControlPackage *string `json:"controlPackage,omitempty" url:"controlPackage,omitempty"`
+	// Package label for the worker nodes. Overrides package.
+	WorkerPackage *string `json:"workerPackage,omitempty" url:"workerPackage,omitempty"`
 	// Region where to deploy the cluster
 	Region string `json:"region" url:"region"`
 	// Kubernetes version to use (semantic version)
 	Version string `json:"version" url:"version"`
-	// Number of control plane nodes
+	// Number of control plane nodes: a whole number, 1 or more.
 	ControlNodes float64 `json:"controlNodes" url:"controlNodes"`
-	// Number of worker nodes
+	// Number of worker nodes: a whole number, 1 or more.
 	WorkerNodes float64 `json:"workerNodes" url:"workerNodes"`
 	// Description of the cluster
 	Description *string `json:"description,omitempty" url:"description,omitempty"`
@@ -385,11 +391,25 @@ func (c *CreateKubernetesClusterRequest) GetName() string {
 	return c.Name
 }
 
-func (c *CreateKubernetesClusterRequest) GetPackage() string {
+func (c *CreateKubernetesClusterRequest) GetPackage() *string {
 	if c == nil {
-		return ""
+		return nil
 	}
 	return c.Package
+}
+
+func (c *CreateKubernetesClusterRequest) GetControlPackage() *string {
+	if c == nil {
+		return nil
+	}
+	return c.ControlPackage
+}
+
+func (c *CreateKubernetesClusterRequest) GetWorkerPackage() *string {
+	if c == nil {
+		return nil
+	}
+	return c.WorkerPackage
 }
 
 func (c *CreateKubernetesClusterRequest) GetRegion() string {
@@ -464,9 +484,23 @@ func (c *CreateKubernetesClusterRequest) SetName(name string) {
 
 // SetPackage sets the Package field and marks it as non-optional;
 // this prevents an empty or null value for this field from being omitted during serialization.
-func (c *CreateKubernetesClusterRequest) SetPackage(package_ string) {
+func (c *CreateKubernetesClusterRequest) SetPackage(package_ *string) {
 	c.Package = package_
 	c.require(createKubernetesClusterRequestFieldPackage)
+}
+
+// SetControlPackage sets the ControlPackage field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *CreateKubernetesClusterRequest) SetControlPackage(controlPackage *string) {
+	c.ControlPackage = controlPackage
+	c.require(createKubernetesClusterRequestFieldControlPackage)
+}
+
+// SetWorkerPackage sets the WorkerPackage field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (c *CreateKubernetesClusterRequest) SetWorkerPackage(workerPackage *string) {
+	c.WorkerPackage = workerPackage
+	c.require(createKubernetesClusterRequestFieldWorkerPackage)
 }
 
 // SetRegion sets the Region field and marks it as non-optional;
@@ -589,7 +623,7 @@ type KubernetesClusterResponse struct {
 	KubernetesVersion string `json:"kubernetesVersion" url:"kubernetesVersion"`
 	// When the cluster was created.
 	CreatedAt time.Time `json:"createdAt" url:"createdAt"`
-	// Package label describing the per-node CPU/memory/disk preset.
+	// Package label of the worker nodes (deprecated, use nodePool.control.package and nodePool.worker.package).
 	Package string `json:"package" url:"package"`
 	// Description of the cluster.
 	Description string `json:"description" url:"description"`
@@ -954,6 +988,8 @@ var (
 	kubernetesNodePoolFieldMaxWorkers         = big.NewInt(1 << 4)
 	kubernetesNodePoolFieldCPUCores           = big.NewInt(1 << 5)
 	kubernetesNodePoolFieldMemoryMb           = big.NewInt(1 << 6)
+	kubernetesNodePoolFieldControl            = big.NewInt(1 << 7)
+	kubernetesNodePoolFieldWorker             = big.NewInt(1 << 8)
 )
 
 type KubernetesNodePool struct {
@@ -967,10 +1003,14 @@ type KubernetesNodePool struct {
 	MinWorkers *float64 `json:"minWorkers,omitempty" url:"minWorkers,omitempty"`
 	// Ceiling for worker-node count when autoscaling is enabled.
 	MaxWorkers *float64 `json:"maxWorkers,omitempty" url:"maxWorkers,omitempty"`
-	// Number of virtual CPU cores allocated to each node.
+	// Number of virtual CPU cores allocated to each worker node (deprecated, use worker.cpuCores, or control.cpuCores for a control-plane node).
 	CPUCores float64 `json:"cpuCores" url:"cpuCores"`
-	// Memory allocated to each node, in megabytes.
+	// Memory allocated to each worker node, in megabytes (deprecated, use worker.memoryMb, or control.memoryMb for a control-plane node).
 	MemoryMb int `json:"memoryMb" url:"memoryMb"`
+	// Package and size of each control-plane node.
+	Control *KubernetesNodeTypeSpec `json:"control" url:"control"`
+	// Package and size of each worker node.
+	Worker *KubernetesNodeTypeSpec `json:"worker" url:"worker"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted
 	explicitFields *big.Int `json:"-" url:"-"`
@@ -1026,6 +1066,20 @@ func (k *KubernetesNodePool) GetMemoryMb() int {
 		return 0
 	}
 	return k.MemoryMb
+}
+
+func (k *KubernetesNodePool) GetControl() *KubernetesNodeTypeSpec {
+	if k == nil {
+		return nil
+	}
+	return k.Control
+}
+
+func (k *KubernetesNodePool) GetWorker() *KubernetesNodeTypeSpec {
+	if k == nil {
+		return nil
+	}
+	return k.Worker
 }
 
 func (k *KubernetesNodePool) GetExtraProperties() map[string]interface{} {
@@ -1089,6 +1143,20 @@ func (k *KubernetesNodePool) SetCPUCores(cpuCores float64) {
 func (k *KubernetesNodePool) SetMemoryMb(memoryMb int) {
 	k.MemoryMb = memoryMb
 	k.require(kubernetesNodePoolFieldMemoryMb)
+}
+
+// SetControl sets the Control field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (k *KubernetesNodePool) SetControl(control *KubernetesNodeTypeSpec) {
+	k.Control = control
+	k.require(kubernetesNodePoolFieldControl)
+}
+
+// SetWorker sets the Worker field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (k *KubernetesNodePool) SetWorker(worker *KubernetesNodeTypeSpec) {
+	k.Worker = worker
+	k.require(kubernetesNodePoolFieldWorker)
 }
 
 func (k *KubernetesNodePool) UnmarshalJSON(data []byte) error {
@@ -1476,6 +1544,125 @@ func (k *KubernetesNodeRootVolume) MarshalJSON() ([]byte, error) {
 }
 
 func (k *KubernetesNodeRootVolume) String() string {
+	if k == nil {
+		return "<nil>"
+	}
+	if len(k.rawJSON) > 0 {
+		if value, err := internal.StringifyJSON(k.rawJSON); err == nil {
+			return value
+		}
+	}
+	if value, err := internal.StringifyJSON(k); err == nil {
+		return value
+	}
+	return fmt.Sprintf("%#v", k)
+}
+
+var (
+	kubernetesNodeTypeSpecFieldPackage  = big.NewInt(1 << 0)
+	kubernetesNodeTypeSpecFieldCPUCores = big.NewInt(1 << 1)
+	kubernetesNodeTypeSpecFieldMemoryMb = big.NewInt(1 << 2)
+)
+
+type KubernetesNodeTypeSpec struct {
+	// Package label that sets the size of each node of this type. Null when the package is not known.
+	Package *string `json:"package,omitempty" url:"package,omitempty"`
+	// Number of virtual CPU cores allocated to each node of this type.
+	CPUCores float64 `json:"cpuCores" url:"cpuCores"`
+	// Memory allocated to each node of this type, in megabytes.
+	MemoryMb int `json:"memoryMb" url:"memoryMb"`
+
+	// Private bitmask of fields set to an explicit value and therefore not to be omitted
+	explicitFields *big.Int `json:"-" url:"-"`
+
+	extraProperties map[string]interface{}
+	rawJSON         json.RawMessage
+}
+
+func (k *KubernetesNodeTypeSpec) GetPackage() *string {
+	if k == nil {
+		return nil
+	}
+	return k.Package
+}
+
+func (k *KubernetesNodeTypeSpec) GetCPUCores() float64 {
+	if k == nil {
+		return 0
+	}
+	return k.CPUCores
+}
+
+func (k *KubernetesNodeTypeSpec) GetMemoryMb() int {
+	if k == nil {
+		return 0
+	}
+	return k.MemoryMb
+}
+
+func (k *KubernetesNodeTypeSpec) GetExtraProperties() map[string]interface{} {
+	if k == nil {
+		return nil
+	}
+	return k.extraProperties
+}
+
+func (k *KubernetesNodeTypeSpec) require(field *big.Int) {
+	if k.explicitFields == nil {
+		k.explicitFields = big.NewInt(0)
+	}
+	k.explicitFields.Or(k.explicitFields, field)
+}
+
+// SetPackage sets the Package field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (k *KubernetesNodeTypeSpec) SetPackage(package_ *string) {
+	k.Package = package_
+	k.require(kubernetesNodeTypeSpecFieldPackage)
+}
+
+// SetCPUCores sets the CPUCores field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (k *KubernetesNodeTypeSpec) SetCPUCores(cpuCores float64) {
+	k.CPUCores = cpuCores
+	k.require(kubernetesNodeTypeSpecFieldCPUCores)
+}
+
+// SetMemoryMb sets the MemoryMb field and marks it as non-optional;
+// this prevents an empty or null value for this field from being omitted during serialization.
+func (k *KubernetesNodeTypeSpec) SetMemoryMb(memoryMb int) {
+	k.MemoryMb = memoryMb
+	k.require(kubernetesNodeTypeSpecFieldMemoryMb)
+}
+
+func (k *KubernetesNodeTypeSpec) UnmarshalJSON(data []byte) error {
+	type unmarshaler KubernetesNodeTypeSpec
+	var value unmarshaler
+	if err := json.Unmarshal(data, &value); err != nil {
+		return err
+	}
+	*k = KubernetesNodeTypeSpec(value)
+	extraProperties, err := internal.ExtractExtraProperties(data, *k)
+	if err != nil {
+		return err
+	}
+	k.extraProperties = extraProperties
+	k.rawJSON = json.RawMessage(data)
+	return nil
+}
+
+func (k *KubernetesNodeTypeSpec) MarshalJSON() ([]byte, error) {
+	type embed KubernetesNodeTypeSpec
+	var marshaler = struct {
+		embed
+	}{
+		embed: embed(*k),
+	}
+	explicitMarshaler := internal.HandleExplicitFields(marshaler, k.explicitFields)
+	return json.Marshal(explicitMarshaler)
+}
+
+func (k *KubernetesNodeTypeSpec) String() string {
 	if k == nil {
 		return "<nil>"
 	}

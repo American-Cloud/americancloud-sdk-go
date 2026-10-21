@@ -221,7 +221,6 @@ func TestKubernetesCreateClusterKubernetesWithWireMock(
 	)
 	request := &americancloudsdkgo.CreateKubernetesClusterRequest{
 		Name:         "my-cluster",
-		Package:      "my-package",
 		Region:       "us-west-0",
 		Version:      "1.28.4",
 		ControlNodes: 1,
@@ -252,7 +251,6 @@ func TestKubernetesGetCostEstimateKubernetesWithWireMock(
 	)
 	request := &americancloudsdkgo.CreateKubernetesClusterRequest{
 		Name:         "my-cluster",
-		Package:      "my-package",
 		Region:       "us-west-0",
 		Version:      "1.28.4",
 		ControlNodes: 1,

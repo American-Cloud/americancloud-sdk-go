@@ -6162,7 +6162,7 @@ client.DatabaseBackups.UpdateConfigDatabaseBackups(
 <dl>
 <dd>
 
-**passphrase:** `*string` — Passphrase used to encrypt backups. Required when enabling encryption. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Store it securely — it is required to restore encrypted backups and cannot be recovered if lost.
+**passphrase:** `*string` — Passphrase used to encrypt new backups. Required when enabling encryption. Send a new passphrase with encryption enabled to change it. Must be 12–256 printable ASCII characters (letters, digits, symbols) with no spaces. Earlier backups still restore after a change, and a restore does not ask for the passphrase.
     
 </dd>
 </dl>
@@ -8161,7 +8161,6 @@ Creates a new Kubernetes cluster for the authenticated account. To preview prici
 ```go
 request := &americancloudsdkgo.CreateKubernetesClusterRequest{
         Name: "my-cluster",
-        Package: "my-package",
         Region: "us-west-0",
         Version: "1.28.4",
         ControlNodes: 1,
@@ -8227,7 +8226,6 @@ Returns the estimated cost for a cluster with the given configuration without cr
 ```go
 request := &americancloudsdkgo.CreateKubernetesClusterRequest{
         Name: "my-cluster",
-        Package: "my-package",
         Region: "us-west-0",
         Version: "1.28.4",
         ControlNodes: 1,
@@ -8452,7 +8450,7 @@ client.Kubernetes.ScaleClusterKubernetes(
 <dl>
 <dd>
 
-**workerNodes:** `*float64` — Number of worker nodes
+**workerNodes:** `*float64` — Number of worker nodes: a whole number, 1 or more. Do not send it with autoscalingEnabled: true.
     
 </dd>
 </dl>
@@ -8468,7 +8466,7 @@ client.Kubernetes.ScaleClusterKubernetes(
 <dl>
 <dd>
 
-**minWorkers:** `*float64` — Minimum number of worker nodes when autoscaling is enabled
+**minWorkers:** `*float64` — Minimum number of worker nodes when autoscaling is enabled: a whole number, 1 or more. Send it with autoscalingEnabled: true.
     
 </dd>
 </dl>
@@ -8476,7 +8474,7 @@ client.Kubernetes.ScaleClusterKubernetes(
 <dl>
 <dd>
 
-**maxWorkers:** `*float64` — Maximum number of worker nodes when autoscaling is enabled
+**maxWorkers:** `*float64` — Maximum number of worker nodes when autoscaling is enabled: a whole number, greater than minWorkers. Send it with autoscalingEnabled: true.
     
 </dd>
 </dl>

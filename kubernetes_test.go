@@ -771,9 +771,25 @@ func TestSettersCreateKubernetesClusterRequest(t *testing.T) {
 
 	t.Run("SetPackage", func(t *testing.T) {
 		obj := &CreateKubernetesClusterRequest{}
-		var fernTestValuePackage string
+		var fernTestValuePackage *string
 		obj.SetPackage(fernTestValuePackage)
 		assert.Equal(t, fernTestValuePackage, obj.Package)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
+	t.Run("SetControlPackage", func(t *testing.T) {
+		obj := &CreateKubernetesClusterRequest{}
+		var fernTestValueControlPackage *string
+		obj.SetControlPackage(fernTestValueControlPackage)
+		assert.Equal(t, fernTestValueControlPackage, obj.ControlPackage)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
+	t.Run("SetWorkerPackage", func(t *testing.T) {
+		obj := &CreateKubernetesClusterRequest{}
+		var fernTestValueWorkerPackage *string
+		obj.SetWorkerPackage(fernTestValueWorkerPackage)
+		assert.Equal(t, fernTestValueWorkerPackage, obj.WorkerPackage)
 		assert.NotNil(t, obj.explicitFields)
 	})
 
@@ -863,11 +879,21 @@ func TestGettersCreateKubernetesClusterRequest(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateKubernetesClusterRequest{}
-		var expected string
+		var expected *string
 		obj.Package = expected
 
 		// Act & Assert
 		assert.Equal(t, expected, obj.GetPackage(), "getter should return the property value")
+	})
+
+	t.Run("GetPackage_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateKubernetesClusterRequest{}
+		obj.Package = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetPackage(), "getter should return nil when property is nil")
 	})
 
 	t.Run("GetPackage_NilReceiver", func(t *testing.T) {
@@ -880,6 +906,72 @@ func TestGettersCreateKubernetesClusterRequest(t *testing.T) {
 			}
 		}()
 		_ = obj.GetPackage() // Should return zero value
+	})
+
+	t.Run("GetControlPackage", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateKubernetesClusterRequest{}
+		var expected *string
+		obj.ControlPackage = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetControlPackage(), "getter should return the property value")
+	})
+
+	t.Run("GetControlPackage_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateKubernetesClusterRequest{}
+		obj.ControlPackage = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetControlPackage(), "getter should return nil when property is nil")
+	})
+
+	t.Run("GetControlPackage_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *CreateKubernetesClusterRequest
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetControlPackage() // Should return zero value
+	})
+
+	t.Run("GetWorkerPackage", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateKubernetesClusterRequest{}
+		var expected *string
+		obj.WorkerPackage = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetWorkerPackage(), "getter should return the property value")
+	})
+
+	t.Run("GetWorkerPackage_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateKubernetesClusterRequest{}
+		obj.WorkerPackage = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetWorkerPackage(), "getter should return nil when property is nil")
+	})
+
+	t.Run("GetWorkerPackage_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *CreateKubernetesClusterRequest
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetWorkerPackage() // Should return zero value
 	})
 
 	t.Run("GetRegion", func(t *testing.T) {
@@ -1111,10 +1203,72 @@ func TestSettersMarkExplicitCreateKubernetesClusterRequest(t *testing.T) {
 		t.Parallel()
 		// Arrange
 		obj := &CreateKubernetesClusterRequest{}
-		var fernTestValuePackage string
+		var fernTestValuePackage *string
 
 		// Act
 		obj.SetPackage(fernTestValuePackage)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
+	t.Run("SetControlPackage_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateKubernetesClusterRequest{}
+		var fernTestValueControlPackage *string
+
+		// Act
+		obj.SetControlPackage(fernTestValueControlPackage)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
+	t.Run("SetWorkerPackage_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &CreateKubernetesClusterRequest{}
+		var fernTestValueWorkerPackage *string
+
+		// Act
+		obj.SetWorkerPackage(fernTestValueWorkerPackage)
 
 		// Assert - object with explicitly set field can be marshaled/unmarshaled
 		bytes, err := json.Marshal(obj)
@@ -2350,6 +2504,22 @@ func TestSettersKubernetesNodePool(t *testing.T) {
 		assert.NotNil(t, obj.explicitFields)
 	})
 
+	t.Run("SetControl", func(t *testing.T) {
+		obj := &KubernetesNodePool{}
+		var fernTestValueControl *KubernetesNodeTypeSpec
+		obj.SetControl(fernTestValueControl)
+		assert.Equal(t, fernTestValueControl, obj.Control)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
+	t.Run("SetWorker", func(t *testing.T) {
+		obj := &KubernetesNodePool{}
+		var fernTestValueWorker *KubernetesNodeTypeSpec
+		obj.SetWorker(fernTestValueWorker)
+		assert.Equal(t, fernTestValueWorker, obj.Worker)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
 }
 
 func TestGettersKubernetesNodePool(t *testing.T) {
@@ -2532,6 +2702,72 @@ func TestGettersKubernetesNodePool(t *testing.T) {
 			}
 		}()
 		_ = obj.GetMemoryMb() // Should return zero value
+	})
+
+	t.Run("GetControl", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodePool{}
+		var expected *KubernetesNodeTypeSpec
+		obj.Control = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetControl(), "getter should return the property value")
+	})
+
+	t.Run("GetControl_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodePool{}
+		obj.Control = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetControl(), "getter should return nil when property is nil")
+	})
+
+	t.Run("GetControl_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *KubernetesNodePool
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetControl() // Should return zero value
+	})
+
+	t.Run("GetWorker", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodePool{}
+		var expected *KubernetesNodeTypeSpec
+		obj.Worker = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetWorker(), "getter should return the property value")
+	})
+
+	t.Run("GetWorker_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodePool{}
+		obj.Worker = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetWorker(), "getter should return nil when property is nil")
+	})
+
+	t.Run("GetWorker_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *KubernetesNodePool
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetWorker() // Should return zero value
 	})
 
 }
@@ -2731,6 +2967,68 @@ func TestSettersMarkExplicitKubernetesNodePool(t *testing.T) {
 
 		// Act
 		obj.SetMemoryMb(fernTestValueMemoryMb)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
+	t.Run("SetControl_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodePool{}
+		var fernTestValueControl *KubernetesNodeTypeSpec
+
+		// Act
+		obj.SetControl(fernTestValueControl)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
+	t.Run("SetWorker_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodePool{}
+		var fernTestValueWorker *KubernetesNodeTypeSpec
+
+		// Act
+		obj.SetWorker(fernTestValueWorker)
 
 		// Assert - object with explicitly set field can be marshaled/unmarshaled
 		bytes, err := json.Marshal(obj)
@@ -3451,6 +3749,211 @@ func TestSettersMarkExplicitKubernetesNodeRootVolume(t *testing.T) {
 
 		// Act
 		obj.SetSizeGb(fernTestValueSizeGb)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
+}
+
+func TestSettersKubernetesNodeTypeSpec(t *testing.T) {
+	t.Run("SetPackage", func(t *testing.T) {
+		obj := &KubernetesNodeTypeSpec{}
+		var fernTestValuePackage *string
+		obj.SetPackage(fernTestValuePackage)
+		assert.Equal(t, fernTestValuePackage, obj.Package)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
+	t.Run("SetCPUCores", func(t *testing.T) {
+		obj := &KubernetesNodeTypeSpec{}
+		var fernTestValueCPUCores float64
+		obj.SetCPUCores(fernTestValueCPUCores)
+		assert.Equal(t, fernTestValueCPUCores, obj.CPUCores)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
+	t.Run("SetMemoryMb", func(t *testing.T) {
+		obj := &KubernetesNodeTypeSpec{}
+		var fernTestValueMemoryMb int
+		obj.SetMemoryMb(fernTestValueMemoryMb)
+		assert.Equal(t, fernTestValueMemoryMb, obj.MemoryMb)
+		assert.NotNil(t, obj.explicitFields)
+	})
+
+}
+
+func TestGettersKubernetesNodeTypeSpec(t *testing.T) {
+	t.Run("GetPackage", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodeTypeSpec{}
+		var expected *string
+		obj.Package = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetPackage(), "getter should return the property value")
+	})
+
+	t.Run("GetPackage_NilValue", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodeTypeSpec{}
+		obj.Package = nil
+
+		// Act & Assert
+		assert.Nil(t, obj.GetPackage(), "getter should return nil when property is nil")
+	})
+
+	t.Run("GetPackage_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *KubernetesNodeTypeSpec
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetPackage() // Should return zero value
+	})
+
+	t.Run("GetCPUCores", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodeTypeSpec{}
+		var expected float64
+		obj.CPUCores = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetCPUCores(), "getter should return the property value")
+	})
+
+	t.Run("GetCPUCores_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *KubernetesNodeTypeSpec
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetCPUCores() // Should return zero value
+	})
+
+	t.Run("GetMemoryMb", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodeTypeSpec{}
+		var expected int
+		obj.MemoryMb = expected
+
+		// Act & Assert
+		assert.Equal(t, expected, obj.GetMemoryMb(), "getter should return the property value")
+	})
+
+	t.Run("GetMemoryMb_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *KubernetesNodeTypeSpec
+		// Should not panic - getters should handle nil receiver gracefully
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("Getter panicked on nil receiver: %v", r)
+			}
+		}()
+		_ = obj.GetMemoryMb() // Should return zero value
+	})
+
+}
+
+func TestSettersMarkExplicitKubernetesNodeTypeSpec(t *testing.T) {
+	t.Run("SetPackage_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodeTypeSpec{}
+		var fernTestValuePackage *string
+
+		// Act
+		obj.SetPackage(fernTestValuePackage)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
+	t.Run("SetCPUCores_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodeTypeSpec{}
+		var fernTestValueCPUCores float64
+
+		// Act
+		obj.SetCPUCores(fernTestValueCPUCores)
+
+		// Assert - object with explicitly set field can be marshaled/unmarshaled
+		bytes, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed for test setup")
+
+		// This test ensures JSON marshaling and unmarshaling succeed when the field has a zero/nil value
+		// Detect if marshaled JSON is an object or primitive to use correct unmarshal target
+		if len(bytes) > 0 && bytes[0] == '{' {
+			// JSON object - unmarshal into map
+			var unmarshaled map[string]interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		} else {
+			// JSON primitive (string, number, boolean, null) - unmarshal into interface{}
+			var unmarshaled interface{}
+			err = json.Unmarshal(bytes, &unmarshaled)
+			require.NoError(t, err, "unmarshaling should succeed for test verification")
+		}
+
+		// Note: This does not explicitly assert the presence of a specific JSON field
+		// It verifies that setting a field via setter allows successful JSON round-trip
+	})
+
+	t.Run("SetMemoryMb_MarksExplicit", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodeTypeSpec{}
+		var fernTestValueMemoryMb int
+
+		// Act
+		obj.SetMemoryMb(fernTestValueMemoryMb)
 
 		// Assert - object with explicitly set field can be marshaled/unmarshaled
 		bytes, err := json.Marshal(obj)
@@ -4516,6 +5019,39 @@ func TestJSONMarshalingKubernetesNodeRootVolume(t *testing.T) {
 	})
 }
 
+func TestJSONMarshalingKubernetesNodeTypeSpec(t *testing.T) {
+	t.Run("MarshalUnmarshal", func(t *testing.T) {
+		t.Parallel()
+		// Arrange
+		obj := &KubernetesNodeTypeSpec{}
+
+		// Act - Marshal to JSON
+		data, err := json.Marshal(obj)
+		require.NoError(t, err, "marshaling should succeed")
+		assert.NotNil(t, data, "marshaled data should not be nil")
+		assert.NotEmpty(t, data, "marshaled data should not be empty")
+
+		// Unmarshal back and verify round-trip
+		var unmarshaled KubernetesNodeTypeSpec
+		err = json.Unmarshal(data, &unmarshaled)
+		assert.NoError(t, err, "round-trip unmarshal should succeed")
+	})
+
+	t.Run("UnmarshalInvalidJSON", func(t *testing.T) {
+		t.Parallel()
+		var obj KubernetesNodeTypeSpec
+		err := json.Unmarshal([]byte(`{invalid json}`), &obj)
+		assert.Error(t, err, "unmarshaling invalid JSON should return an error")
+	})
+
+	t.Run("UnmarshalEmptyObject", func(t *testing.T) {
+		t.Parallel()
+		var obj KubernetesNodeTypeSpec
+		err := json.Unmarshal([]byte(`{}`), &obj)
+		assert.NoError(t, err, "unmarshaling empty object should succeed")
+	})
+}
+
 func TestJSONMarshalingKubernetesPackageResponse(t *testing.T) {
 	t.Run("MarshalUnmarshal", func(t *testing.T) {
 		t.Parallel()
@@ -4739,6 +5275,22 @@ func TestStringKubernetesNodeRootVolume(t *testing.T) {
 	t.Run("StringMethod_NilReceiver", func(t *testing.T) {
 		t.Parallel()
 		var obj *KubernetesNodeRootVolume
+		result := obj.String()
+		assert.Equal(t, "<nil>", result, "String() should return <nil> for nil receiver")
+	})
+}
+
+func TestStringKubernetesNodeTypeSpec(t *testing.T) {
+	t.Run("StringMethod", func(t *testing.T) {
+		t.Parallel()
+		obj := &KubernetesNodeTypeSpec{}
+		result := obj.String()
+		assert.NotEmpty(t, result, "String() should return a non-empty representation")
+	})
+
+	t.Run("StringMethod_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *KubernetesNodeTypeSpec
 		result := obj.String()
 		assert.Equal(t, "<nil>", result, "String() should return <nil> for nil receiver")
 	})
@@ -5006,6 +5558,29 @@ func TestExtraPropertiesKubernetesNodeRootVolume(t *testing.T) {
 	t.Run("GetExtraProperties_NilReceiver", func(t *testing.T) {
 		t.Parallel()
 		var obj *KubernetesNodeRootVolume
+		extraProps := obj.GetExtraProperties()
+		assert.Nil(t, extraProps, "nil receiver should return nil without panicking")
+	})
+}
+
+func TestExtraPropertiesKubernetesNodeTypeSpec(t *testing.T) {
+	t.Run("GetExtraProperties", func(t *testing.T) {
+		t.Parallel()
+		obj := &KubernetesNodeTypeSpec{}
+		// Should not panic when calling GetExtraProperties()
+		defer func() {
+			if r := recover(); r != nil {
+				t.Errorf("GetExtraProperties() panicked: %v", r)
+			}
+		}()
+		extraProps := obj.GetExtraProperties()
+		// Result can be nil or an empty/non-empty map
+		_ = extraProps
+	})
+
+	t.Run("GetExtraProperties_NilReceiver", func(t *testing.T) {
+		t.Parallel()
+		var obj *KubernetesNodeTypeSpec
 		extraProps := obj.GetExtraProperties()
 		assert.Nil(t, extraProps, "nil receiver should return nil without panicking")
 	})
