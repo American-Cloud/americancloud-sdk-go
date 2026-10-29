@@ -8161,6 +8161,9 @@ Creates a new Kubernetes cluster for the authenticated account. To preview prici
 ```go
 request := &americancloudsdkgo.CreateKubernetesClusterRequest{
         Name: "my-cluster",
+        Package: americancloudsdkgo.String(
+            "basic",
+        ),
         Region: "us-west-0",
         Version: "1.28.4",
         ControlNodes: 1,
@@ -8226,6 +8229,9 @@ Returns the estimated cost for a cluster with the given configuration without cr
 ```go
 request := &americancloudsdkgo.CreateKubernetesClusterRequest{
         Name: "my-cluster",
+        Package: americancloudsdkgo.String(
+            "basic",
+        ),
         Region: "us-west-0",
         Version: "1.28.4",
         ControlNodes: 1,

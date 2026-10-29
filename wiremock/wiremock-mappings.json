@@ -4533,8 +4533,8 @@
       }
     },
     {
-      "id": "dc054492-66c7-4810-a6a3-963cae00461c",
-      "name": "Create a new Kubernetes cluster - default",
+      "id": "a09c2653-683d-46cb-a91c-1185ef79085c",
+      "name": "Create a new Kubernetes cluster - One package for every node",
       "request": {
         "urlPathTemplate": "/api/v1/kubernetes",
         "method": "POST",
@@ -4551,7 +4551,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "dc054492-66c7-4810-a6a3-963cae00461c",
+      "uuid": "a09c2653-683d-46cb-a91c-1185ef79085c",
       "persistent": true,
       "priority": 3,
       "metadata": {
@@ -4564,8 +4564,8 @@
       }
     },
     {
-      "id": "b15b16a2-4876-48ac-9dc5-fa5c37333499",
-      "name": "Get a cost estimate for a Kubernetes cluster - default",
+      "id": "32da892b-c28f-4e23-9425-7380cd967540",
+      "name": "Get a cost estimate for a Kubernetes cluster - One package for every node",
       "request": {
         "urlPathTemplate": "/api/v1/kubernetes/cost-estimate",
         "method": "POST",
@@ -4582,7 +4582,7 @@
           "Content-Type": "application/json"
         }
       },
-      "uuid": "b15b16a2-4876-48ac-9dc5-fa5c37333499",
+      "uuid": "32da892b-c28f-4e23-9425-7380cd967540",
       "persistent": true,
       "priority": 3,
       "metadata": {
