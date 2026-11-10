@@ -86,7 +86,7 @@ func TestDatabaseOfferingsListDatabaseOfferingsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListDatabaseOfferingsRequest{}
 	_, invocationErr := client.DatabaseOfferings.ListDatabaseOfferings(
@@ -110,7 +110,7 @@ func TestDatabaseOfferingsGetDatabaseOfferingsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetDatabaseOfferingsRequest{
 		OfferingID: "123e4567-e89b-12d3-a456-426614174000",

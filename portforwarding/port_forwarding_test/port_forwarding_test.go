@@ -86,7 +86,7 @@ func TestPortForwardingListPortForwardingWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListPortForwardingRequest{
 		IpId: "123e4567-e89b-12d3-a456-426614174000",
@@ -112,7 +112,7 @@ func TestPortForwardingCreatePortForwardingWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreatePortForwardingRuleDto{
 		IpId:        "123e4567-e89b-12d3-a456-426614174000",
@@ -142,7 +142,7 @@ func TestPortForwardingDeletePortForwardingWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeletePortForwardingRequest{
 		RuleID: "123e4567-e89b-12d3-a456-426614174000",

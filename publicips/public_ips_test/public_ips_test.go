@@ -86,7 +86,7 @@ func TestPublicIpsListPublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListPublicIpsRequest{}
 	_, invocationErr := client.PublicIps.ListPublicIps(
@@ -110,7 +110,7 @@ func TestPublicIpsReservePublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ReservePublicIPDto{
 		Region: "us-west-0",
@@ -136,7 +136,7 @@ func TestPublicIpsListByIsolatedNetworkPublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListByIsolatedNetworkPublicIpsRequest{
 		IsolatedNetworkID: "123e4567-e89b-12d3-a456-426614174000",
@@ -162,7 +162,7 @@ func TestPublicIpsListByVpcPublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListByVpcPublicIpsRequest{
 		VpcID: "123e4567-e89b-12d3-a456-426614174000",
@@ -188,7 +188,7 @@ func TestPublicIpsGetPublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetPublicIpsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -214,7 +214,7 @@ func TestPublicIpsReleasePublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ReleasePublicIpsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -240,7 +240,7 @@ func TestPublicIpsGetCostEstimatePublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.PublicIps.GetCostEstimatePublicIps(
 		context.TODO(),
@@ -262,7 +262,7 @@ func TestPublicIpsChangeSourceNatIPPublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ChangeSourceNatIPDto{
 		ID:        "123e4567-e89b-12d3-a456-426614174000",
@@ -289,7 +289,7 @@ func TestPublicIpsEnableStaticNatPublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.EnableStaticNatDto{
 		ID:               "123e4567-e89b-12d3-a456-426614174000",
@@ -316,7 +316,7 @@ func TestPublicIpsDisableStaticNatPublicIpsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DisableStaticNatPublicIpsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",

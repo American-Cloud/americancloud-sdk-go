@@ -86,7 +86,7 @@ func TestObjectStorageListUnitsObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListUnitsObjectStorageRequest{
 		Usage: americancloudsdkgo.Bool(
@@ -114,7 +114,7 @@ func TestObjectStorageCreateUnitObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateStorageUnitRequestDto{
 		Name: "prod-assets",
@@ -140,7 +140,7 @@ func TestObjectStorageListBucketsObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListBucketsObjectStorageRequest{
 		StorageUnitID: "tenant$user",
@@ -166,7 +166,7 @@ func TestObjectStorageCreateBucketObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateBucketRequestDto{
 		StorageUnitID: "tenant$user",
@@ -193,7 +193,7 @@ func TestObjectStorageGetKeysObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetKeysObjectStorageRequest{
 		StorageUnitID: "tenant$user",
@@ -219,7 +219,7 @@ func TestObjectStorageListAccessKeysObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListAccessKeysObjectStorageRequest{
 		StorageUnitID: "tenant$user",
@@ -245,7 +245,7 @@ func TestObjectStorageCreateAccessKeyObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateAccessKeyRequestDto{
 		StorageUnitID: "tenant$user",
@@ -272,7 +272,7 @@ func TestObjectStorageDeleteAccessKeyObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteAccessKeyObjectStorageRequest{
 		StorageUnitID: "tenant$user",
@@ -299,7 +299,7 @@ func TestObjectStorageGetCostEstimateObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.ObjectStorage.GetCostEstimateObjectStorage(
 		context.TODO(),
@@ -321,7 +321,7 @@ func TestObjectStorageSetUserQuotaObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.SetUserQuotaRequestDto{
 		StorageUnitID: "tenant$user",
@@ -347,7 +347,7 @@ func TestObjectStorageDeleteUnitObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteUnitObjectStorageRequest{
 		StorageUnitID: "tenant$user",
@@ -373,7 +373,7 @@ func TestObjectStorageDeleteBucketObjectStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteBucketObjectStorageRequest{
 		StorageUnitID: "tenant$user",

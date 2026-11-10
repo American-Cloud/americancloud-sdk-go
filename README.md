@@ -20,19 +20,9 @@ go get github.com/American-Cloud/americancloud-sdk-go@v1.3.0
 
 ## Authentication
 
-Every request requires **both** parts of an American Cloud API key, sent as headers:
+Every request carries an American Cloud **API token** in the `Authorization: Bearer` header. Create one at **[console.americancloud.com/api-tokens](https://console.americancloud.com/api-tokens)**. The token is shown once at creation — store it securely. If lost, revoke it and create a new one.
 
-| Header | SDK option |
-|---|---|
-| `X-API-Client-ID` | `option.WithAPIKey(...)` |
-| `X-API-Client-Secret` | `option.WithAPIClientSecret(...)` |
-
-Create and manage keys at **[console.americancloud.com/api-keys](https://console.americancloud.com/api-keys)**. The client secret is shown once at creation — store it securely. If lost, revoke the key and create a new one.
-
-Each key is scoped at creation:
-
-- **`read-only`** — `GET` endpoints only
-- **`read-write`** — full access to all resource management endpoints
+Pass the token with `option.WithToken`, or set `AMERICANCLOUD_API_TOKEN` and omit it. A token has the permissions you chose when you created it: start with the **Read-only** preset, or choose **Full access** to create, change and delete resources. `client.Whoami.GetWhoami` returns the permissions the token has now.
 
 ## Quick start
 
@@ -51,8 +41,7 @@ import (
 
 func main() {
 	client := americancloud.NewClient(
-		option.WithAPIKey(os.Getenv("AMERICANCLOUD_API_CLIENT_ID")),
-		option.WithAPIClientSecret(os.Getenv("AMERICANCLOUD_API_CLIENT_SECRET")),
+		option.WithToken(os.Getenv("AMERICANCLOUD_API_TOKEN")),
 	)
 
 	vms, err := client.Vms.ListVms(context.Background(), nil)
@@ -71,8 +60,7 @@ The SDK targets the American Cloud production API at **`https://api.americanclou
 
 ```go
 client := americancloud.NewClient(
-    option.WithAPIKey("..."),
-    option.WithAPIClientSecret("..."),
+    option.WithToken("..."),
     option.WithBaseURL("https://your-custom-endpoint.example.com"),
 )
 ```

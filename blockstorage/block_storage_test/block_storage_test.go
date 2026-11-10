@@ -86,7 +86,7 @@ func TestBlockStorageListBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListBlockStorageRequest{}
 	_, invocationErr := client.BlockStorage.ListBlockStorage(
@@ -110,7 +110,7 @@ func TestBlockStorageCreateBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateVolumeDto{
 		Name:   "my-block-storage",
@@ -138,7 +138,7 @@ func TestBlockStorageGetBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetBlockStorageRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -164,7 +164,7 @@ func TestBlockStorageDeleteBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteBlockStorageRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -190,7 +190,7 @@ func TestBlockStorageGetCostEstimateBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateVolumeDto{
 		Name:   "my-block-storage",
@@ -218,7 +218,7 @@ func TestBlockStorageAttachBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.AttachVolumeDto{
 		ID:   "123e4567-e89b-12d3-a456-426614174000",
@@ -245,7 +245,7 @@ func TestBlockStorageDetachBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DetachBlockStorageRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -271,7 +271,7 @@ func TestBlockStorageResizeBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ResizeVolumeDto{
 		ID:     "123e4567-e89b-12d3-a456-426614174000",
@@ -298,7 +298,7 @@ func TestBlockStorageListSnapshotsBlockStorageWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListSnapshotsBlockStorageRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",

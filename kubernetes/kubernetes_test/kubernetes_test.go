@@ -86,7 +86,7 @@ func TestKubernetesListVersionsKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListVersionsKubernetesRequest{
 		CurrentVersion: americancloudsdkgo.String(
@@ -114,7 +114,7 @@ func TestKubernetesListPackagesKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListPackagesKubernetesRequest{}
 	_, invocationErr := client.Kubernetes.ListPackagesKubernetes(
@@ -138,7 +138,7 @@ func TestKubernetesListClustersKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListClustersKubernetesRequest{}
 	_, invocationErr := client.Kubernetes.ListClustersKubernetes(
@@ -162,7 +162,7 @@ func TestKubernetesGetClusterKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetClusterKubernetesRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -191,7 +191,7 @@ func TestKubernetesDeleteClusterKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteClusterKubernetesRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -217,7 +217,7 @@ func TestKubernetesCreateClusterKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateKubernetesClusterRequest{
 		Name: "my-cluster",
@@ -250,7 +250,7 @@ func TestKubernetesGetCostEstimateKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateKubernetesClusterRequest{
 		Name: "my-cluster",
@@ -283,7 +283,7 @@ func TestKubernetesClusterPowerKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ClusterPowerKubernetesRequest{
 		ID:     "123e4567-e89b-12d3-a456-426614174000",
@@ -310,7 +310,7 @@ func TestKubernetesGetClusterConfigKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetClusterConfigKubernetesRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -336,7 +336,7 @@ func TestKubernetesScaleClusterKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ScaleKubernetesClusterRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -362,7 +362,7 @@ func TestKubernetesUpgradeClusterKubernetesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpgradeKubernetesClusterRequest{
 		ID:      "123e4567-e89b-12d3-a456-426614174000",

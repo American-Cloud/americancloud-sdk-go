@@ -3,6 +3,8 @@
 package client
 
 import (
+	os "os"
+
 	blockstorage "github.com/American-Cloud/americancloud-sdk-go/blockstorage"
 	core "github.com/American-Cloud/americancloud-sdk-go/core"
 	databasebackups "github.com/American-Cloud/americancloud-sdk-go/databasebackups"
@@ -31,6 +33,7 @@ import (
 	vmpackages "github.com/American-Cloud/americancloud-sdk-go/vmpackages"
 	vms "github.com/American-Cloud/americancloud-sdk-go/vms"
 	vpcnetworks "github.com/American-Cloud/americancloud-sdk-go/vpcnetworks"
+	whoami "github.com/American-Cloud/americancloud-sdk-go/whoami"
 	wordpress "github.com/American-Cloud/americancloud-sdk-go/wordpress"
 )
 
@@ -60,6 +63,7 @@ type Client struct {
 	SSHKeys                *sshkeys.Client
 	BlockStorage           *blockstorage.Client
 	Snapshots              *snapshots.Client
+	Whoami                 *whoami.Client
 	Wordpress              *wordpress.Client
 
 	options *core.RequestOptions
@@ -69,6 +73,9 @@ type Client struct {
 
 func NewClient(opts ...option.RequestOption) *Client {
 	options := core.NewRequestOptions(opts...)
+	if options.Token == "" {
+		options.Token = os.Getenv("AMERICANCLOUD_API_TOKEN")
+	}
 	return &Client{
 		Vms:                    vms.NewClient(options),
 		VMPackages:             vmpackages.NewClient(options),
@@ -95,6 +102,7 @@ func NewClient(opts ...option.RequestOption) *Client {
 		SSHKeys:                sshkeys.NewClient(options),
 		BlockStorage:           blockstorage.NewClient(options),
 		Snapshots:              snapshots.NewClient(options),
+		Whoami:                 whoami.NewClient(options),
 		Wordpress:              wordpress.NewClient(options),
 		options:                options,
 		baseURL:                options.BaseURL,

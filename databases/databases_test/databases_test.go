@@ -86,7 +86,7 @@ func TestDatabasesListDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListDatabasesRequest{}
 	_, invocationErr := client.Databases.ListDatabases(
@@ -110,7 +110,7 @@ func TestDatabasesCreateDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateDatabaseClusterDto{
 		DbClusterName:    "production-db",
@@ -139,7 +139,7 @@ func TestDatabasesGetCostEstimateDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetCostEstimateDatabasesRequest{
 		OfferingID: "123e4567-e89b-12d3-a456-426614174000",
@@ -165,7 +165,7 @@ func TestDatabasesGetDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetDatabasesRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -191,7 +191,7 @@ func TestDatabasesDeleteDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteDatabasesRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -217,7 +217,7 @@ func TestDatabasesGetStatusDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetStatusDatabasesRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -243,7 +243,7 @@ func TestDatabasesGetConnectionDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetConnectionDatabasesRequest{
 		ClusterID:       "123e4567-e89b-12d3-a456-426614174000",
@@ -270,7 +270,7 @@ func TestDatabasesGetOperationsDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetOperationsDatabasesRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -296,7 +296,7 @@ func TestDatabasesStartDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.StartDatabasesRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -322,7 +322,7 @@ func TestDatabasesStopDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.StopDatabasesRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -348,7 +348,7 @@ func TestDatabasesResizeDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ResizeDatabaseClusterDto{
 		ClusterID:  "123e4567-e89b-12d3-a456-426614174000",
@@ -375,7 +375,7 @@ func TestDatabasesModifyLoadBalancerDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ModifyLoadBalancerRequestDto{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -402,7 +402,7 @@ func TestDatabasesDeleteLoadBalancerDatabasesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteLoadBalancerDatabasesRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",

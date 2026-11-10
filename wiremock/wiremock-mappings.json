@@ -7,8 +7,8 @@
         "urlPathTemplate": "/api/v1/compute/vms",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -39,8 +39,8 @@
         "urlPathTemplate": "/api/v1/compute/vms",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -70,8 +70,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}/metrics",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -114,8 +114,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}/password/reset",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -150,8 +150,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -186,8 +186,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -222,8 +222,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -253,8 +253,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}/power",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -297,8 +297,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}/scale",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -333,8 +333,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}/disk-resize",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -369,8 +369,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}/console",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -405,8 +405,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}/hostname",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -446,8 +446,8 @@
         "urlPathTemplate": "/api/v1/compute/vms/{id}/reinstall",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -487,8 +487,8 @@
         "urlPathTemplate": "/api/v1/compute/packages",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -519,8 +519,8 @@
         "urlPathTemplate": "/api/v1/compute/packages/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -555,8 +555,8 @@
         "urlPathTemplate": "/api/v1/compute/packages/label/{label}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -591,8 +591,8 @@
         "urlPathTemplate": "/api/v1/compute/regions",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -623,8 +623,8 @@
         "urlPathTemplate": "/api/v1/compute/regions/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -659,8 +659,8 @@
         "urlPathTemplate": "/api/v1/compute/regions/label/{label}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -695,8 +695,8 @@
         "urlPathTemplate": "/api/v1/compute/images",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -727,8 +727,8 @@
         "urlPathTemplate": "/api/v1/compute/images/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -763,8 +763,8 @@
         "urlPathTemplate": "/api/v1/compute/images/label/{label}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -799,8 +799,8 @@
         "urlPathTemplate": "/api/v1/networks/isolated",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -831,8 +831,8 @@
         "urlPathTemplate": "/api/v1/networks/isolated",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -862,8 +862,8 @@
         "urlPathTemplate": "/api/v1/networks/isolated/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -898,8 +898,8 @@
         "urlPathTemplate": "/api/v1/networks/isolated/{id}",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -934,8 +934,8 @@
         "urlPathTemplate": "/api/v1/networks/isolated/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -970,8 +970,8 @@
         "urlPathTemplate": "/api/v1/networks/isolated/{id}/restart",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1006,8 +1006,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -1038,8 +1038,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -1069,8 +1069,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1105,8 +1105,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/{id}",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1141,8 +1141,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1177,8 +1177,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -1208,8 +1208,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/tier",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -1239,8 +1239,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/{id}/tiers/{tierId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1278,8 +1278,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/{id}/tiers/{tierId}",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1317,8 +1317,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/{id}/tiers/{tierId}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1356,8 +1356,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/{id}/tiers/{tierId}/restart",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1395,8 +1395,8 @@
         "urlPathTemplate": "/api/v1/networks/vpc/{id}/restart",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1431,8 +1431,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -1463,8 +1463,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -1494,8 +1494,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip/isolated/{isolatedNetworkId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1530,8 +1530,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip/vpc/{vpcId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1566,8 +1566,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1602,8 +1602,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1638,8 +1638,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -1669,8 +1669,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip/{id}/change-source-nat-ip",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1705,8 +1705,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip/{id}/enable-static-nat",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1741,8 +1741,8 @@
         "urlPathTemplate": "/api/v1/networks/public-ip/{id}/disable-static-nat",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1777,8 +1777,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/rules/ip/{ipId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1813,8 +1813,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/rules/ip/{ipId}",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1849,8 +1849,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/rules/{ruleId}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1885,8 +1885,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/port-forwarding/ip/{ipId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1921,8 +1921,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/port-forwarding/ip/{ipId}",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1957,8 +1957,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/port-forwarding/{ruleId}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -1993,8 +1993,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/ip/{ipId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2029,8 +2029,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/ip/{ipId}",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2065,8 +2065,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2101,8 +2101,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2137,8 +2137,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}/instances",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2173,8 +2173,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}/assign",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2209,8 +2209,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/load-balancer/{ruleId}/remove",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2245,8 +2245,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/egress",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -2277,8 +2277,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/egress",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -2308,8 +2308,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/egress/network/{networkId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2344,8 +2344,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/egress/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2380,8 +2380,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/egress/{id}",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2416,8 +2416,8 @@
         "urlPathTemplate": "/api/v1/networks/firewall/egress/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2452,8 +2452,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/lists",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -2484,8 +2484,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/lists",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -2515,8 +2515,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/vpc/{vpcId}/lists",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2551,8 +2551,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/lists/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2587,8 +2587,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/lists/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2623,8 +2623,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/lists/{listId}/rules",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2659,8 +2659,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/lists/{listId}/rules",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2695,8 +2695,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/rules/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2731,8 +2731,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/rules/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2767,8 +2767,8 @@
         "urlPathTemplate": "/api/v1/networks/acl/lists/{id}/replace",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2803,8 +2803,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -2835,8 +2835,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -2866,8 +2866,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/cost/{offeringId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2902,8 +2902,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2938,8 +2938,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -2974,8 +2974,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/status",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3010,8 +3010,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/connection",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3051,8 +3051,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/operations",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3087,8 +3087,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/start",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3123,8 +3123,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/stop",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3159,8 +3159,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/resize",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3195,8 +3195,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/load-balancers/{type}",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3234,8 +3234,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/load-balancers/{type}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3273,8 +3273,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/repositories/active",
         "method": "PATCH",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3309,8 +3309,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3345,8 +3345,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3381,8 +3381,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/config",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3417,8 +3417,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/config",
         "method": "PATCH",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3453,8 +3453,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/schedule",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3489,8 +3489,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/schedule",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3525,8 +3525,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/schedule",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3561,8 +3561,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/schedule",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3602,8 +3602,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/policy",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3638,8 +3638,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/{backupName}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3677,8 +3677,8 @@
         "urlPathTemplate": "/api/v1/databases/clusters/{clusterId}/backups/{backupName}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3716,8 +3716,8 @@
         "urlPathTemplate": "/api/v1/databases/offerings",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -3748,8 +3748,8 @@
         "urlPathTemplate": "/api/v1/databases/offerings/{offeringId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3784,8 +3784,8 @@
         "urlPathTemplate": "/api/v1/databases/regions",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -3816,8 +3816,8 @@
         "urlPathTemplate": "/api/v1/databases/infrastructure",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -3848,8 +3848,8 @@
         "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3884,8 +3884,8 @@
         "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3920,8 +3920,8 @@
         "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3956,8 +3956,8 @@
         "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -3992,8 +3992,8 @@
         "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories/{repoName}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4031,8 +4031,8 @@
         "urlPathTemplate": "/api/v1/databases/infrastructure/{userClusterId}/backup-repositories/{repoName}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4070,8 +4070,8 @@
         "urlPathTemplate": "/api/v1/databases/operations/{correlationId}/status",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4106,8 +4106,8 @@
         "urlPathTemplate": "/api/v1/dns/zones",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -4138,8 +4138,8 @@
         "urlPathTemplate": "/api/v1/dns/zones",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -4169,8 +4169,8 @@
         "urlPathTemplate": "/api/v1/dns/zones/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4205,8 +4205,8 @@
         "urlPathTemplate": "/api/v1/dns/zones/{zoneId}/records",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4241,8 +4241,8 @@
         "urlPathTemplate": "/api/v1/dns/zones/{zoneId}/records",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4277,8 +4277,8 @@
         "urlPathTemplate": "/api/v1/dns/zones/{zoneId}/records/{currentName}/{currentType}",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4319,8 +4319,8 @@
         "urlPathTemplate": "/api/v1/dns/zones/{zoneId}/records/{name}/{type}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4361,8 +4361,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/versions",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "queryParameters": {
@@ -4398,8 +4398,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/packages",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -4430,8 +4430,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/clusters",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -4462,8 +4462,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4503,8 +4503,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4539,8 +4539,8 @@
         "urlPathTemplate": "/api/v1/kubernetes",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -4570,8 +4570,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -4601,8 +4601,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}/power",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4642,8 +4642,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}/config",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4678,8 +4678,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}/scale",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4714,8 +4714,8 @@
         "urlPathTemplate": "/api/v1/kubernetes/clusters/{id}/upgrade",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4750,8 +4750,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "queryParameters": {
@@ -4787,8 +4787,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -4818,8 +4818,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/buckets",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4854,8 +4854,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/buckets",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4890,8 +4890,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/keys",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4926,8 +4926,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/access-keys",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4962,8 +4962,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/access-keys",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -4998,8 +4998,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/access-keys/{accessKey}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5037,8 +5037,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5068,8 +5068,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/quota",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5104,8 +5104,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5140,8 +5140,8 @@
         "urlPathTemplate": "/api/v1/object-storage/units/{storageUnitId}/buckets/{bucketName}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5184,8 +5184,8 @@
         "urlPathTemplate": "/api/v1/ssh-keys",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5216,8 +5216,8 @@
         "urlPathTemplate": "/api/v1/ssh-keys",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5247,8 +5247,8 @@
         "urlPathTemplate": "/api/v1/ssh-keys/{name}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5283,8 +5283,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5315,8 +5315,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5346,8 +5346,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5382,8 +5382,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5418,8 +5418,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5449,8 +5449,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage/{id}/attach",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5485,8 +5485,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage/{id}/detach",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5521,8 +5521,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage/{id}/resize",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5557,8 +5557,8 @@
         "urlPathTemplate": "/api/v1/storage/block-storage/{id}/snapshots",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5593,8 +5593,8 @@
         "urlPathTemplate": "/api/v1/storage/snapshots",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5625,8 +5625,8 @@
         "urlPathTemplate": "/api/v1/storage/snapshots",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5656,8 +5656,8 @@
         "urlPathTemplate": "/api/v1/storage/snapshots/{id}",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5692,8 +5692,8 @@
         "urlPathTemplate": "/api/v1/storage/snapshots/{id}",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5728,8 +5728,8 @@
         "urlPathTemplate": "/api/v1/storage/snapshots/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5759,8 +5759,8 @@
         "urlPathTemplate": "/api/v1/storage/snapshots/{id}/revert",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         },
         "pathParameters": {
@@ -5789,14 +5789,46 @@
       }
     },
     {
+      "id": "5ae6e932-f329-4682-9934-c1815ba1ea09",
+      "name": "Get the caller identity and permissions - default",
+      "request": {
+        "urlPathTemplate": "/api/v1/whoami",
+        "method": "GET",
+        "headers": {
+          "Authorization": {
+            "matches": "Bearer .+"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"kind\": \"first-party\",\n  \"account\": {\n    \"id\": \"id\",\n    \"name\": \"Acme Inc.\"\n  },\n  \"permissions\": [\n    \"cmp:virtualmachines:read\"\n  ],\n  \"user\": {\n    \"id\": \"123e4567-e89b-12d3-a456-426614174000\",\n    \"email\": \"jane@example.com\",\n    \"firstName\": \"Jane\",\n    \"lastName\": \"Smith\"\n  },\n  \"token\": {\n    \"id\": \"id\",\n    \"name\": \"terraform-ci\",\n    \"tokenLast4\": \"x7Qa\",\n    \"expiresAt\": \"2024-01-15T09:30:00Z\",\n    \"lastUsedAt\": \"2024-01-15T09:30:00Z\"\n  },\n  \"app\": {\n    \"clientId\": \"claude\",\n    \"displayName\": \"Claude\",\n    \"originHost\": \"grok.com\"\n  }\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      },
+      "uuid": "5ae6e932-f329-4682-9934-c1815ba1ea09",
+      "persistent": true,
+      "priority": 3,
+      "metadata": {
+        "mocklab": {
+          "created": {
+            "at": "2020-01-01T00:00:00.000Z",
+            "via": "SYSTEM"
+          }
+        }
+      },
+      "postServeActions": []
+    },
+    {
       "id": "9bb08c61-21d7-4766-85fa-68c23ade5801",
       "name": "Get WordPress instance for the authenticated account - default",
       "request": {
         "urlPathTemplate": "/api/v1/wordpress",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5827,8 +5859,8 @@
         "urlPathTemplate": "/api/v1/wordpress",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5858,8 +5890,8 @@
         "urlPathTemplate": "/api/v1/wordpress",
         "method": "DELETE",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5889,8 +5921,8 @@
         "urlPathTemplate": "/api/v1/wordpress/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5920,8 +5952,8 @@
         "urlPathTemplate": "/api/v1/wordpress/password",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5951,8 +5983,8 @@
         "urlPathTemplate": "/api/v1/wordpress/session",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -5982,8 +6014,8 @@
         "urlPathTemplate": "/api/v1/wordpress/quota",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6014,8 +6046,8 @@
         "urlPathTemplate": "/api/v1/wordpress/max-instances",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6046,8 +6078,8 @@
         "urlPathTemplate": "/api/v1/wordpress/websites",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6078,8 +6110,8 @@
         "urlPathTemplate": "/api/v1/wordpress/bandwidth",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6110,8 +6142,8 @@
         "urlPathTemplate": "/api/v1/wordpress/nameservers",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6142,8 +6174,8 @@
         "urlPathTemplate": "/api/v1/wordpress/change-package/cost-estimate",
         "method": "POST",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6173,8 +6205,8 @@
         "urlPathTemplate": "/api/v1/wordpress/package",
         "method": "PUT",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6204,8 +6236,8 @@
         "urlPathTemplate": "/api/v1/wordpress/packages",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6236,8 +6268,8 @@
         "urlPathTemplate": "/api/v1/wordpress/packages/current",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6268,8 +6300,8 @@
         "urlPathTemplate": "/api/v1/wordpress/packages/upgrades",
         "method": "GET",
         "headers": {
-          "X-API-Client-ID": {
-            "matches": ".+"
+          "Authorization": {
+            "matches": "Bearer .+"
           }
         }
       },
@@ -6295,6 +6327,6 @@
     }
   ],
   "meta": {
-    "total": 179
+    "total": 180
   }
 }

@@ -4,6 +4,7 @@ package databases
 
 import (
 	context "context"
+	os "os"
 
 	americancloudsdkgo "github.com/American-Cloud/americancloud-sdk-go"
 	core "github.com/American-Cloud/americancloud-sdk-go/core"
@@ -20,6 +21,9 @@ type Client struct {
 }
 
 func NewClient(options *core.RequestOptions) *Client {
+	if options.Token == "" {
+		options.Token = os.Getenv("AMERICANCLOUD_API_TOKEN")
+	}
 	return &Client{
 		WithRawResponse: NewRawClient(options),
 		options:         options,
@@ -134,7 +138,7 @@ func (c *Client) GetStatusDatabases(
 	return response.Body, nil
 }
 
-// Returns connection details for the database cluster.
+// Returns connection details for the database cluster. Requires the database manage permission.
 func (c *Client) GetConnectionDatabases(
 	ctx context.Context,
 	request *americancloudsdkgo.GetConnectionDatabasesRequest,

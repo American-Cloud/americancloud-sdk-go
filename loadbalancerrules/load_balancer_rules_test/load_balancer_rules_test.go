@@ -86,7 +86,7 @@ func TestLoadBalancerRulesListLoadBalancerRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListLoadBalancerRulesRequest{
 		IpId: "123e4567-e89b-12d3-a456-426614174000",
@@ -112,7 +112,7 @@ func TestLoadBalancerRulesCreateLoadBalancerRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateLoadBalancerRuleDto{
 		IpId:        "123e4567-e89b-12d3-a456-426614174000",
@@ -142,7 +142,7 @@ func TestLoadBalancerRulesUpdateLoadBalancerRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateLoadBalancerRuleDto{
 		RuleID: "123e4567-e89b-12d3-a456-426614174000",
@@ -168,7 +168,7 @@ func TestLoadBalancerRulesDeleteLoadBalancerRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteLoadBalancerRulesRequest{
 		RuleID: "123e4567-e89b-12d3-a456-426614174000",
@@ -194,7 +194,7 @@ func TestLoadBalancerRulesListInstancesLoadBalancerRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListInstancesLoadBalancerRulesRequest{
 		RuleID: "123e4567-e89b-12d3-a456-426614174000",
@@ -220,7 +220,7 @@ func TestLoadBalancerRulesAssignVmsLoadBalancerRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.AssignVmsLoadBalancerRulesRequest{
 		RuleID: "123e4567-e89b-12d3-a456-426614174000",
@@ -251,7 +251,7 @@ func TestLoadBalancerRulesRemoveVmsLoadBalancerRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.RemoveVmsLoadBalancerRulesRequest{
 		RuleID: "123e4567-e89b-12d3-a456-426614174000",

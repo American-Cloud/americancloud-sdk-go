@@ -86,7 +86,7 @@ func TestEgressRulesListEgressRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListEgressRulesRequest{}
 	_, invocationErr := client.EgressRules.ListEgressRules(
@@ -110,7 +110,7 @@ func TestEgressRulesCreateEgressRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateEgressRuleDto{
 		Protocol: "TCP",
@@ -136,7 +136,7 @@ func TestEgressRulesListByNetworkEgressRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListByNetworkEgressRulesRequest{
 		NetworkID: "123e4567-e89b-12d3-a456-426614174000",
@@ -162,7 +162,7 @@ func TestEgressRulesGetEgressRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetEgressRulesRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -188,7 +188,7 @@ func TestEgressRulesUpdateEgressRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateEgressRuleDto{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -214,7 +214,7 @@ func TestEgressRulesDeleteEgressRulesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteEgressRulesRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",

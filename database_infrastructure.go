@@ -173,7 +173,7 @@ type GetBackupRepoDatabaseInfrastructureRequest struct {
 	UserClusterID string `json:"-" url:"-"`
 	// Backup repository name
 	RepoName string `json:"-" url:"-"`
-	// Include repository credentials in response (default: false)
+	// Include repository credentials in response (default: false). The credentials require the database manage permission.
 	IncludeCredentials *string `json:"-" url:"include_credentials,omitempty"`
 
 	// Private bitmask of fields set to an explicit value and therefore not to be omitted

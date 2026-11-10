@@ -86,7 +86,7 @@ func TestImagesListImagesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListImagesRequest{}
 	_, invocationErr := client.Images.ListImages(
@@ -110,7 +110,7 @@ func TestImagesGetImagesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetImagesRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -136,7 +136,7 @@ func TestImagesGetByLabelImagesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetByLabelImagesRequest{
 		Label: "ubuntu-22.04",

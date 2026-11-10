@@ -86,7 +86,7 @@ func TestWordpressGetWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.GetWordpress(
 		context.TODO(),
@@ -108,7 +108,7 @@ func TestWordpressCreateWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateWordPressDto{
 		PackageLabel: "wordpress-10",
@@ -134,7 +134,7 @@ func TestWordpressCancelWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.CancelWordpress(
 		context.TODO(),
@@ -156,7 +156,7 @@ func TestWordpressGetCostEstimateWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateWordPressDto{
 		PackageLabel: "wordpress-10",
@@ -182,7 +182,7 @@ func TestWordpressUpdatePasswordWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdatePasswordDto{
 		NewPassword: "newPassword",
@@ -208,7 +208,7 @@ func TestWordpressCreateSessionWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.CreateSessionWordpress(
 		context.TODO(),
@@ -230,7 +230,7 @@ func TestWordpressGetQuotaWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.GetQuotaWordpress(
 		context.TODO(),
@@ -252,7 +252,7 @@ func TestWordpressGetMaxInstancesWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.GetMaxInstancesWordpress(
 		context.TODO(),
@@ -274,7 +274,7 @@ func TestWordpressListWebsitesWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.ListWebsitesWordpress(
 		context.TODO(),
@@ -296,7 +296,7 @@ func TestWordpressGetBandwidthWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.GetBandwidthWordpress(
 		context.TODO(),
@@ -318,7 +318,7 @@ func TestWordpressGetNameserversWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.GetNameserversWordpress(
 		context.TODO(),
@@ -340,7 +340,7 @@ func TestWordpressGetChangePackageEstimateWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ChangePackageDto{
 		PackageLabel: "wordpress-25",
@@ -366,7 +366,7 @@ func TestWordpressChangePackageWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ChangePackageDto{
 		PackageLabel: "wordpress-25",
@@ -392,7 +392,7 @@ func TestWordpressListPackagesWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListPackagesWordpressRequest{}
 	_, invocationErr := client.Wordpress.ListPackagesWordpress(
@@ -416,7 +416,7 @@ func TestWordpressGetCurrentPackageWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.Wordpress.GetCurrentPackageWordpress(
 		context.TODO(),
@@ -438,7 +438,7 @@ func TestWordpressListUpgradePackagesWordpressWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListUpgradePackagesWordpressRequest{}
 	_, invocationErr := client.Wordpress.ListUpgradePackagesWordpress(

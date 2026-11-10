@@ -86,7 +86,7 @@ func TestSSHKeysListSSHKeysWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListSSHKeysRequest{}
 	_, invocationErr := client.SSHKeys.ListSSHKeys(
@@ -110,7 +110,7 @@ func TestSSHKeysCreateSSHKeysWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateSSHKeyDto{
 		Name: "my-ssh-key",
@@ -136,7 +136,7 @@ func TestSSHKeysDeleteSSHKeysWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteSSHKeysRequest{
 		Name: "my-ssh-key",

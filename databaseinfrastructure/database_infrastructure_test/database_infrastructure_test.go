@@ -86,7 +86,7 @@ func TestDatabaseInfrastructureListDatabaseInfrastructureWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListDatabaseInfrastructureRequest{}
 	_, invocationErr := client.DatabaseInfrastructure.ListDatabaseInfrastructure(
@@ -110,7 +110,7 @@ func TestDatabaseInfrastructureGetDatabaseInfrastructureWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetDatabaseInfrastructureRequest{
 		UserClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -136,7 +136,7 @@ func TestDatabaseInfrastructureListBackupReposDatabaseInfrastructureWithWireMock
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListBackupReposDatabaseInfrastructureRequest{
 		UserClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -162,7 +162,7 @@ func TestDatabaseInfrastructureCreateBackupRepoDatabaseInfrastructureWithWireMoc
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.SetupBackupRepoRequestDto{
 		UserClusterID:   "123e4567-e89b-12d3-a456-426614174000",
@@ -193,7 +193,7 @@ func TestDatabaseInfrastructureUpdateBackupRepoDatabaseInfrastructureWithWireMoc
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateBackupRepoRequestDto{
 		UserClusterID:   "123e4567-e89b-12d3-a456-426614174000",
@@ -224,7 +224,7 @@ func TestDatabaseInfrastructureGetBackupRepoDatabaseInfrastructureWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetBackupRepoDatabaseInfrastructureRequest{
 		UserClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -251,7 +251,7 @@ func TestDatabaseInfrastructureDeleteBackupRepoDatabaseInfrastructureWithWireMoc
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteBackupRepoDatabaseInfrastructureRequest{
 		UserClusterID: "123e4567-e89b-12d3-a456-426614174000",

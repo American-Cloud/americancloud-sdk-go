@@ -86,7 +86,7 @@ func TestDNSRecordsListDNSRecordsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListDNSRecordsRequest{
 		ZoneID: "123e4567-e89b-12d3-a456-426614174000",
@@ -112,7 +112,7 @@ func TestDNSRecordsCreateDNSRecordsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateRecordDto{
 		ZoneID:  "123e4567-e89b-12d3-a456-426614174000",
@@ -141,7 +141,7 @@ func TestDNSRecordsUpdateDNSRecordsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateRecordDto{
 		ZoneID:      "123e4567-e89b-12d3-a456-426614174000",
@@ -172,7 +172,7 @@ func TestDNSRecordsDeleteDNSRecordsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteRecordBody{
 		ZoneID: "123e4567-e89b-12d3-a456-426614174000",

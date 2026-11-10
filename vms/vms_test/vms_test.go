@@ -86,7 +86,7 @@ func TestVmsListVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListVmsRequest{}
 	_, invocationErr := client.Vms.ListVms(
@@ -110,7 +110,7 @@ func TestVmsCreateVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateVMDto{
 		Name:      "my-new-vm",
@@ -145,7 +145,7 @@ func TestVmsGetMetricsVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetMetricsVmsRequest{
 		ID:    "123e4567-e89b-12d3-a456-426614174000",
@@ -175,7 +175,7 @@ func TestVmsResetPasswordVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ResetPasswordDto{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -201,7 +201,7 @@ func TestVmsGetVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetVmsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -227,7 +227,7 @@ func TestVmsDeleteVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteVmsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -253,7 +253,7 @@ func TestVmsGetCostEstimateVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateVMDto{
 		Name:      "my-new-vm",
@@ -288,7 +288,7 @@ func TestVmsPowerVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.PowerVmsRequest{
 		ID:     "123e4567-e89b-12d3-a456-426614174000",
@@ -318,7 +318,7 @@ func TestVmsScaleVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ScaleVMDto{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -344,7 +344,7 @@ func TestVmsResizeDiskVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ResizeVMDiskDto{
 		ID:     "123e4567-e89b-12d3-a456-426614174000",
@@ -371,7 +371,7 @@ func TestVmsCreateConsoleVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateConsoleVmsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -397,7 +397,7 @@ func TestVmsUpdateHostnameVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateHostnameVmsRequest{
 		ID:       "123e4567-e89b-12d3-a456-426614174000",
@@ -424,7 +424,7 @@ func TestVmsReinstallVmsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ReinstallVmsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",

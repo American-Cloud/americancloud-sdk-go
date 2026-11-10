@@ -4,6 +4,7 @@ package publicips
 
 import (
 	context "context"
+	os "os"
 
 	americancloudsdkgo "github.com/American-Cloud/americancloud-sdk-go"
 	core "github.com/American-Cloud/americancloud-sdk-go/core"
@@ -20,6 +21,9 @@ type Client struct {
 }
 
 func NewClient(options *core.RequestOptions) *Client {
+	if options.Token == "" {
+		options.Token = os.Getenv("AMERICANCLOUD_API_TOKEN")
+	}
 	return &Client{
 		WithRawResponse: NewRawClient(options),
 		options:         options,

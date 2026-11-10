@@ -86,7 +86,7 @@ func TestSnapshotsListSnapshotsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListSnapshotsRequest{}
 	_, invocationErr := client.Snapshots.ListSnapshots(
@@ -110,7 +110,7 @@ func TestSnapshotsCreateSnapshotsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateSnapshotDto{
 		VolumeID: "vol-123456",
@@ -138,7 +138,7 @@ func TestSnapshotsGetSnapshotsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetSnapshotsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -164,7 +164,7 @@ func TestSnapshotsDeleteSnapshotsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteSnapshotsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -190,7 +190,7 @@ func TestSnapshotsGetCostEstimateSnapshotsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateSnapshotDto{
 		VolumeID: "vol-123456",
@@ -218,7 +218,7 @@ func TestSnapshotsRevertSnapshotsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.RevertSnapshotsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",

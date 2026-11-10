@@ -86,7 +86,7 @@ func TestDatabaseBackupsSetActiveRepoDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.SetActiveBackupRepoRequestDto{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -113,7 +113,7 @@ func TestDatabaseBackupsListDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListDatabaseBackupsRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -139,7 +139,7 @@ func TestDatabaseBackupsTriggerDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.TriggerBackupRequestDto{
 		ClusterID:        "123e4567-e89b-12d3-a456-426614174000",
@@ -170,7 +170,7 @@ func TestDatabaseBackupsGetConfigDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetConfigDatabaseBackupsRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -196,7 +196,7 @@ func TestDatabaseBackupsUpdateConfigDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateBackupConfigRequestDto{
 		ClusterID:         "123e4567-e89b-12d3-a456-426614174000",
@@ -223,7 +223,7 @@ func TestDatabaseBackupsGetScheduleDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetScheduleDatabaseBackupsRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -249,7 +249,7 @@ func TestDatabaseBackupsCreateScheduleDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateScheduleDatabaseBackupsRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -287,7 +287,7 @@ func TestDatabaseBackupsUpdateScheduleDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateScheduleDatabaseBackupsRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -325,7 +325,7 @@ func TestDatabaseBackupsDeleteScheduleDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteScheduleDatabaseBackupsRequest{
 		ClusterID:    "123e4567-e89b-12d3-a456-426614174000",
@@ -352,7 +352,7 @@ func TestDatabaseBackupsGetPolicyDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetPolicyDatabaseBackupsRequest{
 		ClusterID: "123e4567-e89b-12d3-a456-426614174000",
@@ -378,7 +378,7 @@ func TestDatabaseBackupsGetDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetDatabaseBackupsRequest{
 		ClusterID:  "123e4567-e89b-12d3-a456-426614174000",
@@ -405,7 +405,7 @@ func TestDatabaseBackupsDeleteDatabaseBackupsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteDatabaseBackupsRequest{
 		ClusterID:  "123e4567-e89b-12d3-a456-426614174000",

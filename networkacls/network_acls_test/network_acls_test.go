@@ -86,7 +86,7 @@ func TestNetworkACLsListListsNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListListsNetworkACLsRequest{}
 	_, invocationErr := client.NetworkACLs.ListListsNetworkACLs(
@@ -110,7 +110,7 @@ func TestNetworkACLsCreateListNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateNetworkACLListDto{
 		Name:  "web-tier-acl",
@@ -137,7 +137,7 @@ func TestNetworkACLsListListsByVpcNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListListsByVpcNetworkACLsRequest{
 		VpcID: "123e4567-e89b-12d3-a456-426614174000",
@@ -163,7 +163,7 @@ func TestNetworkACLsGetListNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetListNetworkACLsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -189,7 +189,7 @@ func TestNetworkACLsDeleteListNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteListNetworkACLsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -215,7 +215,7 @@ func TestNetworkACLsListRulesNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListRulesNetworkACLsRequest{
 		ListID: "123e4567-e89b-12d3-a456-426614174000",
@@ -241,7 +241,7 @@ func TestNetworkACLsCreateRuleNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateNetworkACLRuleDto{
 		ListID:      "123e4567-e89b-12d3-a456-426614174000",
@@ -271,7 +271,7 @@ func TestNetworkACLsGetRuleNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetRuleNetworkACLsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -297,7 +297,7 @@ func TestNetworkACLsDeleteRuleNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteRuleNetworkACLsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -323,7 +323,7 @@ func TestNetworkACLsReplaceListNetworkACLsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ReplaceNetworkACLListDto{
 		ID:        "123e4567-e89b-12d3-a456-426614174000",

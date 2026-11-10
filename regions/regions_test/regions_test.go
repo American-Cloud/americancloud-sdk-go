@@ -86,7 +86,7 @@ func TestRegionsListRegionsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListRegionsRequest{}
 	_, invocationErr := client.Regions.ListRegions(
@@ -110,7 +110,7 @@ func TestRegionsGetRegionsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetRegionsRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -136,7 +136,7 @@ func TestRegionsGetByLabelRegionsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetByLabelRegionsRequest{
 		Label: "sjc0",

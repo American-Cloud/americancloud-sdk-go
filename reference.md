@@ -5448,7 +5448,7 @@ client.Databases.GetStatusDatabases(
 <dl>
 <dd>
 
-Returns connection details for the database cluster.
+Returns connection details for the database cluster. Requires the database manage permission.
 </dd>
 </dl>
 </dd>
@@ -7174,7 +7174,7 @@ client.DatabaseInfrastructure.GetBackupRepoDatabaseInfrastructure(
 <dl>
 <dd>
 
-**includeCredentials:** `*string` — Include repository credentials in response (default: false)
+**includeCredentials:** `*string` — Include repository credentials in response (default: false). The credentials require the database manage permission.
     
 </dd>
 </dl>
@@ -8862,7 +8862,7 @@ client.ObjectStorage.CreateBucketObjectStorage(
 <dl>
 <dd>
 
-Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit.
+Returns the oldest access key and secret key pair of the specified storage unit. To see every access key, list the access keys of the storage unit. Requires the object storage manage permission.
 </dd>
 </dl>
 </dd>
@@ -10528,6 +10528,49 @@ client.Snapshots.RevertSnapshots(
 
 **id:** `string` — Snapshot ID
     
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## whoami
+<details><summary><code>client.Whoami.GetWhoami() -> *americancloudsdkgo.WhoamiDto</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the kind of credential, the account, and the permissions that the credential has now. For an API token, also its name, last four characters, expiry and last use.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```go
+client.Whoami.GetWhoami(
+        context.TODO(),
+    )
+}
+```
 </dd>
 </dl>
 </dd>

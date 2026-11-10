@@ -3,7 +3,6 @@
 package core
 
 import (
-	fmt "fmt"
 	http "net/http"
 	url "net/url"
 )
@@ -28,8 +27,8 @@ type RequestOptions struct {
 	MaxStreamReconnectAttempts uint
 	DisableStreamReconnection  bool
 	DisableRetries             bool
-	APIKey                     string
-	APIClientSecret            string
+	Token                      string
+	TokenFunc                  func() (string, error)
 }
 
 // NewRequestOptions returns a new *RequestOptions value.
@@ -52,10 +51,13 @@ func NewRequestOptions(opts ...RequestOption) *RequestOptions {
 // for the request(s).
 func (r *RequestOptions) ToHeader() http.Header {
 	header := r.cloneHeader()
-	if r.APIKey != "" {
-		header.Set("X-API-Client-ID", fmt.Sprintf("%v", r.APIKey))
+	if r.Token != "" {
+		header.Set("Authorization", "Bearer "+r.Token)
+	} else if r.TokenFunc != nil {
+		if token, err := r.TokenFunc(); err == nil && token != "" {
+			header.Set("Authorization", "Bearer "+token)
+		}
 	}
-	header.Set("X-API-Client-Secret", fmt.Sprintf("%v", r.APIClientSecret))
 	return header
 }
 
@@ -149,20 +151,20 @@ func (w *WithoutRetriesOption) applyRequestOptions(opts *RequestOptions) {
 	opts.DisableRetries = true
 }
 
-// APIKeyOption implements the RequestOption interface.
-type APIKeyOption struct {
-	APIKey string
+// TokenOption implements the RequestOption interface.
+type TokenOption struct {
+	Token string
 }
 
-func (a *APIKeyOption) applyRequestOptions(opts *RequestOptions) {
-	opts.APIKey = a.APIKey
+func (t *TokenOption) applyRequestOptions(opts *RequestOptions) {
+	opts.Token = t.Token
 }
 
-// APIClientSecretOption implements the RequestOption interface.
-type APIClientSecretOption struct {
-	APIClientSecret string
+// TokenFuncOption implements the RequestOption interface.
+type TokenFuncOption struct {
+	TokenFunc func() (string, error)
 }
 
-func (a *APIClientSecretOption) applyRequestOptions(opts *RequestOptions) {
-	opts.APIClientSecret = a.APIClientSecret
+func (t *TokenFuncOption) applyRequestOptions(opts *RequestOptions) {
+	opts.TokenFunc = t.TokenFunc
 }

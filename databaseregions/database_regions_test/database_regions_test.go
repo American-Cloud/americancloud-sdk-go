@@ -85,7 +85,7 @@ func TestDatabaseRegionsListDatabaseRegionsWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	_, invocationErr := client.DatabaseRegions.ListDatabaseRegions(
 		context.TODO(),

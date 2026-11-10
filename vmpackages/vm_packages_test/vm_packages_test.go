@@ -86,7 +86,7 @@ func TestVMPackagesListVMPackagesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListVMPackagesRequest{}
 	_, invocationErr := client.VMPackages.ListVMPackages(
@@ -110,7 +110,7 @@ func TestVMPackagesGetVMPackagesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetVMPackagesRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -136,7 +136,7 @@ func TestVMPackagesGetByLabelVMPackagesWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetByLabelVMPackagesRequest{
 		Label: "standard-2-4",

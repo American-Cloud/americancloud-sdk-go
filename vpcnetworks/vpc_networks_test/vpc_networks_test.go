@@ -86,7 +86,7 @@ func TestVpcNetworksListVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListVpcNetworksRequest{}
 	_, invocationErr := client.VpcNetworks.ListVpcNetworks(
@@ -110,7 +110,7 @@ func TestVpcNetworksCreateVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateVpcNetworkDto{
 		Name:   "production-vpc",
@@ -138,7 +138,7 @@ func TestVpcNetworksGetVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetVpcNetworksRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -164,7 +164,7 @@ func TestVpcNetworksUpdateVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateVpcNetworkDto{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -190,7 +190,7 @@ func TestVpcNetworksDeleteVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteVpcNetworksRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -216,7 +216,7 @@ func TestVpcNetworksGetCostEstimateVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateVpcNetworkDto{
 		Name:   "production-vpc",
@@ -244,7 +244,7 @@ func TestVpcNetworksCreateTierVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateVpcTierDto{
 		Name:    "web-tier",
@@ -273,7 +273,7 @@ func TestVpcNetworksGetTierVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetTierVpcNetworksRequest{
 		ID:     "123e4567-e89b-12d3-a456-426614174000",
@@ -300,7 +300,7 @@ func TestVpcNetworksUpdateTierVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateVpcTierDto{
 		ID:     "123e4567-e89b-12d3-a456-426614174000",
@@ -327,7 +327,7 @@ func TestVpcNetworksDeleteTierVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteTierVpcNetworksRequest{
 		ID:     "123e4567-e89b-12d3-a456-426614174000",
@@ -354,7 +354,7 @@ func TestVpcNetworksRestartTierVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.RestartTierVpcNetworksRequest{
 		ID:     "123e4567-e89b-12d3-a456-426614174000",
@@ -381,7 +381,7 @@ func TestVpcNetworksRestartVpcNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.RestartVpcNetworksRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",

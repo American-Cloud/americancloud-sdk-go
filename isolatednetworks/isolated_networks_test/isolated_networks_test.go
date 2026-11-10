@@ -86,7 +86,7 @@ func TestIsolatedNetworksListIsolatedNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.ListIsolatedNetworksRequest{}
 	_, invocationErr := client.IsolatedNetworks.ListIsolatedNetworks(
@@ -110,7 +110,7 @@ func TestIsolatedNetworksCreateIsolatedNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.CreateIsolatedNetworkDto{
 		Name:   "production-network",
@@ -137,7 +137,7 @@ func TestIsolatedNetworksGetIsolatedNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.GetIsolatedNetworksRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -163,7 +163,7 @@ func TestIsolatedNetworksUpdateIsolatedNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.UpdateIsolatedNetworkDto{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -189,7 +189,7 @@ func TestIsolatedNetworksDeleteIsolatedNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.DeleteIsolatedNetworksRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
@@ -215,7 +215,7 @@ func TestIsolatedNetworksRestartIsolatedNetworksWithWireMock(
 	}
 	client := client.NewClient(
 		option.WithBaseURL(WireMockBaseURL),
-		option.WithAPIKey("test-value"),
+		option.WithToken("test-token"),
 	)
 	request := &americancloudsdkgo.RestartIsolatedNetworksRequest{
 		ID: "123e4567-e89b-12d3-a456-426614174000",
